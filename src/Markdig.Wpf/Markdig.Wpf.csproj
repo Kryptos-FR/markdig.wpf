@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Markdig, Version=0.6.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Markdig.0.6.2\lib\net40\Markdig.dll</HintPath>
+    <Reference Include="Markdig, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Markdig.0.7.0\lib\net40\Markdig.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
@@ -60,7 +60,9 @@
     <Compile Include="Renderers\Wpf\WpfObjectRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
