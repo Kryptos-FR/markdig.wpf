@@ -2,7 +2,6 @@
 // This file is licensed under the MIT license. 
 // See the LICENSE.md file in the project root for more information.
 
-using System;
 using Markdig.Syntax.Inlines;
 
 namespace Markdig.Renderers.Wpf.Inlines
@@ -13,9 +12,10 @@ namespace Markdig.Renderers.Wpf.Inlines
     /// <seealso cref="Markdig.Renderers.Wpf.WpfObjectRenderer{Markdig.Syntax.Inlines.LiteralInline}" />
     public class LiteralInlineRenderer : WpfObjectRenderer<LiteralInline>
     {
+        /// <inheritdoc/>
         protected override void Write(WpfRenderer renderer, LiteralInline obj)
         {
-            throw new NotImplementedException();
+            renderer.WriteText(ref obj.Content);
         }
     }
 }

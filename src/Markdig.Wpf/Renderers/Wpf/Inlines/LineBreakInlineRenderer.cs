@@ -2,8 +2,8 @@
 // This file is licensed under the MIT license. 
 // See the LICENSE.md file in the project root for more information.
 
-using System;
 using Markdig.Syntax.Inlines;
+using System.Windows.Documents;
 
 namespace Markdig.Renderers.Wpf.Inlines
 {
@@ -13,9 +13,13 @@ namespace Markdig.Renderers.Wpf.Inlines
     /// <seealso cref="Markdig.Renderers.Wpf.WpfObjectRenderer{Markdig.Syntax.Inlines.LineBreakInline}" />
     public class LineBreakInlineRenderer : WpfObjectRenderer<LineBreakInline>
     {
+        /// <inheritdoc/>
         protected override void Write(WpfRenderer renderer, LineBreakInline obj)
         {
-            throw new NotImplementedException();
+            if (obj.IsHard)
+            {
+                renderer.WriteInline(new LineBreak());
+            }
         }
     }
 }
