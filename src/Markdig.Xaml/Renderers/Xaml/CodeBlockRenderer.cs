@@ -18,7 +18,7 @@ namespace Markdig.Renderers.Xaml
 
             // TODO: apply code block styling
             renderer.Write("<Paragraph>");
-            renderer.WriteLeafInline(obj);
+            renderer.WriteLeafRawLines(obj, true, true);
             renderer.WriteLine("</Paragraph>");
         }
     }

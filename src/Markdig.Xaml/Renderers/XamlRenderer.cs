@@ -219,5 +219,43 @@ namespace Markdig.Renderers
             Write(content, previousPosition, length - previousPosition);
             return this;
         }
+
+        /// <summary>
+        /// Writes the lines of a <see cref="LeafBlock"/>
+        /// </summary>
+        /// <param name="leafBlock">The leaf block.</param>
+        /// <param name="writeEndOfLines">if set to <c>true</c> write end of lines.</param>
+        /// <param name="escape">if set to <c>true</c> escape the content for XAML</param>
+        /// <param name="softEscape">Only escape &lt; and &amp;</param>
+        /// <returns>This instance</returns>
+        public XamlRenderer WriteLeafRawLines(LeafBlock leafBlock, bool writeEndOfLines, bool escape, bool softEscape = false)
+        {
+            if (leafBlock == null) throw new ArgumentNullException(nameof(leafBlock));
+            if (leafBlock.Lines.Lines != null)
+            {
+                var lines = leafBlock.Lines;
+                var slices = lines.Lines;
+                for (var i = 0; i < lines.Count; i++)
+                {
+                    if (!writeEndOfLines && i > 0)
+                    {
+                        WriteLine();
+                    }
+                    if (escape)
+                    {
+                        WriteEscape(ref slices[i].Slice, softEscape);
+                    }
+                    else
+                    {
+                        Write(ref slices[i].Slice);
+                    }
+                    if (writeEndOfLines)
+                    {
+                        WriteLine();
+                    }
+                }
+            }
+            return this;
+        }
     }
 }
