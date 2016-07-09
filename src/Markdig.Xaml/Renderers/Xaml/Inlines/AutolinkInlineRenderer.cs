@@ -16,7 +16,7 @@ namespace Markdig.Renderers.Xaml.Inlines
         {
             renderer.Write("<Hyperlink").Write(" NavigateUri=\"").WriteEscapeUrl(obj.Url).Write("\">");
             renderer.WriteEscapeUrl(obj.Url);
-            renderer.Write("</Hyperlink");
+            renderer.Write("</Hyperlink>");
         }
     }
 }

@@ -16,11 +16,20 @@ namespace Markdig.Renderers.Xaml.Inlines
         {
             var url = obj.GetDynamicUrl?.Invoke() ?? obj.Url;
 
-            renderer.Write("<Hyperlink").Write(" NavigateUri=\"").WriteEscapeUrl(url).Write("\">");
-            renderer.WriteEscape(obj.Title);
-            renderer.Write("</Hyperlink");
-
             // TODO: support images
+            if (obj.IsImage)
+            {
+                renderer.WriteChildren(obj);
+                return;
+            }
+
+            renderer.Write("<Hyperlink");
+            renderer.Write(" NavigateUri=\"").WriteEscapeUrl(url).Write("\"");
+            if (!string.IsNullOrEmpty(obj.Title))
+                renderer.Write(" Tooltip=\"").Write(obj.Title).Write("\"");
+            renderer.Write(">");
+            renderer.WriteChildren(obj);
+            renderer.Write("</Hyperlink>");
         }
     }
 }
