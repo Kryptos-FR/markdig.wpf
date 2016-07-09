@@ -23,7 +23,7 @@ using System.Resources;
 
 namespace Markdig
 {
-    public static partial class Wpf
+    public static class Wpf
     {
         public const string Version = "0.0.1";
     }
