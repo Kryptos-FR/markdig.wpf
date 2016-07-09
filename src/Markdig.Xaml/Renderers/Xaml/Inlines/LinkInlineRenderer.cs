@@ -15,21 +15,32 @@ namespace Markdig.Renderers.Xaml.Inlines
         protected override void Write(XamlRenderer renderer, LinkInline obj)
         {
             var url = obj.GetDynamicUrl?.Invoke() ?? obj.Url;
-
-            // TODO: support images
+            
             if (obj.IsImage)
             {
-                renderer.WriteChildren(obj);
-                return;
+                // TODO: add support for image styling
+                renderer.Write("<Image");
+                renderer.Write(" MaxHeight=\"{Binding RelativeSource={RelativeSource Self}, Path=Source.(BitmapSource.PixelHeight)}\"");
+                renderer.Write(" MaxWidth=\"{Binding RelativeSource={RelativeSource Self}, Path=Source.(BitmapSource.PixelWidth)}\"");
+                renderer.WriteLine(">");
+                renderer.WriteLine("<Image.Source>");
+                renderer.Write("<BitmapImage");
+                renderer.Write(" UriSource=\"").WriteEscapeUrl(url).Write("\"");
+                renderer.Write(" />");
+                renderer.WriteLine("</Image.Source>");
+                renderer.WriteLine("</Image>");
             }
-
-            renderer.Write("<Hyperlink");
-            renderer.Write(" NavigateUri=\"").WriteEscapeUrl(url).Write("\"");
-            if (!string.IsNullOrEmpty(obj.Title))
-                renderer.Write(" Tooltip=\"").Write(obj.Title).Write("\"");
-            renderer.Write(">");
-            renderer.WriteChildren(obj);
-            renderer.Write("</Hyperlink>");
+            else
+            {
+                // TODO: add support for hyperlink styling (esp. command)
+                renderer.Write("<Hyperlink");
+                renderer.Write(" NavigateUri=\"").WriteEscapeUrl(url).Write("\"");
+                if (!string.IsNullOrEmpty(obj.Title))
+                    renderer.Write(" Tooltip=\"").Write(obj.Title).Write("\"");
+                renderer.Write(">");
+                renderer.WriteChildren(obj);
+                renderer.Write("</Hyperlink>"); 
+            }
         }
     }
 }
