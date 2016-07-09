@@ -3,6 +3,7 @@
 // See the LICENSE.md file in the project root for more information.
 
 using System;
+using System.IO;
 
 namespace Markdig.Xaml.ConsoleApp
 {
@@ -11,6 +12,14 @@ namespace Markdig.Xaml.ConsoleApp
         [STAThread]
         private static void Main(string[] args)
         {
+            using (var stream = File.OpenRead("Documents/Markdig-readme.md"))
+            {
+                using (var reader = new StreamReader(stream))
+                {
+                    var markdown = reader.ReadToEnd();
+                    var xaml = Markdown.ToXaml(markdown);
+                }
+            }
         }
     }
 }
