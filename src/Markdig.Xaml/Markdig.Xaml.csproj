@@ -7,7 +7,7 @@
     <ProjectGuid>{CC4F2C0A-B5F7-4531-BFD6-EF1BD76F3D8B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Markdig.Xaml</RootNamespace>
+    <RootNamespace>Markdig</RootNamespace>
     <AssemblyName>Markdig.Xaml</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -39,11 +39,31 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Markdown.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\XamlRenderer.cs" />
+    <Compile Include="Renderers\Xaml\CodeBlockRenderer.cs" />
+    <Compile Include="Renderers\Xaml\HeadingRenderer.cs" />
+    <Compile Include="Renderers\Xaml\HtmlBlockRenderer.cs" />
+    <Compile Include="Renderers\Xaml\Inlines\AutolinkInlineRenderer.cs" />
+    <Compile Include="Renderers\Xaml\Inlines\CodeInlineRenderer.cs" />
+    <Compile Include="Renderers\Xaml\Inlines\DelimiterInlineRenderer.cs" />
+    <Compile Include="Renderers\Xaml\Inlines\EmphasisInlineRenderer.cs" />
+    <Compile Include="Renderers\Xaml\Inlines\HtmlEntityInlineRenderer.cs" />
+    <Compile Include="Renderers\Xaml\Inlines\HtmlInlineRenderer.cs" />
+    <Compile Include="Renderers\Xaml\Inlines\LineBreakInlineRenderer.cs" />
+    <Compile Include="Renderers\Xaml\Inlines\LinkInlineRenderer.cs" />
+    <Compile Include="Renderers\Xaml\Inlines\LiteralInlineRenderer.cs" />
+    <Compile Include="Renderers\Xaml\ListRenderer.cs" />
+    <Compile Include="Renderers\Xaml\ParagraphRenderer.cs" />
+    <Compile Include="Renderers\Xaml\QuoteBlockRenderer.cs" />
+    <Compile Include="Renderers\Xaml\ThematicBreakRenderer.cs" />
+    <Compile Include="Renderers\Xaml\XamlObjectRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

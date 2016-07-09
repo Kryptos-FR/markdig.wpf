@@ -18,12 +18,12 @@ using System.Resources;
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
 
-[assembly: AssemblyVersion(Markdig.Xaml.Version)]
-[assembly: AssemblyFileVersion(Markdig.Xaml.Version)]
+[assembly: AssemblyVersion(Markdig.Xaml.Markdown.Version)]
+[assembly: AssemblyFileVersion(Markdig.Xaml.Markdown.Version)]
 
-namespace Markdig
+namespace Markdig.Xaml
 {
-    public static class Xaml
+    public static partial class Markdown
     {
         public const string Version = "0.0.1";
     }
