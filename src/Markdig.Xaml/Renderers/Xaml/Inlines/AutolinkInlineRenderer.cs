@@ -14,9 +14,12 @@ namespace Markdig.Renderers.Xaml.Inlines
     {
         protected override void Write(XamlRenderer renderer, AutolinkInline obj)
         {
-            renderer.Write("<Hyperlink").Write(" NavigateUri=\"").WriteEscapeUrl(obj.Url).Write("\">");
+            renderer.Write("<Hyperlink");
+            renderer.Write(" Command=\"{x:Static markdig:Commands.Hyperlink}\"");
+            renderer.Write(" CommandParameter=\"").WriteEscapeUrl(obj.Url).Write("\"");
+            renderer.Write(">");
             renderer.WriteEscapeUrl(obj.Url);
-            renderer.Write("</Hyperlink>");
+            renderer.WriteLine("</Hyperlink>");
         }
     }
 }
