@@ -9,6 +9,7 @@
     <Import_RootNamespace>Markdig.Wpf</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Commands.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Styles.cs" />
   </ItemGroup>
   <ItemGroup>
