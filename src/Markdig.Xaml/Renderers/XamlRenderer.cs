@@ -6,7 +6,6 @@
 // Copyright (c) 2016 Alexandre Mutel. All rights reserved.
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -50,6 +49,8 @@ namespace Markdig.Renderers
             ObjectRenderers.Add(new HtmlEntityInlineRenderer());
             ObjectRenderers.Add(new LinkInlineRenderer());
             ObjectRenderers.Add(new LiteralInlineRenderer());
+
+            EnableHtmlEscape = true;
         }
 
         public bool EnableHtmlEscape { get; set; }

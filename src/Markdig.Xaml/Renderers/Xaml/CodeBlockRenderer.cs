@@ -16,8 +16,10 @@ namespace Markdig.Renderers.Xaml
         {
             renderer.EnsureLine();
 
-            // TODO: apply code block styling
-            renderer.Write("<Paragraph>");
+            renderer.Write("<Paragraph xml:space=\"preserve\"");
+            // Apply code block styling
+            renderer.Write(" Style=\"{StaticResource {x:Static markdig:Styles.CodeBlockStyleKey}}\"");
+            renderer.WriteLine(">");
             renderer.WriteLeafRawLines(obj, true, true);
             renderer.WriteLine("</Paragraph>");
         }

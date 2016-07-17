@@ -14,8 +14,13 @@ namespace Markdig.Renderers.Xaml
     {
         protected override void Write(XamlRenderer renderer, HeadingBlock obj)
         {
-            // TODO: apply style depending on heading level
-            renderer.Write("<Paragraph>");
+            renderer.Write("<Paragraph");
+            if (obj.Level > 0 && obj.Level <= 6)
+            {
+                // Apply style depending on heading level
+                renderer.Write($" Style=\"{{StaticResource {{x:Static markdig:Styles.Heading{obj.Level}StyleKey}}}}\""); 
+            }
+            renderer.WriteLine(">");
             renderer.WriteLeafInline(obj);
             renderer.WriteLine("</Paragraph>");
         }

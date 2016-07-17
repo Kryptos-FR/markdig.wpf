@@ -14,8 +14,10 @@ namespace Markdig.Renderers.Xaml.Inlines
     {
         protected override void Write(XamlRenderer renderer, CodeInline obj)
         {
-            // TODO: apply code styling (see also CodeBlockRenderer)
-            renderer.Write("<Run>");
+            renderer.Write("<Run");
+            // Apply code styling (see also CodeBlockRenderer)
+            renderer.Write(" Style=\"{StaticResource {x:Static markdig:Styles.CodeStyleKey}}\"");
+            renderer.Write(">");
             renderer.WriteEscape(obj.Content);
             renderer.Write("</Run>");
         }
