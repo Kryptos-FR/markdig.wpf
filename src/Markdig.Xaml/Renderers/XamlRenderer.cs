@@ -54,7 +54,26 @@ namespace Markdig.Renderers
         }
 
         public bool EnableHtmlEscape { get; set; }
-        
+
+        public override object Render(MarkdownObject markdownObject)
+        {
+            object result;
+            if (markdownObject is MarkdownDocument)
+            {
+                Write("<FlowDocument");
+                Write(" Style=\"{StaticResource {x:Static markdig:Styles.DocumentStyleKey}}\"");
+                WriteLine(">");
+                result = base.Render(markdownObject);
+                Write("</FlowDocument>");
+            }
+            else
+            {
+                result = base.Render(markdownObject);
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// Writes the content escaped for XAML.
         /// </summary>
