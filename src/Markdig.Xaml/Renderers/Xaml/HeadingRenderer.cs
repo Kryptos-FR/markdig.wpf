@@ -22,6 +22,7 @@ namespace Markdig.Renderers.Xaml
             }
             renderer.WriteLine(">");
             renderer.WriteLeafInline(obj);
+            renderer.EnsureLine();
             renderer.WriteLine("</Paragraph>");
         }
     }

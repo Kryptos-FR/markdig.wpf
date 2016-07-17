@@ -17,7 +17,7 @@ namespace Markdig.Renderers.Xaml
             renderer.EnsureLine();
 
             // TODO: apply quote block styling
-            renderer.Write("<Section>");
+            renderer.WriteLine("<Section>");
             renderer.WriteChildren(obj);
             renderer.WriteLine("</Section>");
         }

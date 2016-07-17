@@ -18,8 +18,9 @@ namespace Markdig.Renderers.Xaml
             {
                 renderer.EnsureLine();
             }
-            renderer.Write("<Paragraph>");
+            renderer.WriteLine("<Paragraph>");
             renderer.WriteLeafInline(obj);
+            renderer.EnsureLine();
             renderer.WriteLine("</Paragraph>");
         }
     }

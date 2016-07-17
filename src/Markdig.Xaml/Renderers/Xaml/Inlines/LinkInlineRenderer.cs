@@ -25,7 +25,7 @@ namespace Markdig.Renderers.Xaml.Inlines
                 renderer.WriteLine("<Image.Source>");
                 renderer.Write("<BitmapImage");
                 renderer.Write(" UriSource=\"").WriteEscapeUrl(url).Write("\"");
-                renderer.Write(" />");
+                renderer.WriteLine(" />");
                 renderer.WriteLine("</Image.Source>");
                 renderer.WriteLine("</Image>");
             }
@@ -36,9 +36,10 @@ namespace Markdig.Renderers.Xaml.Inlines
                 renderer.Write(" NavigateUri=\"").WriteEscapeUrl(url).Write("\"");
                 if (!string.IsNullOrEmpty(obj.Title))
                     renderer.Write(" Tooltip=\"").Write(obj.Title).Write("\"");
-                renderer.Write(">");
+                renderer.WriteLine(">");
                 renderer.WriteChildren(obj);
-                renderer.Write("</Hyperlink>"); 
+                renderer.EnsureLine();
+                renderer.WriteLine("</Hyperlink>"); 
             }
         }
     }

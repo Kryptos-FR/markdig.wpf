@@ -37,7 +37,7 @@ namespace Markdig.Renderers.Xaml
                 var listItem = (ListItemBlock)item;
 
                 renderer.EnsureLine();
-                renderer.Write("<ListItem>");
+                renderer.WriteLine("<ListItem>");
                 renderer.WriteChildren(listItem);
                 renderer.WriteLine("</ListItem>");
                 
