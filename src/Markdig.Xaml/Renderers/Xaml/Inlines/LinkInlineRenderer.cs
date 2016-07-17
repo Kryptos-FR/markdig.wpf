@@ -18,10 +18,9 @@ namespace Markdig.Renderers.Xaml.Inlines
             
             if (obj.IsImage)
             {
-                // TODO: add support for image styling
                 renderer.Write("<Image");
-                renderer.Write(" MaxHeight=\"{Binding RelativeSource={RelativeSource Self}, Path=Source.(BitmapSource.PixelHeight)}\"");
-                renderer.Write(" MaxWidth=\"{Binding RelativeSource={RelativeSource Self}, Path=Source.(BitmapSource.PixelWidth)}\"");
+                // Add image styling
+                renderer.Write(" Style=\"{StaticResource {x:Static markdig:Styles.ImageStyleKey}}\"");
                 renderer.WriteLine(">");
                 renderer.WriteLine("<Image.Source>");
                 renderer.Write("<BitmapImage");
