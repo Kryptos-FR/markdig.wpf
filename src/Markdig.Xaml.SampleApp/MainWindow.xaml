@@ -1,0 +1,22 @@
+﻿<Window x:Class="Markdig.Xaml.SampleApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:markdig="clr-namespace:Markdig.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+  <FrameworkElement.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Themes/generic.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </FrameworkElement.Resources>
+  <FrameworkElement.CommandBindings>
+    <CommandBinding Command="{x:Static markdig:Commands.Hyperlink}" Executed="OpenHyperlink" />
+  </FrameworkElement.CommandBindings>
+  <Grid>
+    <FlowDocumentScrollViewer x:Name="Viewer" />
+  </Grid>
+</Window>

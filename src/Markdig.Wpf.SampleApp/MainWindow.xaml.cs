@@ -1,4 +1,5 @@
-﻿using Markdig.Renderers;
+﻿using System.Diagnostics;
+using Markdig.Renderers;
 using System.Windows;
 using System.Windows.Documents;
 
@@ -13,7 +14,7 @@ namespace Markdig.Wpf.SampleApp
         {
             InitializeComponent();
 
-            var document = Markdown.Parse(Test);
+            var document = Markdig.Markdown.Parse(Test);
             Viewer.Document = (FlowDocument)new WpfRenderer(new FlowDocument()).Render(document);
         }
 
@@ -21,5 +22,10 @@ namespace Markdig.Wpf.SampleApp
 @"
 *Text en italique*
 ";
+
+        private void OpenHyperlink(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            Process.Start(e.Parameter.ToString());
+        }
     }
 }

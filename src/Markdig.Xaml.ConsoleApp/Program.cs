@@ -18,6 +18,7 @@ namespace Markdig.Xaml.ConsoleApp
                 {
                     var markdown = reader.ReadToEnd();
                     var xaml = Markdown.ToXaml(markdown);
+                    // Do whatever you want with the produced XAML...
                 }
             }
         }
