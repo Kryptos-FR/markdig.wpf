@@ -11,4 +11,9 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Styles.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
 </Project>
