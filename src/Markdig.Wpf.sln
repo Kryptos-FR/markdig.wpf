@@ -17,7 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdig.Xaml.ConsoleApp", "Markdig.Xaml.ConsoleApp\Markdig.Xaml.ConsoleApp.csproj", "{559E768F-424B-4E2A-8CBE-756819DE49EC}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Markdig.Wpf.Shared", "Markdig.Wpf.Shared\Markdig.Wpf.Shared.shproj", "{820DAA63-1DE4-4D76-8B8E-A1614DAAB31D}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Markdig.Wpf.Shared\Markdig.Wpf.Shared.projitems*{1523c4f0-a3e2-4440-9dd2-b3a3190fd2c4}*SharedItemsImports = 4
+		Markdig.Wpf.Shared\Markdig.Wpf.Shared.projitems*{820daa63-1de4-4d76-8b8e-a1614daab31d}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
