@@ -17,9 +17,8 @@ namespace Markdig.Renderers.Xaml.Inlines
             renderer.Write("<Run");
             // Apply code styling (see also CodeBlockRenderer)
             renderer.Write(" Style=\"{StaticResource {x:Static markdig:Styles.CodeStyleKey}}\"");
-            renderer.Write(">");
-            renderer.WriteEscape(obj.Content);
-            renderer.Write("</Run>");
+            renderer.Write(" Text=\"").WriteEscape(obj.Content).Write("\"");
+            renderer.Write(" />");
         }
     }
 }

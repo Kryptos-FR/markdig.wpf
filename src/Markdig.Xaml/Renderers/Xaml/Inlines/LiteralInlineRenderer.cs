@@ -14,9 +14,9 @@ namespace Markdig.Renderers.Xaml.Inlines
     {
         protected override void Write(XamlRenderer renderer, LiteralInline obj)
         {
-            renderer.Write("<Run>");
-            renderer.WriteEscape(ref obj.Content);
-            renderer.Write("</Run>");
+            renderer.Write("<Run");
+            renderer.Write(" Text=\"").WriteEscape(ref obj.Content).Write("\"");
+            renderer.Write(" />");
         }
     }
 }
