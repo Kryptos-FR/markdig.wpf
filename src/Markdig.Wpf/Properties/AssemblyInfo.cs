@@ -18,12 +18,12 @@ using System.Resources;
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
 
-[assembly: AssemblyVersion(Markdig.Wpf.Version)]
-[assembly: AssemblyFileVersion(Markdig.Wpf.Version)]
+[assembly: AssemblyVersion(Markdig.Wpf.Markdown.Version)]
+[assembly: AssemblyFileVersion(Markdig.Wpf.Markdown.Version)]
 
-namespace Markdig
+namespace Markdig.Wpf
 {
-    public static class Wpf
+    public static partial class Markdown
     {
         public const string Version = "0.0.1";
     }

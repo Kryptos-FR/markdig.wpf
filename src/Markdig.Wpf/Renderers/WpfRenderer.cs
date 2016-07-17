@@ -12,6 +12,10 @@ using System;
 
 namespace Markdig.Renderers
 {
+    /// <summary>
+    /// WPF renderer for a Markdown <see cref="Syntax.MarkdownDocument"/> object.
+    /// </summary>
+    /// <seealso cref="Renderers.TextRendererBase{T}" />
     public class WpfRenderer : RendererBase
     {
         private readonly Stack<Block> blocks = new Stack<Block>();
