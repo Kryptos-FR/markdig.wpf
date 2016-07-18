@@ -14,8 +14,14 @@ namespace Markdig.Renderers.Xaml
     {
         protected override void Write(XamlRenderer renderer, ThematicBreakBlock obj)
         {
-            // TODO: styling
-            renderer.Write("<Line Stretch=\"Fill\" Stroke=\"Black\" X2=\"1\" />");
+            renderer.EnsureLine();
+
+            renderer.WriteLine("<Paragraph>");
+            renderer.Write("<Line X2=\"1\"");
+            // Apply styling
+            renderer.Write(" Style=\"{StaticResource {x:Static markdig:Styles.ThematicBreakStyleKey}}\"");
+            renderer.WriteLine(" />");
+            renderer.WriteLine("</Paragraph>");
         }
     }
 }
