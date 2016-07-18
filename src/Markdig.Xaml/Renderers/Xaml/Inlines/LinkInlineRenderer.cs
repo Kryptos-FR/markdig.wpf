@@ -36,7 +36,7 @@ namespace Markdig.Renderers.Xaml.Inlines
                 renderer.Write(" Command=\"{x:Static markdig:Commands.Hyperlink}\"");
                 renderer.Write(" CommandParameter=\"").WriteEscapeUrl(url).Write("\"");
                 if (!string.IsNullOrEmpty(obj.Title))
-                    renderer.Write(" Tooltip=\"").Write(obj.Title).Write("\"");
+                    renderer.Write(" ToolTip=\"").Write(obj.Title).Write("\"");
                 renderer.WriteLine(">");
                 renderer.WriteChildren(obj);
                 renderer.EnsureLine();
