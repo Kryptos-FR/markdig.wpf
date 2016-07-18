@@ -48,4 +48,14 @@
     <Setter Property="MaxHeight" Value="{Binding RelativeSource={RelativeSource Self}, Path=Source.(BitmapSource.PixelHeight)}" />
     <Setter Property="MaxWidth" Value="{Binding RelativeSource={RelativeSource Self}, Path=Source.(BitmapSource.PixelWidth)}" />
   </Style>
+  <Style TargetType="{x:Type Section}" x:Key="{x:Static markdig:Styles.QuoteBlockStyleKey}">
+    <Setter Property="BorderBrush" Value="LightGray" />
+    <Setter Property="BorderThickness" Value="4,0,0,0" />
+    <Setter Property="Foreground" Value="Gray" />
+    <Setter Property="Padding" Value="16,0,0,0" />
+  </Style>
+  <Style TargetType="{x:Type Line}" x:Key="{x:Static markdig:Styles.ThematicBreakStyleKey}">
+    <Setter Property="Stretch" Value="Fill" />
+    <Setter Property="Stroke" Value="Black" />
+  </Style>
 </ResourceDictionary>

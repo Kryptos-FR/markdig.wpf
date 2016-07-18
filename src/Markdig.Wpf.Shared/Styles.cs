@@ -57,5 +57,15 @@ namespace Markdig.Wpf
         /// Resource Key for the ImageStyle.
         /// </summary>
         public static ComponentResourceKey ImageStyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(ImageStyleKey));
+
+        /// <summary>
+        /// Resource Key for the QuoteBlockStyle.
+        /// </summary>
+        public static ComponentResourceKey QuoteBlockStyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(QuoteBlockStyleKey));
+
+        /// <summary>
+        /// Resource Key for the ThematicBreakStyle.
+        /// </summary>
+        public static ComponentResourceKey ThematicBreakStyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(ThematicBreakStyleKey));
     }
 }
