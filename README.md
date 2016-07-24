@@ -2,8 +2,8 @@
 A WPF port of [lunet-io/markdig](https://github.com/lunet-io/markdig)
 
 I split the project into two separate parts:
-* a XAML renderer
-* a WPF renderer
+* [a XAML renderer](https://github.com/Kryptos-FR/markdig-wpf/tree/develop/src/Markdig.Xaml)
+* [a WPF renderer](https://github.com/Kryptos-FR/markdig-wpf/tree/develop/src/Markdig.Wpf)
 
 The XAML renderer outputs a string in a similar way as the HTML renderer. This string can then be saved into a file or parsed by an application.
 
