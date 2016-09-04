@@ -2,6 +2,7 @@
 // This file is licensed under the MIT license. 
 // See the LICENSE.md file in the project root for more information.
 
+using Markdig.Syntax;
 using Markdig.Syntax.Inlines;
 
 namespace Markdig.Renderers.Xaml.Inlines
@@ -14,6 +15,9 @@ namespace Markdig.Renderers.Xaml.Inlines
     {
         protected override void Write(XamlRenderer renderer, LiteralInline obj)
         {
+            if (obj.Content.IsEmpty)
+                return;
+
             renderer.Write("<Run");
             renderer.Write(" Text=\"").WriteEscape(ref obj.Content).Write("\"");
             renderer.Write(" />");
