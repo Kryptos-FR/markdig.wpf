@@ -17,7 +17,7 @@ namespace Markdig.Xaml
         /// <param name="markdown">A Markdown text.</param>
         /// <param name="pipeline">The pipeline used for the conversion.</param>
         /// <returns>The result of the conversion</returns>
-        /// <exception cref="System.ArgumentNullException">if markdown variable is null</exception>
+        /// <exception cref="ArgumentNullException">if markdown variable is null</exception>
         public static string ToXaml(string markdown, MarkdownPipeline pipeline = null)
         {
             if (markdown == null) throw new ArgumentNullException(nameof(markdown));
@@ -33,7 +33,7 @@ namespace Markdig.Xaml
         /// <param name="writer">The destination <see cref="TextWriter"/> that will receive the result of the conversion.</param>
         /// <param name="pipeline">The pipeline used for the conversion.</param>
         /// <returns>The Markdown document that has been parsed</returns>
-        /// <exception cref="System.ArgumentNullException">if reader or writer variable are null</exception>
+        /// <exception cref="ArgumentNullException">if reader or writer variable are null</exception>
         public static MarkdownDocument ToXaml(string markdown, TextWriter writer, MarkdownPipeline pipeline = null)
         {
             if (markdown == null) throw new ArgumentNullException(nameof(markdown));
