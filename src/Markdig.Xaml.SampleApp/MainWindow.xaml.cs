@@ -24,10 +24,17 @@ namespace Markdig.Xaml.SampleApp
             Loaded += OnLoaded;
         }
 
+        private static MarkdownPipeline BuildPipeline()
+        {
+            return new MarkdownPipelineBuilder()
+                .UseSupportedExtensions()
+                .Build();
+        }
+
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             var markdown = File.ReadAllText("Documents/Markdig-readme.md");
-            var xaml = Markdown.ToXaml(markdown);
+            var xaml = Markdown.ToXaml(markdown, BuildPipeline());
             using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(xaml)))
             {
                 var reader = new XamlXmlReader(stream, new MyXamlSchemaContext());
