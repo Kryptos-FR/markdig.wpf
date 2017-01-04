@@ -1,7 +1,8 @@
-﻿// Copyright (c) 2016 Nicolas Musset. All rights reserved.
+﻿// Copyright (c) 2016-2017 Nicolas Musset. All rights reserved.
 // This file is licensed under the MIT license. 
 // See the LICENSE.md file in the project root for more information.
 
+using Markdig.Annotations;
 using Markdig.Syntax.Inlines;
 
 namespace Markdig.Renderers.Xaml.Inlines
@@ -17,7 +18,7 @@ namespace Markdig.Renderers.Xaml.Inlines
         /// </summary>
         /// <param name="obj">The object.</param>
         /// <returns>The XAML tag associated to this <see cref="EmphasisInline"/> object</returns>
-        public delegate string GetTagDelegate(EmphasisInline obj);
+        public delegate string GetTagDelegate([NotNull] EmphasisInline obj);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EmphasisInlineRenderer"/> class.
@@ -32,7 +33,7 @@ namespace Markdig.Renderers.Xaml.Inlines
         /// </summary>
         public GetTagDelegate GetTag { get; set; }
 
-        protected override void Write(XamlRenderer renderer, EmphasisInline obj)
+        protected override void Write([NotNull] XamlRenderer renderer, [NotNull] EmphasisInline obj)
         {
             var tag = GetTag(obj);
             renderer.Write("<").Write(tag).Write(">");
@@ -45,7 +46,8 @@ namespace Markdig.Renderers.Xaml.Inlines
         /// </summary>
         /// <param name="obj">The object.</param>
         /// <returns></returns>
-        public string GetDefaultTag(EmphasisInline obj)
+        [CanBeNull]
+        public string GetDefaultTag([NotNull] EmphasisInline obj)
         {
             if (obj.DelimiterChar == '*' || obj.DelimiterChar == '_')
             {

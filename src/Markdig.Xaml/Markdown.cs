@@ -1,12 +1,14 @@
-﻿// Copyright (c) 2016 Nicolas Musset. All rights reserved.
+﻿// Copyright (c) 2016-2017 Nicolas Musset. All rights reserved.
 // This file is licensed under the MIT license. 
 // See the LICENSE.md file in the project root for more information.
 
 using System;
 using System.IO;
+using Markdig.Annotations;
 using Markdig.Renderers;
 using Markdig.Syntax;
 
+// ReSharper disable once CheckNamespace
 namespace Markdig.Xaml
 {
     public static partial class Markdown
@@ -18,7 +20,8 @@ namespace Markdig.Xaml
         /// <param name="pipeline">The pipeline used for the conversion.</param>
         /// <returns>The result of the conversion</returns>
         /// <exception cref="ArgumentNullException">if markdown variable is null</exception>
-        public static string ToXaml(string markdown, MarkdownPipeline pipeline = null)
+        [NotNull]
+        public static string ToXaml([NotNull] string markdown, [CanBeNull] MarkdownPipeline pipeline = null)
         {
             if (markdown == null) throw new ArgumentNullException(nameof(markdown));
             var writer = new StringWriter();
@@ -34,7 +37,8 @@ namespace Markdig.Xaml
         /// <param name="pipeline">The pipeline used for the conversion.</param>
         /// <returns>The Markdown document that has been parsed</returns>
         /// <exception cref="ArgumentNullException">if reader or writer variable are null</exception>
-        public static MarkdownDocument ToXaml(string markdown, TextWriter writer, MarkdownPipeline pipeline = null)
+        public static MarkdownDocument ToXaml([NotNull] string markdown, [NotNull] TextWriter writer,
+            [CanBeNull] MarkdownPipeline pipeline = null)
         {
             if (markdown == null) throw new ArgumentNullException(nameof(markdown));
             if (writer == null) throw new ArgumentNullException(nameof(writer));
