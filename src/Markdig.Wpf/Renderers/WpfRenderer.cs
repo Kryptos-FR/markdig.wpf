@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2016 Nicolas Musset. All rights reserved.
+﻿// Copyright (c) 2016-2017 Nicolas Musset. All rights reserved.
 // This file is licensed under the MIT license. 
 // See the LICENSE.md file in the project root for more information.
 
@@ -9,6 +9,7 @@ using Markdig.Renderers.Wpf;
 using Markdig.Renderers.Wpf.Inlines;
 using System.Runtime.CompilerServices;
 using System;
+using Markdig.Annotations;
 
 namespace Markdig.Renderers
 {
@@ -65,7 +66,7 @@ namespace Markdig.Renderers
         /// <param name="leafBlock">The leaf block.</param>
         /// <returns>This instance</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void WriteLeafInline(Syntax.LeafBlock leafBlock)
+        public void WriteLeafInline([NotNull] Syntax.LeafBlock leafBlock)
         {
             if (leafBlock == null) throw new ArgumentNullException(nameof(leafBlock));
             var inline = (Syntax.Inlines.Inline)leafBlock.Inline;
@@ -125,7 +126,7 @@ namespace Markdig.Renderers
             WriteInline(new Run(text));
         }
 
-        internal void WriteText(string text, int offset, int length)
+        internal void WriteText([CanBeNull] string text, int offset, int length)
         {
             if (text == null)
                 return;

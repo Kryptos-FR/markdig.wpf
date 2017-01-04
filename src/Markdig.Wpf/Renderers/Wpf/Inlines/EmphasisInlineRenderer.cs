@@ -1,8 +1,9 @@
-﻿// Copyright (c) 2016 Nicolas Musset. All rights reserved.
+﻿// Copyright (c) 2016-2017 Nicolas Musset. All rights reserved.
 // This file is licensed under the MIT license. 
 // See the LICENSE.md file in the project root for more information.
 
 using System.Windows.Documents;
+using Markdig.Annotations;
 using Markdig.Syntax.Inlines;
 
 namespace Markdig.Renderers.Wpf.Inlines
@@ -40,7 +41,8 @@ namespace Markdig.Renderers.Wpf.Inlines
         /// </summary>
         /// <param name="obj">The object.</param>
         /// <returns></returns>
-        public static Inline GetDefaultInline(EmphasisInline obj)
+        [CanBeNull]
+        public static Inline GetDefaultInline([NotNull] EmphasisInline obj)
         {
             if (obj.DelimiterChar == '*' || obj.DelimiterChar == '_')
             {
@@ -49,7 +51,7 @@ namespace Markdig.Renderers.Wpf.Inlines
             return null;
         }
 
-        protected override void Write(WpfRenderer renderer, EmphasisInline obj)
+        protected override void Write([NotNull] WpfRenderer renderer, EmphasisInline obj)
         {
             var inline = GetInline(obj);
             // TODO: "render" the inline
