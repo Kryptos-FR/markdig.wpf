@@ -28,8 +28,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{E93F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdig.Xaml.SampleApp", "Markdig.Xaml.SampleApp\Markdig.Xaml.SampleApp.csproj", "{BD4D1C9A-C34F-419B-8A67-66EE79FB9ADA}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Markdig.Annotations", "Markdig.Annotations\Markdig.Annotations.shproj", "{011DDEFE-B7A0-4D39-BDA8-C84159E42D2E}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Markdig.Annotations\Markdig.Annotations.projitems*{011ddefe-b7a0-4d39-bda8-c84159e42d2e}*SharedItemsImports = 13
 		Markdig.Wpf.Shared\Markdig.Wpf.Shared.projitems*{1523c4f0-a3e2-4440-9dd2-b3a3190fd2c4}*SharedItemsImports = 4
 		Markdig.Wpf.Shared\Markdig.Wpf.Shared.projitems*{820daa63-1de4-4d76-8b8e-a1614daab31d}*SharedItemsImports = 13
 		Markdig.Wpf.Shared\Markdig.Wpf.Shared.projitems*{bd4d1c9a-c34f-419b-8a67-66ee79fb9ada}*SharedItemsImports = 4
