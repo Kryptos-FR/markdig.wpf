@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Diagnostics;
 
 namespace Markdig.Annotations
 {
@@ -22,6 +22,7 @@ namespace Markdig.Annotations
         AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
         AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event |
         AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.GenericParameter)]
+    [Conditional("DEBUG")]
     internal sealed class CanBeNullAttribute : Attribute
     {
     }
