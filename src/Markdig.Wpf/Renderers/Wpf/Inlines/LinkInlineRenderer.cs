@@ -3,7 +3,9 @@
 // See the LICENSE.md file in the project root for more information.
 
 using System;
+using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Media.Imaging;
 using Markdig.Annotations;
 using Markdig.Syntax.Inlines;
 using Markdig.Wpf;
@@ -26,17 +28,35 @@ namespace Markdig.Renderers.Wpf.Inlines
                 url = "#";
             }
 
-            var hyperlink = new Hyperlink
+            if (link.IsImage)
             {
-                Command = Commands.Hyperlink,
-                CommandParameter = url,
-                NavigateUri = new Uri(url, UriKind.RelativeOrAbsolute),
-                ToolTip = link.Title != string.Empty ? link.Title : null,
-            };
+                var image = new Image
+                {
+                    Source = new BitmapImage
+                    {
+                        UriSource = new Uri(url),
+                    }
+                };
 
-            renderer.Push(hyperlink);
-            renderer.WriteChildren(link);
-            renderer.Pop();
+                image.SetResourceReference(Paragraph.StyleProperty, Styles.ImageStyleKey);
+
+                renderer.Push(new InlineUIContainer(image));
+                renderer.Pop();
+            }
+            else
+            {
+                var hyperlink = new Hyperlink
+                {
+                    Command = Commands.Hyperlink,
+                    CommandParameter = url,
+                    NavigateUri = new Uri(url, UriKind.RelativeOrAbsolute),
+                    ToolTip = link.Title != string.Empty ? link.Title : null,
+                };
+
+                renderer.Push(hyperlink);
+                renderer.WriteChildren(link);
+                renderer.Pop();
+            }
         }
     }
 }

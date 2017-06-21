@@ -59,30 +59,5 @@ namespace Markdig.Wpf.SampleApp.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ---
-        ///title: CommonMark Spec
-        ///author: John MacFarlane
-        ///version: 0.27
-        ///date: &apos;2016-11-18&apos;
-        ///license: &apos;[CC-BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/)&apos;
-        ///...
-        ///
-        ///# Introduction
-        ///
-        ///## What is Markdown?
-        ///
-        ///Markdown is a plain text format for writing structured documents,
-        ///based on conventions for indicating formatting in email
-        ///and usenet posts.  It was developed by John Gruber (with
-        ///help from Aaron Swartz) and released in 2004 in the form of a
-        ///[syntax description](http://daringfireball.net/project [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string spec {
-            get {
-                return ResourceManager.GetString("spec", resourceCulture);
-            }
-        }
     }
 }

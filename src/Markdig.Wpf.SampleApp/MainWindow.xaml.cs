@@ -2,6 +2,7 @@
 using Markdig.Renderers;
 using System.Windows;
 using System.Windows.Documents;
+using System.IO;
 
 namespace Markdig.Wpf.SampleApp
 {
@@ -16,7 +17,8 @@ namespace Markdig.Wpf.SampleApp
 
             var foo = FindResource(Styles.Heading1StyleKey);
 
-            var document = Markdig.Markdown.Parse(Properties.Resources.spec);
+            var markdown = File.ReadAllText("Documents/Markdig-readme.md");
+            var document = Markdig.Markdown.Parse(markdown);
             Viewer.Document = (FlowDocument)new WpfRenderer(new FlowDocument()).Render(document);
         }
 

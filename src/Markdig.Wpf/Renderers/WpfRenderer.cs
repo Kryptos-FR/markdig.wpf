@@ -134,6 +134,9 @@ namespace Markdig.Renderers
                     case Section section:
                         blocks = section.Blocks;
                         break;
+                    case Span span:
+                        inlines = span.Inlines;
+                        break;
                     default:
                         throw new NotImplementedException();
                 }
