@@ -3,7 +3,9 @@
 // See the LICENSE.md file in the project root for more information.
 
 using System;
+using System.Windows.Documents;
 using Markdig.Syntax.Inlines;
+using Markdig.Wpf;
 
 namespace Markdig.Renderers.Wpf.Inlines
 {
@@ -11,7 +13,9 @@ namespace Markdig.Renderers.Wpf.Inlines
     {
         protected override void Write(WpfRenderer renderer, CodeInline obj)
         {
-            throw new NotImplementedException();
+            var run = new Run(obj.Content);
+            run.SetResourceReference(Paragraph.StyleProperty, Styles.CodeStyleKey);
+            renderer.WriteInline(run);
         }
     }
 }
