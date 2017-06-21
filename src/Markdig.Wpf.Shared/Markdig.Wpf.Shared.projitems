@@ -17,4 +17,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Themes\generic.xaml" />
+  </ItemGroup>
 </Project>

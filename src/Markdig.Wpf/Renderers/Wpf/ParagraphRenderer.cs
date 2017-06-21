@@ -15,11 +15,9 @@ namespace Markdig.Renderers.Wpf
         {
             var paragraph = new Paragraph();
 
-            renderer.BeginBlock(paragraph);
+            renderer.Push(paragraph);
             renderer.WriteLeafInline(obj);
-
-            paragraph.Inlines.AddRange(renderer.Inlines);
-            renderer.EndBlock();
+            renderer.Pop();
         } 
     }
 }

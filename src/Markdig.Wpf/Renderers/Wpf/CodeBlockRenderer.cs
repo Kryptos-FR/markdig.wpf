@@ -3,7 +3,9 @@
 // See the LICENSE.md file in the project root for more information.
 
 using System;
+using System.Windows.Documents;
 using Markdig.Syntax;
+using Markdig.Wpf;
 
 namespace Markdig.Renderers.Wpf
 {
@@ -11,7 +13,12 @@ namespace Markdig.Renderers.Wpf
     {
         protected override void Write(WpfRenderer renderer, CodeBlock obj)
         {
-            throw new NotImplementedException();
+            var paragraph = new Paragraph();
+
+            paragraph.SetResourceReference(Paragraph.StyleProperty, Styles.CodeBlockStyleKey);
+            renderer.Push(paragraph);
+            renderer.WriteLeafRawLines(obj);
+            renderer.Pop();
         }
     }
 }

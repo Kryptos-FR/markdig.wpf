@@ -52,7 +52,9 @@
     <Compile Include="Renderers\Wpf\Inlines\DelimiterInlineRenderer.cs" />
     <Compile Include="Renderers\Wpf\Inlines\EmphasisInlineRenderer.cs" />
     <Compile Include="Renderers\Wpf\Inlines\LineBreakInlineRenderer.cs" />
+    <Compile Include="Renderers\Wpf\Inlines\LinkInlineRenderer.cs" />
     <Compile Include="Renderers\Wpf\Inlines\LiteralInlineRenderer.cs" />
+    <Compile Include="Renderers\Wpf\QuoteBlockRenderer.cs" />
     <Compile Include="Renderers\Wpf\ParagraphRenderer.cs" />
     <Compile Include="Renderers\Wpf\WpfObjectRenderer.cs" />
   </ItemGroup>

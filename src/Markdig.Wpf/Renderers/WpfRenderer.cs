@@ -16,11 +16,10 @@ namespace Markdig.Renderers
     /// <summary>
     /// WPF renderer for a Markdown <see cref="Syntax.MarkdownDocument"/> object.
     /// </summary>
-    /// <seealso cref="Renderers.TextRendererBase{T}" />
+    /// <seealso cref="Renderers.RendererBase" />
     public class WpfRenderer : RendererBase
     {
-        private readonly Stack<Block> blocks = new Stack<Block>();
-        private readonly List<Inline> inlines = new List<Inline>();
+        private readonly Stack<object> stack = new Stack<object>();
         private char[] buffer;
 
         public WpfRenderer(FlowDocument document)
@@ -29,12 +28,12 @@ namespace Markdig.Renderers
             Document = document;
 
             // Default block renderers
-            //ObjectRenderers.Add(new CodeBlockRenderer());
+            ObjectRenderers.Add(new CodeBlockRenderer());
             //ObjectRenderers.Add(new ListRenderer());
             ObjectRenderers.Add(new HeadingRenderer());
             //ObjectRenderers.Add(new HtmlBlockRenderer());
             ObjectRenderers.Add(new ParagraphRenderer());
-            //ObjectRenderers.Add(new QuoteBlockRenderer());
+            ObjectRenderers.Add(new QuoteBlockRenderer());
             //ObjectRenderers.Add(new ThematicBreakRenderer());
 
             // Default inline renderers
@@ -45,13 +44,11 @@ namespace Markdig.Renderers
             ObjectRenderers.Add(new LineBreakInlineRenderer());
             //ObjectRenderers.Add(new HtmlInlineRenderer());
             //ObjectRenderers.Add(new HtmlEntityInlineRenderer());
-            //ObjectRenderers.Add(new LinkInlineRenderer());
+            ObjectRenderers.Add(new LinkInlineRenderer());
             ObjectRenderers.Add(new LiteralInlineRenderer());
         }
 
         public FlowDocument Document { get; }
-
-        internal IReadOnlyCollection<Inline> Inlines => inlines;
 
         /// <inheritdoc/>
         public override object Render(Syntax.MarkdownObject markdownObject)
@@ -80,35 +77,89 @@ namespace Markdig.Renderers
             }
         }
 
-        internal void BeginBlock(Block block)
+        /// <summary>
+        /// Writes the lines of a <see cref="LeafBlock"/>
+        /// </summary>
+        /// <param name="leafBlock">The leaf block.</param>
+        /// <param name="writeEndOfLines">if set to <c>true</c> write end of lines.</param>
+        /// <param name="escape">if set to <c>true</c> escape the content for HTML</param>
+        /// <param name="softEscape">Only escape &lt; and &amp;</param>
+        /// <returns>This instance</returns>
+        public void WriteLeafRawLines([NotNull] Syntax.LeafBlock leafBlock)
         {
-            blocks.Push(block);
-        }
-
-        internal void EndBlock()
-        {
-            var block = blocks.Pop();
-            if (blocks.Count == 0)
+            if (leafBlock == null) throw new ArgumentNullException(nameof(leafBlock));
+            if (leafBlock.Lines.Lines != null)
             {
-                // first-level block
-                Document.Blocks.Add(block);
+                var lines = leafBlock.Lines;
+                var slices = lines.Lines;
+                for (int i = 0; i < lines.Count; i++)
+                {
+                    WriteText(ref slices[i].Slice);
+                    WriteInline(new LineBreak());
+                }
             }
-            inlines.Clear();
         }
 
-        internal void BeginSpan(Span span)
+        internal void Push(object o)
         {
-            // TODO
+            stack.Push(o);
         }
 
-        internal void EndSpan()
+        internal void Pop()
         {
-            // TODO
+            var popped = stack.Pop();
+            InlineCollection inlines = null;
+            BlockCollection blocks = null;
+
+            if (stack.Count == 0)
+            {
+                Document.Blocks.Add((Block)popped);
+            }
+            else
+            {
+                var top = stack.Peek();
+
+                switch (top)
+                {
+                    case Paragraph paragraph:
+                        inlines = paragraph.Inlines;
+                        break;
+                    case Section section:
+                        blocks = section.Blocks;
+                        break;
+                    default:
+                        throw new NotImplementedException();
+                }
+
+                if (inlines != null)
+                {
+                    AddInline(inlines, (Inline)popped);
+                }
+                else
+                {
+                    blocks.Add((Block)popped);
+                }
+            }
         }
 
         internal void WriteInline(Inline inline)
         {
-            inlines.Add(inline);
+            var top = stack.Peek();
+            InlineCollection inlines;
+
+            switch (top)
+            {
+                case Hyperlink link:
+                    inlines = link.Inlines;
+                    break;
+                case Paragraph para:
+                    inlines = para.Inlines;
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+
+            AddInline(inlines, inline);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -150,5 +201,14 @@ namespace Markdig.Renderers
             }
         }
 
+        private void AddInline(InlineCollection inlines, Inline inline)
+        {
+            if (inlines.Count > 0)
+            {
+                inlines.Add(new Run(" "));
+            }
+
+            inlines.Add(inline);
+        }
     }
 }
