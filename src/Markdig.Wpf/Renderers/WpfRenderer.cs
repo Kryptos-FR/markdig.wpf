@@ -12,6 +12,7 @@ using System;
 using Markdig.Annotations;
 using System.Linq;
 using Markdig.Wpf;
+using System.Windows.Markup;
 
 namespace Markdig.Renderers
 {
@@ -21,7 +22,7 @@ namespace Markdig.Renderers
     /// <seealso cref="Renderers.RendererBase" />
     public class WpfRenderer : RendererBase
     {
-        private readonly Stack<object> stack = new Stack<object>();
+        private readonly Stack<IAddChild> stack = new Stack<IAddChild>();
         private char[] buffer;
 
         public WpfRenderer(FlowDocument document)
@@ -29,6 +30,7 @@ namespace Markdig.Renderers
             buffer = new char[1024];
             Document = document;
             document.SetResourceReference(Paragraph.StyleProperty, Styles.DocumentStyleKey);
+            stack.Push(document);
 
             // Default block renderers
             ObjectRenderers.Add(new CodeBlockRenderer());
@@ -102,7 +104,7 @@ namespace Markdig.Renderers
             }
         }
 
-        internal void Push(object o)
+        internal void Push(IAddChild o)
         {
             stack.Push(o);
         }
@@ -110,72 +112,12 @@ namespace Markdig.Renderers
         internal void Pop()
         {
             var popped = stack.Pop();
-            BlockCollection blocks = null;
-            InlineCollection inlines = null;
-            ListItemCollection listItems = null;
-
-            if (stack.Count == 0)
-            {
-                Document.Blocks.Add((Block)popped);
-            }
-            else
-            {
-                var top = stack.Peek();
-
-                switch (top)
-                {
-                    case List list:
-                        listItems = list.ListItems;
-                        break;
-                    case ListItem listItem:
-                        blocks = listItem.Blocks;
-                        break;
-                    case Paragraph paragraph:
-                        inlines = paragraph.Inlines;
-                        break;
-                    case Section section:
-                        blocks = section.Blocks;
-                        break;
-                    case Span span:
-                        inlines = span.Inlines;
-                        break;
-                    default:
-                        throw new NotImplementedException();
-                }
-
-                if (inlines != null)
-                {
-                    AddInline(inlines, (Inline)popped);
-                }
-                else if (listItems != null)
-                {
-                    listItems.Add((ListItem)popped);
-                }
-                else
-                {
-                    blocks.Add((Block)popped);
-                }
-            }
+            stack.Peek().AddChild(popped);
         }
 
         internal void WriteInline(Inline inline)
         {
-            var top = stack.Peek();
-            InlineCollection inlines;
-
-            switch (top)
-            {
-                case Paragraph para:
-                    inlines = para.Inlines;
-                    break;
-                case Span span:
-                    inlines = span.Inlines;
-                    break;
-                default:
-                    throw new NotImplementedException();
-            }
-
-            AddInline(inlines, inline);
+            AddInline(stack.Peek(), inline);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -217,14 +159,14 @@ namespace Markdig.Renderers
             }
         }
 
-        private void AddInline(InlineCollection inlines, Inline inline)
+        private void AddInline(IAddChild parent, Inline inline)
         {
-            if (!EndsWithSpace(inlines) && !StartsWithSpace(inline))
+            if (!EndsWithSpace(parent) && !StartsWithSpace(inline))
             {
-                inlines.Add(new Run(" "));
+                parent.AddText(" ");
             }
 
-            inlines.Add(inline);
+            parent.AddChild(inline);
         }
 
         private bool StartsWithSpace(Inline inline)
@@ -241,15 +183,17 @@ namespace Markdig.Renderers
             return true;
         }
 
-        private bool EndsWithSpace(InlineCollection inlines)
+        private bool EndsWithSpace(IAddChild element)
         {
-            if (inlines.LastInline is Run run)
+            var inlines = (element as Span)?.Inlines ?? (element as Paragraph)?.Inlines;
+
+            if (inlines?.LastInline is Run run)
             {
                 return run.Text.Length == 0 || run.Text.Last().IsWhitespace();
             }
-            else if (inlines.LastInline is Span span)
+            else if (inlines?.LastInline is Span span)
             {
-                return EndsWithSpace(span.Inlines);
+                return EndsWithSpace(span);
             }
 
             return true;
