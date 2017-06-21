@@ -32,10 +32,7 @@ namespace Markdig.Renderers.Wpf.Inlines
             {
                 var image = new Image
                 {
-                    Source = new BitmapImage
-                    {
-                        UriSource = new Uri(url),
-                    }
+                    Source = new BitmapImage(new Uri(url))
                 };
 
                 image.SetResourceReference(Paragraph.StyleProperty, Styles.ImageStyleKey);
