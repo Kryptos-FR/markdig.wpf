@@ -54,6 +54,9 @@
     <Setter Property="Foreground" Value="Gray" />
     <Setter Property="Padding" Value="16,0,0,0" />
   </Style>
+  <Style TargetType="{x:Type CheckBox}" x:Key="{x:Static markdig:Styles.TaskListStyleKey}">
+    <Setter Property="Margin" Value="0,0,0,-2" />
+  </Style>
   <Style TargetType="{x:Type Line}" x:Key="{x:Static markdig:Styles.ThematicBreakStyleKey}">
     <Setter Property="Stretch" Value="Fill" />
     <Setter Property="Stroke" Value="Black" />

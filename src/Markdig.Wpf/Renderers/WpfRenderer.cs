@@ -13,6 +13,7 @@ using Markdig.Annotations;
 using System.Linq;
 using Markdig.Wpf;
 using System.Windows.Markup;
+using Markdig.Renderers.Wpf.Extensions;
 
 namespace Markdig.Renderers
 {
@@ -48,6 +49,9 @@ namespace Markdig.Renderers
             ObjectRenderers.Add(new LineBreakInlineRenderer());
             ObjectRenderers.Add(new LinkInlineRenderer());
             ObjectRenderers.Add(new LiteralInlineRenderer());
+
+            // Extension renderers
+            ObjectRenderers.Add(new TaskListRenderer());
         }
 
         public FlowDocument Document { get; }
