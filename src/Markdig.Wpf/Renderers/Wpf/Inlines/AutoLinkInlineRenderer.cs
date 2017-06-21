@@ -11,15 +11,15 @@ using Markdig.Wpf;
 namespace Markdig.Renderers.Wpf.Inlines
 {
     /// <summary>
-    /// A WPF renderer for a <see cref="LinkInline"/>.
+    /// A WPF renderer for a <see cref="AutolinkInline"/>.
     /// </summary>
-    /// <seealso cref="Markdig.Renderers.Wpf.WpfObjectRenderer{Markdig.Syntax.Inlines.LinkInline}" />
-    public class LinkInlineRenderer : WpfObjectRenderer<LinkInline>
+    /// <seealso cref="Markdig.Renderers.Wpf.WpfObjectRenderer{Markdig.Syntax.Inlines.AutolinkInline}" />
+    public class AutolinkInlineRenderer : WpfObjectRenderer<AutolinkInline>
     {
         /// <inheritdoc/>
-        protected override void Write(WpfRenderer renderer, [NotNull] LinkInline link)
+        protected override void Write(WpfRenderer renderer, [NotNull] AutolinkInline link)
         {            
-            var url = link.GetDynamicUrl != null ? link.GetDynamicUrl() ?? link.Url : link.Url;
+            var url = link.Url;
 
             if (!Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
             {
@@ -31,11 +31,10 @@ namespace Markdig.Renderers.Wpf.Inlines
                 Command = Commands.Hyperlink,
                 CommandParameter = url,
                 NavigateUri = new Uri(url, UriKind.RelativeOrAbsolute),
-                ToolTip = link.Title != string.Empty ? link.Title : null,
+                ToolTip = url,
             };
 
             renderer.Push(hyperlink);
-            renderer.WriteChildren(link);
             renderer.Pop();
         }
     }

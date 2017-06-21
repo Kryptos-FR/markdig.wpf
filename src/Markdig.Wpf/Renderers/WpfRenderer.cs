@@ -31,13 +31,12 @@ namespace Markdig.Renderers
             ObjectRenderers.Add(new CodeBlockRenderer());
             ObjectRenderers.Add(new ListRenderer());
             ObjectRenderers.Add(new HeadingRenderer());
-            //ObjectRenderers.Add(new HtmlBlockRenderer());
             ObjectRenderers.Add(new ParagraphRenderer());
             ObjectRenderers.Add(new QuoteBlockRenderer());
             ObjectRenderers.Add(new ThematicBreakRenderer());
 
             // Default inline renderers
-            //ObjectRenderers.Add(new AutolinkInlineRenderer());
+            ObjectRenderers.Add(new AutolinkInlineRenderer());
             ObjectRenderers.Add(new CodeInlineRenderer());
             ObjectRenderers.Add(new DelimiterInlineRenderer());
             ObjectRenderers.Add(new EmphasisInlineRenderer());
