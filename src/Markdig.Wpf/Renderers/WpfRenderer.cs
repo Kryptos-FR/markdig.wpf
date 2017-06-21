@@ -29,7 +29,7 @@ namespace Markdig.Renderers
 
             // Default block renderers
             ObjectRenderers.Add(new CodeBlockRenderer());
-            //ObjectRenderers.Add(new ListRenderer());
+            ObjectRenderers.Add(new ListRenderer());
             ObjectRenderers.Add(new HeadingRenderer());
             //ObjectRenderers.Add(new HtmlBlockRenderer());
             ObjectRenderers.Add(new ParagraphRenderer());
@@ -108,8 +108,9 @@ namespace Markdig.Renderers
         internal void Pop()
         {
             var popped = stack.Pop();
-            InlineCollection inlines = null;
             BlockCollection blocks = null;
+            InlineCollection inlines = null;
+            ListItemCollection listItems = null;
 
             if (stack.Count == 0)
             {
@@ -121,6 +122,12 @@ namespace Markdig.Renderers
 
                 switch (top)
                 {
+                    case List list:
+                        listItems = list.ListItems;
+                        break;
+                    case ListItem listItem:
+                        blocks = listItem.Blocks;
+                        break;
                     case Paragraph paragraph:
                         inlines = paragraph.Inlines;
                         break;
@@ -134,6 +141,10 @@ namespace Markdig.Renderers
                 if (inlines != null)
                 {
                     AddInline(inlines, (Inline)popped);
+                }
+                else if (listItems != null)
+                {
+                    listItems.Add((ListItem)popped);
                 }
                 else
                 {
