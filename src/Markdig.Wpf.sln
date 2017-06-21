@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26608.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdig.Wpf", "Markdig.Wpf\Markdig.Wpf.csproj", "{01E40FB5-B4E9-489D-98D5-4771DDC2D1D7}"
 EndProject
@@ -34,8 +34,8 @@ Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Markdig.Annotations\Markdig.Annotations.projitems*{011ddefe-b7a0-4d39-bda8-c84159e42d2e}*SharedItemsImports = 13
 		Markdig.Annotations\Markdig.Annotations.projitems*{01e40fb5-b4e9-489d-98d5-4771ddc2d1d7}*SharedItemsImports = 4
+		Markdig.Wpf.Shared\Markdig.Wpf.Shared.projitems*{01e40fb5-b4e9-489d-98d5-4771ddc2d1d7}*SharedItemsImports = 4
 		Markdig.Annotations\Markdig.Annotations.projitems*{1523c4f0-a3e2-4440-9dd2-b3a3190fd2c4}*SharedItemsImports = 4
-		Markdig.Wpf.Shared\Markdig.Wpf.Shared.projitems*{1523c4f0-a3e2-4440-9dd2-b3a3190fd2c4}*SharedItemsImports = 4
 		Markdig.Annotations\Markdig.Annotations.projitems*{559e768f-424b-4e2a-8cbe-756819de49ec}*SharedItemsImports = 4
 		Markdig.Wpf.Shared\Markdig.Wpf.Shared.projitems*{820daa63-1de4-4d76-8b8e-a1614daab31d}*SharedItemsImports = 13
 		Markdig.Annotations\Markdig.Annotations.projitems*{bd4d1c9a-c34f-419b-8a67-66ee79fb9ada}*SharedItemsImports = 4

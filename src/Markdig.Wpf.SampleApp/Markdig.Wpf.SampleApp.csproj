@@ -102,7 +102,9 @@
       <Name>Markdig.Wpf</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="..\Markdig.Wpf.Shared\Markdig.Wpf.Shared.projitems" Label="Shared" />
+  <ItemGroup>
+    <Resource Include="spec.txt" />
+  </ItemGroup>
   <Import Project="..\Markdig.Annotations\Markdig.Annotations.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

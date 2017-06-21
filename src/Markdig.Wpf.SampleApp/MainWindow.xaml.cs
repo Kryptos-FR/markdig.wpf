@@ -14,14 +14,11 @@ namespace Markdig.Wpf.SampleApp
         {
             InitializeComponent();
 
-            var document = Markdig.Markdown.Parse(Test);
+            var foo = FindResource(Styles.Heading1StyleKey);
+
+            var document = Markdig.Markdown.Parse(Properties.Resources.spec);
             Viewer.Document = (FlowDocument)new WpfRenderer(new FlowDocument()).Render(document);
         }
-
-        private static readonly string Test = 
-@"
-*Text en italique*
-";
 
         private void OpenHyperlink(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
