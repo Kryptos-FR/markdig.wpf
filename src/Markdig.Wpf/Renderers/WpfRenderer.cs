@@ -40,7 +40,7 @@ namespace Markdig.Renderers
             //ObjectRenderers.Add(new AutolinkInlineRenderer());
             ObjectRenderers.Add(new CodeInlineRenderer());
             ObjectRenderers.Add(new DelimiterInlineRenderer());
-            //ObjectRenderers.Add(new EmphasisInlineRenderer());
+            ObjectRenderers.Add(new EmphasisInlineRenderer());
             ObjectRenderers.Add(new LineBreakInlineRenderer());
             //ObjectRenderers.Add(new HtmlInlineRenderer());
             //ObjectRenderers.Add(new HtmlEntityInlineRenderer());
@@ -160,11 +160,11 @@ namespace Markdig.Renderers
 
             switch (top)
             {
-                case Hyperlink link:
-                    inlines = link.Inlines;
-                    break;
                 case Paragraph para:
                     inlines = para.Inlines;
+                    break;
+                case Span span:
+                    inlines = span.Inlines;
                     break;
                 default:
                     throw new NotImplementedException();
@@ -216,7 +216,11 @@ namespace Markdig.Renderers
         {
             if (inlines.Count > 0)
             {
-                inlines.Add(new Run(" "));
+                if ((inlines.LastInline is Span && inline is Span) ||
+                    (inlines.LastInline is Run && inline is Run))
+                {
+                    inlines.Add(new Run(" "));
+                }
             }
 
             inlines.Add(inline);
