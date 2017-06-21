@@ -11,6 +11,7 @@ using System.Runtime.CompilerServices;
 using System;
 using Markdig.Annotations;
 using System.Linq;
+using Markdig.Wpf;
 
 namespace Markdig.Renderers
 {
@@ -27,6 +28,7 @@ namespace Markdig.Renderers
         {
             buffer = new char[1024];
             Document = document;
+            document.SetResourceReference(Paragraph.StyleProperty, Styles.DocumentStyleKey);
 
             // Default block renderers
             ObjectRenderers.Add(new CodeBlockRenderer());
