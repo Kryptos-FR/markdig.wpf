@@ -10,6 +10,7 @@ using Markdig.Renderers.Wpf.Inlines;
 using System.Runtime.CompilerServices;
 using System;
 using Markdig.Annotations;
+using System.Linq;
 
 namespace Markdig.Renderers
 {
@@ -213,16 +214,40 @@ namespace Markdig.Renderers
 
         private void AddInline(InlineCollection inlines, Inline inline)
         {
-            if (inlines.Count > 0)
+            if (!EndsWithSpace(inlines) && !StartsWithSpace(inline))
             {
-                if ((inlines.LastInline is Span && inline is Span) ||
-                    (inlines.LastInline is Run && inline is Run))
-                {
-                    inlines.Add(new Run(" "));
-                }
+                inlines.Add(new Run(" "));
             }
 
             inlines.Add(inline);
+        }
+
+        private bool StartsWithSpace(Inline inline)
+        {
+            if (inline is Run run)
+            {
+                return run.Text.Length == 0 || run.Text.First().IsWhitespace();
+            }
+            else if (inline is Span span)
+            {
+                return StartsWithSpace(span.Inlines.FirstInline);
+            }
+
+            return true;
+        }
+
+        private bool EndsWithSpace(InlineCollection inlines)
+        {
+            if (inlines.LastInline is Run run)
+            {
+                return run.Text.Length == 0 || run.Text.Last().IsWhitespace();
+            }
+            else if (inlines.LastInline is Span span)
+            {
+                return EndsWithSpace(span.Inlines);
+            }
+
+            return true;
         }
     }
 }
