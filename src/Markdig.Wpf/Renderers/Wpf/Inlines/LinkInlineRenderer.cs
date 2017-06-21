@@ -37,8 +37,7 @@ namespace Markdig.Renderers.Wpf.Inlines
 
                 image.SetResourceReference(Paragraph.StyleProperty, Styles.ImageStyleKey);
 
-                renderer.Push(new InlineUIContainer(image));
-                renderer.Pop();
+                renderer.WriteInline(new InlineUIContainer(image));
             }
             else
             {

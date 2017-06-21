@@ -113,6 +113,11 @@ namespace Markdig.Renderers
             stack.Peek().AddChild(popped);
         }
 
+        internal void WriteBlock(Block block)
+        {
+            stack.Peek().AddChild(block);
+        }
+
         internal void WriteInline(Inline inline)
         {
             AddInline(stack.Peek(), inline);

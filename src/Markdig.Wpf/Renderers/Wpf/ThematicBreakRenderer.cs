@@ -21,8 +21,7 @@ namespace Markdig.Renderers.Wpf
                 Inlines = { new InlineUIContainer(line) }
             };
 
-            renderer.Push(paragraph);
-            renderer.Pop();
+            renderer.WriteBlock(paragraph);
         }
     }
 }

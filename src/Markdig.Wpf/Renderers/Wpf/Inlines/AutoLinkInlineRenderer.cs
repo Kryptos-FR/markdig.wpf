@@ -34,8 +34,7 @@ namespace Markdig.Renderers.Wpf.Inlines
                 ToolTip = url,
             };
 
-            renderer.Push(hyperlink);
-            renderer.Pop();
+            renderer.WriteInline(hyperlink);
         }
     }
 }
