@@ -43,6 +43,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Annotations\CanBeNullAttribute.cs" />
+    <Compile Include="Annotations\NotNullAttribute.cs" />
+    <Compile Include="Commands.cs" />
     <Compile Include="Markdown.cs" />
     <Compile Include="MarkdownExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,12 +65,34 @@
     <Compile Include="Renderers\Wpf\QuoteBlockRenderer.cs" />
     <Compile Include="Renderers\Wpf\ParagraphRenderer.cs" />
     <Compile Include="Renderers\Wpf\WpfObjectRenderer.cs" />
+    <Compile Include="Renderers\XamlRenderer.cs" />
+    <Compile Include="Renderers\Xaml\CodeBlockRenderer.cs" />
+    <Compile Include="Renderers\Xaml\HeadingRenderer.cs" />
+    <Compile Include="Renderers\Xaml\HtmlBlockRenderer.cs" />
+    <Compile Include="Renderers\Xaml\Inlines\AutolinkInlineRenderer.cs" />
+    <Compile Include="Renderers\Xaml\Inlines\CodeInlineRenderer.cs" />
+    <Compile Include="Renderers\Xaml\Inlines\DelimiterInlineRenderer.cs" />
+    <Compile Include="Renderers\Xaml\Inlines\EmphasisInlineRenderer.cs" />
+    <Compile Include="Renderers\Xaml\Inlines\HtmlEntityInlineRenderer.cs" />
+    <Compile Include="Renderers\Xaml\Inlines\HtmlInlineRenderer.cs" />
+    <Compile Include="Renderers\Xaml\Inlines\LineBreakInlineRenderer.cs" />
+    <Compile Include="Renderers\Xaml\Inlines\LinkInlineRenderer.cs" />
+    <Compile Include="Renderers\Xaml\Inlines\LiteralInlineRenderer.cs" />
+    <Compile Include="Renderers\Xaml\ListRenderer.cs" />
+    <Compile Include="Renderers\Xaml\ParagraphRenderer.cs" />
+    <Compile Include="Renderers\Xaml\QuoteBlockRenderer.cs" />
+    <Compile Include="Renderers\Xaml\ThematicBreakRenderer.cs" />
+    <Compile Include="Renderers\Xaml\XamlObjectRenderer.cs" />
+    <Compile Include="Styles.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <Import Project="..\Markdig.Annotations\Markdig.Annotations.projitems" Label="Shared" />
-  <Import Project="..\Markdig.Wpf.Shared\Markdig.Wpf.Shared.projitems" Label="Shared" />
+  <ItemGroup>
+    <Page Include="Themes\generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

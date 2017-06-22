@@ -55,12 +55,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Markdig.Xaml\Markdig.Xaml.csproj">
-      <Project>{cc4f2c0a-b5f7-4531-bfd6-ef1bd76f3d8b}</Project>
-      <Name>Markdig.Xaml</Name>
+    <ProjectReference Include="..\Markdig.Wpf\Markdig.Wpf.csproj">
+      <Project>{01e40fb5-b4e9-489d-98d5-4771ddc2d1d7}</Project>
+      <Name>Markdig.Wpf</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="..\Markdig.Annotations\Markdig.Annotations.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

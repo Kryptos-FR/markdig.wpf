@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Documents;
 using System.Xaml;
+using Markdig.Wpf;
 using XamlReader = System.Windows.Markup.XamlReader;
 
 namespace Markdig.Xaml.SampleApp
@@ -34,7 +35,7 @@ namespace Markdig.Xaml.SampleApp
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             var markdown = File.ReadAllText("Documents/Markdig-readme.md");
-            var xaml = Markdown.ToXaml(markdown, BuildPipeline());
+            var xaml = Wpf.Markdown.ToXaml(markdown, BuildPipeline());
             using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(xaml)))
             {
                 var reader = new XamlXmlReader(stream, new MyXamlSchemaContext());
