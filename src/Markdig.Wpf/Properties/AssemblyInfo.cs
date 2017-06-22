@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Resources;
+using System.Windows;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -20,6 +21,7 @@ using System.Resources;
 
 [assembly: AssemblyVersion(Markdig.Wpf.Markdown.Version)]
 [assembly: AssemblyFileVersion(Markdig.Wpf.Markdown.Version)]
+[assembly: ThemeInfo(ResourceDictionaryLocation.SourceAssembly, ResourceDictionaryLocation.SourceAssembly)]
 
 namespace Markdig.Wpf
 {

@@ -14,7 +14,7 @@ namespace Markdig.Wpf
     public static class MarkdownExtensions
     {
         /// <summary>
-        /// Uses all extensions supported by <c>Markdig.Xaml</c>.
+        /// Uses all extensions supported by <c>Markdig.Wpf</c>.
         /// </summary>
         /// <param name="pipeline">The pipeline.</param>
         /// <returns>The modified pipeline</returns>
