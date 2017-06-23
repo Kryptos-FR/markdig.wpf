@@ -55,6 +55,18 @@
     <Setter Property="Foreground" Value="Gray" />
     <Setter Property="Padding" Value="16,0,0,0" />
   </Style>
+  <Style TargetType="{x:Type Table}" x:Key="{x:Static markdig:Styles.TableStyleKey}">
+    <Setter Property="BorderBrush" Value="Black"/>
+    <Setter Property="BorderThickness" Value="0,0,1,1"/>
+    <Setter Property="CellSpacing" Value="0"/>
+  </Style>
+  <Style TargetType="{x:Type TableCell}" x:Key="{x:Static markdig:Styles.TableCellStyleKey}">
+    <Setter Property="BorderBrush" Value="Black"/>
+    <Setter Property="BorderThickness" Value="1,1,0,0"/>
+  </Style>
+  <Style TargetType="{x:Type TableRow}" x:Key="{x:Static markdig:Styles.TableHeaderStyleKey}">
+    <Setter Property="FontWeight" Value="Bold"/>
+  </Style>
   <Style TargetType="{x:Type CheckBox}" x:Key="{x:Static markdig:Styles.TaskListStyleKey}">
     <Setter Property="Margin" Value="0,0,0,-2" />
   </Style>

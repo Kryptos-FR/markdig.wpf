@@ -51,6 +51,7 @@ namespace Markdig.Renderers
             ObjectRenderers.Add(new LiteralInlineRenderer());
 
             // Extension renderers
+            ObjectRenderers.Add(new TableRenderer());
             ObjectRenderers.Add(new TaskListRenderer());
         }
 

@@ -23,6 +23,8 @@ namespace Markdig.Wpf
             if (pipeline == null) throw new ArgumentNullException(nameof(pipeline));
             return pipeline
                 .UseAutoLinks()
+                .UseGridTables()
+                .UsePipeTables()
                 .UseTaskLists();
         }
     }
