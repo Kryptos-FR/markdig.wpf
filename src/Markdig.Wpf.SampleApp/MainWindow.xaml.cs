@@ -16,10 +16,6 @@ namespace Markdig.Wpf.SampleApp
         {
             InitializeComponent();
             Loaded += OnLoaded;
-
-            var markdown = File.ReadAllText("Documents/Markdig-readme.md");
-            var document = Markdig.Markdown.Parse(markdown);
-            Viewer.Document = (FlowDocument)new WpfRenderer(new FlowDocument()).Render(document);
         }
 
         private static MarkdownPipeline BuildPipeline()
