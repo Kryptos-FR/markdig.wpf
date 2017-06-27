@@ -14,7 +14,7 @@ namespace Markdig.Renderers.Wpf.Inlines
     /// <seealso cref="Markdig.Renderers.Wpf.WpfObjectRenderer{Markdig.Syntax.Inlines.EmphasisInline}" />
     public class EmphasisInlineRenderer : WpfObjectRenderer<EmphasisInline>
     {
-        protected override void Write([NotNull] WpfRenderer renderer, EmphasisInline obj)
+        protected override void Write([NotNull] WpfRenderer renderer, [NotNull] EmphasisInline obj)
         {
             Span span = null;
 

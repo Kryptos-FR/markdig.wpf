@@ -4,6 +4,7 @@
 
 using System;
 using System.Windows.Documents;
+using Markdig.Annotations;
 using Markdig.Syntax;
 using Markdig.Wpf;
 
@@ -11,7 +12,7 @@ namespace Markdig.Renderers.Wpf
 {
     public class CodeBlockRenderer : WpfObjectRenderer<CodeBlock>
     {
-        protected override void Write(WpfRenderer renderer, CodeBlock obj)
+        protected override void Write([NotNull] WpfRenderer renderer, [NotNull] CodeBlock obj)
         {
             var paragraph = new Paragraph();
 
