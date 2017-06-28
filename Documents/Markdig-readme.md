@@ -1,5 +1,11 @@
 ﻿# Markdig [![Build status](https://ci.appveyor.com/api/projects/status/hk391x8jcskxt1u8?svg=true)](https://ci.appveyor.com/project/xoofx/markdig) [![NuGet](https://img.shields.io/nuget/v/Markdig.svg)](https://www.nuget.org/packages/Markdig/) [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FRGHXBTP442JL)
 
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
 <img align="right" width="160px" height="160px" src="https://raw.githubusercontent.com/lunet-io/markdig/master/img/markdig.png">
 
 Markdig is a fast, powerful, [CommonMark](http://commonmark.org/) compliant, extensible Markdown processor for .NET.
