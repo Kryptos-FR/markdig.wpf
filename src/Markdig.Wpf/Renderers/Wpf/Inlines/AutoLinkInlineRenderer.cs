@@ -17,7 +17,7 @@ namespace Markdig.Renderers.Wpf.Inlines
     public class AutolinkInlineRenderer : WpfObjectRenderer<AutolinkInline>
     {
         /// <inheritdoc/>
-        protected override void Write(WpfRenderer renderer, [NotNull] AutolinkInline link)
+        protected override void Write([NotNull] WpfRenderer renderer, [NotNull] AutolinkInline link)
         {            
             var url = link.Url;
 

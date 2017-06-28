@@ -5,6 +5,7 @@
 using System;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using Markdig.Annotations;
 using Markdig.Extensions.TaskLists;
 using Markdig.Wpf;
 
@@ -12,7 +13,7 @@ namespace Markdig.Renderers.Wpf.Extensions
 {
     public class TaskListRenderer : WpfObjectRenderer<TaskList>
     {
-        protected override void Write(WpfRenderer renderer, TaskList taskList)
+        protected override void Write([NotNull] WpfRenderer renderer, [NotNull] TaskList taskList)
         {
             var checkBox = new CheckBox
             {

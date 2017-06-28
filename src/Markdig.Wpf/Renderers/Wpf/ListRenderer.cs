@@ -5,14 +5,14 @@
 using System;
 using System.Windows;
 using System.Windows.Documents;
+using Markdig.Annotations;
 using Markdig.Syntax;
-using Markdig.Wpf;
 
 namespace Markdig.Renderers.Wpf
 {
     public class ListRenderer : WpfObjectRenderer<ListBlock>
     {
-        protected override void Write(WpfRenderer renderer, ListBlock listBlock)
+        protected override void Write([NotNull] WpfRenderer renderer, [NotNull] ListBlock listBlock)
         {
             var list = new List();
 

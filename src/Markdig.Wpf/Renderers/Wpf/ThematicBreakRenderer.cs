@@ -4,6 +4,7 @@
 
 using System;
 using System.Windows.Documents;
+using Markdig.Annotations;
 using Markdig.Syntax;
 using Markdig.Wpf;
 
@@ -11,7 +12,7 @@ namespace Markdig.Renderers.Wpf
 {
     public class ThematicBreakRenderer : WpfObjectRenderer<ThematicBreakBlock>
     {
-        protected override void Write(WpfRenderer renderer, ThematicBreakBlock obj)
+        protected override void Write([NotNull] WpfRenderer renderer, [NotNull] ThematicBreakBlock obj)
         {
             var line = new System.Windows.Shapes.Line { X2 = 1 };
             line.SetResourceReference(Paragraph.StyleProperty, Styles.ThematicBreakStyleKey);

@@ -19,7 +19,7 @@ namespace Markdig.Renderers.Wpf.Inlines
     public class LinkInlineRenderer : WpfObjectRenderer<LinkInline>
     {
         /// <inheritdoc/>
-        protected override void Write(WpfRenderer renderer, [NotNull] LinkInline link)
+        protected override void Write([NotNull] WpfRenderer renderer, [NotNull] LinkInline link)
         {            
             var url = link.GetDynamicUrl != null ? link.GetDynamicUrl() ?? link.Url : link.Url;
 

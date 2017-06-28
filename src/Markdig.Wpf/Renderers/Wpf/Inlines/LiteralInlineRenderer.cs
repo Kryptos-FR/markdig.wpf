@@ -14,7 +14,7 @@ namespace Markdig.Renderers.Wpf.Inlines
     public class LiteralInlineRenderer : WpfObjectRenderer<LiteralInline>
     {
         /// <inheritdoc/>
-        protected override void Write(WpfRenderer renderer, [NotNull] LiteralInline obj)
+        protected override void Write([NotNull] WpfRenderer renderer, [NotNull] LiteralInline obj)
         {
             if (obj.Content.IsEmpty)
                 return;

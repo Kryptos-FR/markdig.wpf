@@ -26,7 +26,7 @@ namespace Markdig.Renderers
         private readonly Stack<IAddChild> stack = new Stack<IAddChild>();
         private char[] buffer;
 
-        public WpfRenderer(FlowDocument document)
+        public WpfRenderer([NotNull] FlowDocument document)
         {
             buffer = new char[1024];
             Document = document;
@@ -57,7 +57,7 @@ namespace Markdig.Renderers
         public FlowDocument Document { get; }
 
         /// <inheritdoc/>
-        public override object Render(Syntax.MarkdownObject markdownObject)
+        public override object Render([NotNull] Syntax.MarkdownObject markdownObject)
         {
             Write(markdownObject);
             return Document;
@@ -106,7 +106,7 @@ namespace Markdig.Renderers
             }
         }
 
-        internal void Push(IAddChild o)
+        internal void Push([NotNull] IAddChild o)
         {
             stack.Push(o);
         }
@@ -117,12 +117,12 @@ namespace Markdig.Renderers
             stack.Peek().AddChild(popped);
         }
 
-        internal void WriteBlock(Block block)
+        internal void WriteBlock([NotNull] Block block)
         {
             stack.Peek().AddChild(block);
         }
 
-        internal void WriteInline(Inline inline)
+        internal void WriteInline([NotNull] Inline inline)
         {
             AddInline(stack.Peek(), inline);
         }
@@ -137,7 +137,7 @@ namespace Markdig.Renderers
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void WriteText(string text)
+        internal void WriteText([CanBeNull] string text)
         {
             WriteInline(new Run(text));
         }
@@ -166,7 +166,7 @@ namespace Markdig.Renderers
             }
         }
 
-        private void AddInline(IAddChild parent, Inline inline)
+        private void AddInline([NotNull] IAddChild parent, [NotNull] Inline inline)
         {
             if (!EndsWithSpace(parent) && !StartsWithSpace(inline))
             {
@@ -176,7 +176,7 @@ namespace Markdig.Renderers
             parent.AddChild(inline);
         }
 
-        private bool StartsWithSpace(Inline inline)
+        private bool StartsWithSpace([NotNull] Inline inline)
         {
             if (inline is Run run)
             {
@@ -190,7 +190,7 @@ namespace Markdig.Renderers
             return true;
         }
 
-        private bool EndsWithSpace(IAddChild element)
+        private bool EndsWithSpace([NotNull] IAddChild element)
         {
             var inlines = (element as Span)?.Inlines ?? (element as Paragraph)?.Inlines;
 
