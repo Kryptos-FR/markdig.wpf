@@ -44,15 +44,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Markdown.cs" />
+    <Compile Include="MarkdownExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\Wpf\Extensions\TaskListRenderer.cs" />
+    <Compile Include="Renderers\Wpf\Inlines\AutolinkInlineRenderer.cs" />
+    <Compile Include="Renderers\Wpf\ThematicBreakRenderer.cs" />
     <Compile Include="Renderers\Wpf\CodeBlockRenderer.cs" />
     <Compile Include="Renderers\WpfRenderer.cs" />
+    <Compile Include="Renderers\Wpf\ListRenderer.cs" />
     <Compile Include="Renderers\Wpf\HeadingRenderer.cs" />
     <Compile Include="Renderers\Wpf\Inlines\CodeInlineRenderer.cs" />
     <Compile Include="Renderers\Wpf\Inlines\DelimiterInlineRenderer.cs" />
     <Compile Include="Renderers\Wpf\Inlines\EmphasisInlineRenderer.cs" />
     <Compile Include="Renderers\Wpf\Inlines\LineBreakInlineRenderer.cs" />
+    <Compile Include="Renderers\Wpf\Inlines\LinkInlineRenderer.cs" />
     <Compile Include="Renderers\Wpf\Inlines\LiteralInlineRenderer.cs" />
+    <Compile Include="Renderers\Wpf\QuoteBlockRenderer.cs" />
     <Compile Include="Renderers\Wpf\ParagraphRenderer.cs" />
     <Compile Include="Renderers\Wpf\WpfObjectRenderer.cs" />
   </ItemGroup>
@@ -60,6 +67,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="..\Markdig.Annotations\Markdig.Annotations.projitems" Label="Shared" />
+  <Import Project="..\Markdig.Wpf.Shared\Markdig.Wpf.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

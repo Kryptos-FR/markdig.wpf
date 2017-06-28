@@ -10,51 +10,54 @@ using Markdig.Renderers.Wpf.Inlines;
 using System.Runtime.CompilerServices;
 using System;
 using Markdig.Annotations;
+using System.Linq;
+using Markdig.Wpf;
+using System.Windows.Markup;
+using Markdig.Renderers.Wpf.Extensions;
 
 namespace Markdig.Renderers
 {
     /// <summary>
     /// WPF renderer for a Markdown <see cref="Syntax.MarkdownDocument"/> object.
     /// </summary>
-    /// <seealso cref="Renderers.TextRendererBase{T}" />
+    /// <seealso cref="Renderers.RendererBase" />
     public class WpfRenderer : RendererBase
     {
-        private readonly Stack<Block> blocks = new Stack<Block>();
-        private readonly List<Inline> inlines = new List<Inline>();
+        private readonly Stack<IAddChild> stack = new Stack<IAddChild>();
         private char[] buffer;
 
-        public WpfRenderer(FlowDocument document)
+        public WpfRenderer([NotNull] FlowDocument document)
         {
             buffer = new char[1024];
             Document = document;
+            document.SetResourceReference(Paragraph.StyleProperty, Styles.DocumentStyleKey);
+            stack.Push(document);
 
             // Default block renderers
-            //ObjectRenderers.Add(new CodeBlockRenderer());
-            //ObjectRenderers.Add(new ListRenderer());
-            //ObjectRenderers.Add(new HeadingRenderer());
-            //ObjectRenderers.Add(new HtmlBlockRenderer());
+            ObjectRenderers.Add(new CodeBlockRenderer());
+            ObjectRenderers.Add(new ListRenderer());
+            ObjectRenderers.Add(new HeadingRenderer());
             ObjectRenderers.Add(new ParagraphRenderer());
-            //ObjectRenderers.Add(new QuoteBlockRenderer());
-            //ObjectRenderers.Add(new ThematicBreakRenderer());
+            ObjectRenderers.Add(new QuoteBlockRenderer());
+            ObjectRenderers.Add(new ThematicBreakRenderer());
 
             // Default inline renderers
-            //ObjectRenderers.Add(new AutolinkInlineRenderer());
-            //ObjectRenderers.Add(new CodeInlineRenderer());
+            ObjectRenderers.Add(new AutolinkInlineRenderer());
+            ObjectRenderers.Add(new CodeInlineRenderer());
             ObjectRenderers.Add(new DelimiterInlineRenderer());
-            //ObjectRenderers.Add(new EmphasisInlineRenderer());
+            ObjectRenderers.Add(new EmphasisInlineRenderer());
             ObjectRenderers.Add(new LineBreakInlineRenderer());
-            //ObjectRenderers.Add(new HtmlInlineRenderer());
-            //ObjectRenderers.Add(new HtmlEntityInlineRenderer());
-            //ObjectRenderers.Add(new LinkInlineRenderer());
+            ObjectRenderers.Add(new LinkInlineRenderer());
             ObjectRenderers.Add(new LiteralInlineRenderer());
+
+            // Extension renderers
+            ObjectRenderers.Add(new TaskListRenderer());
         }
 
         public FlowDocument Document { get; }
 
-        internal IReadOnlyCollection<Inline> Inlines => inlines;
-
         /// <inheritdoc/>
-        public override object Render(Syntax.MarkdownObject markdownObject)
+        public override object Render([NotNull] Syntax.MarkdownObject markdownObject)
         {
             Write(markdownObject);
             return Document;
@@ -80,35 +83,48 @@ namespace Markdig.Renderers
             }
         }
 
-        internal void BeginBlock(Block block)
+        /// <summary>
+        /// Writes the lines of a <see cref="LeafBlock"/>
+        /// </summary>
+        /// <param name="leafBlock">The leaf block.</param>
+        /// <param name="writeEndOfLines">if set to <c>true</c> write end of lines.</param>
+        /// <param name="escape">if set to <c>true</c> escape the content for HTML</param>
+        /// <param name="softEscape">Only escape &lt; and &amp;</param>
+        /// <returns>This instance</returns>
+        public void WriteLeafRawLines([NotNull] Syntax.LeafBlock leafBlock)
         {
-            blocks.Push(block);
-        }
-
-        internal void EndBlock()
-        {
-            var block = blocks.Pop();
-            if (blocks.Count == 0)
+            if (leafBlock == null) throw new ArgumentNullException(nameof(leafBlock));
+            if (leafBlock.Lines.Lines != null)
             {
-                // first-level block
-                Document.Blocks.Add(block);
+                var lines = leafBlock.Lines;
+                var slices = lines.Lines;
+                for (int i = 0; i < lines.Count; i++)
+                {
+                    WriteText(ref slices[i].Slice);
+                    WriteInline(new LineBreak());
+                }
             }
-            inlines.Clear();
         }
 
-        internal void BeginSpan(Span span)
+        internal void Push([NotNull] IAddChild o)
         {
-            // TODO
+            stack.Push(o);
         }
 
-        internal void EndSpan()
+        internal void Pop()
         {
-            // TODO
+            var popped = stack.Pop();
+            stack.Peek().AddChild(popped);
         }
 
-        internal void WriteInline(Inline inline)
+        internal void WriteBlock([NotNull] Block block)
         {
-            inlines.Add(inline);
+            stack.Peek().AddChild(block);
+        }
+
+        internal void WriteInline([NotNull] Inline inline)
+        {
+            AddInline(stack.Peek(), inline);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -121,7 +137,7 @@ namespace Markdig.Renderers
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void WriteText(string text)
+        internal void WriteText([CanBeNull] string text)
         {
             WriteInline(new Run(text));
         }
@@ -150,5 +166,44 @@ namespace Markdig.Renderers
             }
         }
 
+        private void AddInline([NotNull] IAddChild parent, [NotNull] Inline inline)
+        {
+            if (!EndsWithSpace(parent) && !StartsWithSpace(inline))
+            {
+                parent.AddText(" ");
+            }
+
+            parent.AddChild(inline);
+        }
+
+        private bool StartsWithSpace([NotNull] Inline inline)
+        {
+            if (inline is Run run)
+            {
+                return run.Text.Length == 0 || run.Text.First().IsWhitespace();
+            }
+            else if (inline is Span span)
+            {
+                return StartsWithSpace(span.Inlines.FirstInline);
+            }
+
+            return true;
+        }
+
+        private bool EndsWithSpace([NotNull] IAddChild element)
+        {
+            var inlines = (element as Span)?.Inlines ?? (element as Paragraph)?.Inlines;
+
+            if (inlines?.LastInline is Run run)
+            {
+                return run.Text.Length == 0 || run.Text.Last().IsWhitespace();
+            }
+            else if (inlines?.LastInline is Span span)
+            {
+                return EndsWithSpace(span);
+            }
+
+            return true;
+        }
     }
 }

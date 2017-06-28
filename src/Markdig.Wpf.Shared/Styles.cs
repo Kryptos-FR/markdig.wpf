@@ -64,6 +64,11 @@ namespace Markdig.Wpf
         public static ComponentResourceKey QuoteBlockStyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(QuoteBlockStyleKey));
 
         /// <summary>
+        /// Resource Key for the TaskListStyle.
+        /// </summary>
+        public static ComponentResourceKey TaskListStyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(TaskListStyleKey));
+
+        /// <summary>
         /// Resource Key for the ThematicBreakStyle.
         /// </summary>
         public static ComponentResourceKey ThematicBreakStyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(ThematicBreakStyleKey));
