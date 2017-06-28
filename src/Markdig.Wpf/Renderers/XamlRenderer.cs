@@ -63,7 +63,7 @@ namespace Markdig.Renderers
                 Write("<FlowDocument");
                 Write(" xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"");
                 Write(" xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\"");
-                Write(" xmlns:markdig=\"clr-namespace:Markdig.Wpf\"");
+                Write(" xmlns:markdig=\"clr-namespace:Markdig.Wpf;assembly=Markdig.Wpf\"");
                 Write(" Style=\"{StaticResource {x:Static markdig:Styles.DocumentStyleKey}}\"");
                 WriteLine(">");
                 result = base.Render(markdownObject);

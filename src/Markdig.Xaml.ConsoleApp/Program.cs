@@ -17,7 +17,7 @@ namespace Markdig.Xaml.ConsoleApp
                 using (var reader = new StreamReader(stream))
                 {
                     var markdown = reader.ReadToEnd();
-                    var xaml = Markdown.ToXaml(markdown);
+                    var xaml = Wpf.Markdown.ToXaml(markdown);
                     // Do whatever you want with the produced XAML...
                 }
             }

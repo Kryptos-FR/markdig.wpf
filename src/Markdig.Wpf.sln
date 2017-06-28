@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdig.Wpf", "Markdig.Wpf\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdig.Wpf.SampleApp", "Markdig.Wpf.SampleApp\Markdig.Wpf.SampleApp.csproj", "{1523C4F0-A3E2-4440-9DD2-B3A3190FD2C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdig.Xaml", "Markdig.Xaml\Markdig.Xaml.csproj", "{CC4F2C0A-B5F7-4531-BFD6-EF1BD76F3D8B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7D346229-503E-49BF-8608-F33F36BC67FA}"
 	ProjectSection(SolutionItems) = preProject
 		..\LICENSE.md = ..\LICENSE.md
@@ -16,8 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdig.Xaml.ConsoleApp", "Markdig.Xaml.ConsoleApp\Markdig.Xaml.ConsoleApp.csproj", "{559E768F-424B-4E2A-8CBE-756819DE49EC}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Markdig.Wpf.Shared", "Markdig.Wpf.Shared\Markdig.Wpf.Shared.shproj", "{820DAA63-1DE4-4D76-8B8E-A1614DAAB31D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{8DA306DF-1D05-4E0D-85E8-C966154D6FCD}"
 	ProjectSection(SolutionItems) = preProject
@@ -28,20 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{E93F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdig.Xaml.SampleApp", "Markdig.Xaml.SampleApp\Markdig.Xaml.SampleApp.csproj", "{BD4D1C9A-C34F-419B-8A67-66EE79FB9ADA}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Markdig.Annotations", "Markdig.Annotations\Markdig.Annotations.shproj", "{011DDEFE-B7A0-4D39-BDA8-C84159E42D2E}"
-EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Markdig.Annotations\Markdig.Annotations.projitems*{011ddefe-b7a0-4d39-bda8-c84159e42d2e}*SharedItemsImports = 13
-		Markdig.Annotations\Markdig.Annotations.projitems*{01e40fb5-b4e9-489d-98d5-4771ddc2d1d7}*SharedItemsImports = 4
-		Markdig.Wpf.Shared\Markdig.Wpf.Shared.projitems*{01e40fb5-b4e9-489d-98d5-4771ddc2d1d7}*SharedItemsImports = 4
-		Markdig.Annotations\Markdig.Annotations.projitems*{1523c4f0-a3e2-4440-9dd2-b3a3190fd2c4}*SharedItemsImports = 4
-		Markdig.Annotations\Markdig.Annotations.projitems*{559e768f-424b-4e2a-8cbe-756819de49ec}*SharedItemsImports = 4
-		Markdig.Wpf.Shared\Markdig.Wpf.Shared.projitems*{820daa63-1de4-4d76-8b8e-a1614daab31d}*SharedItemsImports = 13
-		Markdig.Annotations\Markdig.Annotations.projitems*{bd4d1c9a-c34f-419b-8a67-66ee79fb9ada}*SharedItemsImports = 4
-		Markdig.Wpf.Shared\Markdig.Wpf.Shared.projitems*{bd4d1c9a-c34f-419b-8a67-66ee79fb9ada}*SharedItemsImports = 4
-		Markdig.Annotations\Markdig.Annotations.projitems*{cc4f2c0a-b5f7-4531-bfd6-ef1bd76f3d8b}*SharedItemsImports = 4
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -55,10 +38,6 @@ Global
 		{1523C4F0-A3E2-4440-9DD2-B3A3190FD2C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1523C4F0-A3E2-4440-9DD2-B3A3190FD2C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1523C4F0-A3E2-4440-9DD2-B3A3190FD2C4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CC4F2C0A-B5F7-4531-BFD6-EF1BD76F3D8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC4F2C0A-B5F7-4531-BFD6-EF1BD76F3D8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC4F2C0A-B5F7-4531-BFD6-EF1BD76F3D8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC4F2C0A-B5F7-4531-BFD6-EF1BD76F3D8B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{559E768F-424B-4E2A-8CBE-756819DE49EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{559E768F-424B-4E2A-8CBE-756819DE49EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{559E768F-424B-4E2A-8CBE-756819DE49EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
