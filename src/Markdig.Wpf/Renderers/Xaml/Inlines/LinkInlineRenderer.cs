@@ -1,5 +1,5 @@
-﻿// Copyright (c) 2016-2017 Nicolas Musset. All rights reserved.
-// This file is licensed under the MIT license. 
+// Copyright (c) 2016-2017 Nicolas Musset. All rights reserved.
+// This file is licensed under the MIT license.
 // See the LICENSE.md file in the project root for more information.
 
 using Markdig.Annotations;
@@ -16,7 +16,7 @@ namespace Markdig.Renderers.Xaml.Inlines
         protected override void Write([NotNull] XamlRenderer renderer, [NotNull] LinkInline obj)
         {
             var url = obj.GetDynamicUrl?.Invoke() ?? obj.Url;
-            
+
             if (obj.IsImage)
             {
                 renderer.Write("<Image");
@@ -41,7 +41,7 @@ namespace Markdig.Renderers.Xaml.Inlines
                 renderer.WriteLine(">");
                 renderer.WriteChildren(obj);
                 renderer.EnsureLine();
-                renderer.WriteLine("</Hyperlink>"); 
+                renderer.WriteLine("</Hyperlink>");
             }
         }
     }

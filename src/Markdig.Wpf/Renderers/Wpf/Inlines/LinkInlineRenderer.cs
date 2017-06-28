@@ -1,5 +1,5 @@
-﻿// Copyright (c) 2016-2017 Nicolas Musset. All rights reserved.
-// This file is licensed under the MIT license. 
+// Copyright (c) 2016-2017 Nicolas Musset. All rights reserved.
+// This file is licensed under the MIT license.
 // See the LICENSE.md file in the project root for more information.
 
 using System;
@@ -20,7 +20,7 @@ namespace Markdig.Renderers.Wpf.Inlines
     {
         /// <inheritdoc/>
         protected override void Write([NotNull] WpfRenderer renderer, [NotNull] LinkInline link)
-        {            
+        {
             var url = link.GetDynamicUrl != null ? link.GetDynamicUrl() ?? link.Url : link.Url;
 
             if (!Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))

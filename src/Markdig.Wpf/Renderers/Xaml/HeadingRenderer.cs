@@ -1,5 +1,5 @@
-﻿// Copyright (c) 2016-2017 Nicolas Musset. All rights reserved.
-// This file is licensed under the MIT license. 
+// Copyright (c) 2016-2017 Nicolas Musset. All rights reserved.
+// This file is licensed under the MIT license.
 // See the LICENSE.md file in the project root for more information.
 
 using Markdig.Annotations;
@@ -19,7 +19,7 @@ namespace Markdig.Renderers.Xaml
             if (obj.Level > 0 && obj.Level <= 6)
             {
                 // Apply style depending on heading level
-                renderer.Write($" Style=\"{{StaticResource {{x:Static markdig:Styles.Heading{obj.Level}StyleKey}}}}\""); 
+                renderer.Write($" Style=\"{{StaticResource {{x:Static markdig:Styles.Heading{obj.Level}StyleKey}}}}\"");
             }
             renderer.WriteLine(">");
             renderer.WriteLeafInline(obj);

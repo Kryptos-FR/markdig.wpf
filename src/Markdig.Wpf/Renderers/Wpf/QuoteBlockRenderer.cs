@@ -1,5 +1,5 @@
-﻿// Copyright (c) 2016-2017 Nicolas Musset. All rights reserved.
-// This file is licensed under the MIT license. 
+// Copyright (c) 2016-2017 Nicolas Musset. All rights reserved.
+// This file is licensed under the MIT license.
 // See the LICENSE.md file in the project root for more information.
 
 using Markdig.Syntax;
@@ -20,6 +20,6 @@ namespace Markdig.Renderers.Wpf
             renderer.WriteChildren(obj);
             section.SetResourceReference(Paragraph.StyleProperty, Styles.QuoteBlockStyleKey);
             renderer.Pop();
-        } 
+        }
     }
 }
