@@ -10,6 +10,6 @@
         <CommandBinding Command="{x:Static markdig:Commands.Hyperlink}" Executed="OpenHyperlink" />
     </FrameworkElement.CommandBindings>
     <Grid>
-        <FlowDocumentScrollViewer x:Name="Viewer"/>
+        <markdig:MarkdownViewer Name="Viewer"/>
     </Grid>
 </Window>

@@ -1,9 +1,6 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using System.Windows;
-using System.Windows.Documents;
-using Markdig.Renderers;
-
 
 namespace Markdig.Wpf.SampleApp
 {
@@ -18,17 +15,9 @@ namespace Markdig.Wpf.SampleApp
             Loaded += OnLoaded;
         }
 
-        private static MarkdownPipeline BuildPipeline()
-        {
-            return new MarkdownPipelineBuilder()
-                .UseSupportedExtensions()
-                .Build();
-        }
-
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            var markdown = File.ReadAllText("Documents/Markdig-readme.md");
-            Viewer.Document = Markdown.ToFlowDocument(markdown, BuildPipeline());
+            Viewer.Markdown = File.ReadAllText("Documents/Markdig-readme.md");
         }
 
         private void OpenHyperlink(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
