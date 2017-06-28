@@ -18,7 +18,7 @@ using System.Windows;
 #endif
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Markdig.Wpf")]
-[assembly: AssemblyCopyright("Copyright © Nicolas Musset 2016")]
+[assembly: AssemblyCopyright("Copyright © Nicolas Musset 2016-2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
@@ -31,6 +31,6 @@ namespace Markdig.Wpf
 {
     public static partial class Markdown
     {
-        public const string Version = "0.0.1";
+        public const string Version = "0.2.0";
     }
 }
