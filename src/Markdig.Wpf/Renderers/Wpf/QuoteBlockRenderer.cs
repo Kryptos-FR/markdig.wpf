@@ -2,6 +2,7 @@
 // This file is licensed under the MIT license.
 // See the LICENSE.md file in the project root for more information.
 
+using System.Windows;
 using Markdig.Syntax;
 using System.Windows.Documents;
 using Markdig.Annotations;
@@ -18,7 +19,7 @@ namespace Markdig.Renderers.Wpf
 
             renderer.Push(section);
             renderer.WriteChildren(obj);
-            section.SetResourceReference(Paragraph.StyleProperty, Styles.QuoteBlockStyleKey);
+            section.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.QuoteBlockStyleKey);
             renderer.Pop();
         }
     }

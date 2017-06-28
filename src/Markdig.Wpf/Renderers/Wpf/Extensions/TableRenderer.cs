@@ -3,6 +3,7 @@
 // See the LICENSE.md file in the project root for more information.
 
 using System.Windows;
+using Markdig.Annotations;
 using Markdig.Extensions.Tables;
 using Markdig.Wpf;
 using WpfTable = System.Windows.Documents.Table;
@@ -15,11 +16,11 @@ namespace Markdig.Renderers.Wpf.Extensions
 {
     public class TableRenderer : WpfObjectRenderer<Table>
     {
-        protected override void Write(WpfRenderer renderer, Table table)
+        protected override void Write([NotNull] WpfRenderer renderer, [NotNull] Table table)
         {
             var wpfTable = new WpfTable();
 
-            wpfTable.SetResourceReference(WpfTable.StyleProperty, Styles.TableStyleKey);
+            wpfTable.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.TableStyleKey);
 
             foreach (var tableColumnDefinition in table.ColumnDefinitions)
             {
@@ -45,10 +46,10 @@ namespace Markdig.Renderers.Wpf.Extensions
 
                 if (row.IsHeader)
                 {
-                    wpfRow.SetResourceReference(WpfTableRow.StyleProperty, Styles.TableHeaderStyleKey);
+                    wpfRow.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.TableHeaderStyleKey);
                 }
 
-                for (int i = 0; i < row.Count; i++)
+                for (var i = 0; i < row.Count; i++)
                 {
                     var cellObj = row[i];
                     var cell = (TableCell)cellObj;
@@ -58,7 +59,7 @@ namespace Markdig.Renderers.Wpf.Extensions
                         RowSpan = cell.RowSpan,
                     };
 
-                    wpfCell.SetResourceReference(WpfTable.StyleProperty, Styles.TableCellStyleKey);
+                    wpfCell.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.TableCellStyleKey);
 
                     renderer.Push(wpfCell);
                     renderer.Write(cell);

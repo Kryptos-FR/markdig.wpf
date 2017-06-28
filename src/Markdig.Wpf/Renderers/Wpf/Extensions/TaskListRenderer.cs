@@ -2,6 +2,7 @@
 // This file is licensed under the MIT license. 
 // See the LICENSE.md file in the project root for more information.
 
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using Markdig.Annotations;
@@ -20,7 +21,7 @@ namespace Markdig.Renderers.Wpf.Extensions
                 IsChecked = taskList.Checked,
             };
 
-            checkBox.SetResourceReference(Paragraph.StyleProperty, Styles.TaskListStyleKey);
+            checkBox.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.TaskListStyleKey);
             renderer.WriteInline(new InlineUIContainer(checkBox));
         }
     }

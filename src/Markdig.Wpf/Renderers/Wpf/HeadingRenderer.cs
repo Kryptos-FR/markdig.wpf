@@ -29,7 +29,7 @@ namespace Markdig.Renderers.Wpf
 
             if (styleKey != null)
             {
-                paragraph.SetResourceReference(Paragraph.StyleProperty, styleKey);
+                paragraph.SetResourceReference(FrameworkContentElement.StyleProperty, styleKey);
             }
 
             renderer.Push(paragraph);

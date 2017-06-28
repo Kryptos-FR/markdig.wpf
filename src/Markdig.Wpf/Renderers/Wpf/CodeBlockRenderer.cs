@@ -2,6 +2,7 @@
 // This file is licensed under the MIT license. 
 // See the LICENSE.md file in the project root for more information.
 
+using System.Windows;
 using System.Windows.Documents;
 using Markdig.Annotations;
 using Markdig.Syntax;
@@ -15,7 +16,7 @@ namespace Markdig.Renderers.Wpf
         {
             var paragraph = new Paragraph();
 
-            paragraph.SetResourceReference(Paragraph.StyleProperty, Styles.CodeBlockStyleKey);
+            paragraph.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.CodeBlockStyleKey);
             renderer.Push(paragraph);
             renderer.WriteLeafRawLines(obj);
             renderer.Pop();

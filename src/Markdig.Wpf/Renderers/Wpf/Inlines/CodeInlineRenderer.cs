@@ -2,6 +2,7 @@
 // This file is licensed under the MIT license. 
 // See the LICENSE.md file in the project root for more information.
 
+using System.Windows;
 using System.Windows.Documents;
 using Markdig.Annotations;
 using Markdig.Syntax.Inlines;
@@ -14,7 +15,7 @@ namespace Markdig.Renderers.Wpf.Inlines
         protected override void Write([NotNull] WpfRenderer renderer, [NotNull] CodeInline obj)
         {
             var run = new Run(obj.Content);
-            run.SetResourceReference(Paragraph.StyleProperty, Styles.CodeStyleKey);
+            run.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.CodeStyleKey);
             renderer.WriteInline(run);
         }
     }

@@ -2,25 +2,28 @@
 // This file is licensed under the MIT license.
 // See the LICENSE.md file in the project root for more information.
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Documents;
+using System.Windows.Markup;
+using Markdig.Annotations;
 using Markdig.Helpers;
 using Markdig.Renderers.Wpf;
-using Markdig.Renderers.Wpf.Inlines;
-using System.Runtime.CompilerServices;
-using System;
-using Markdig.Annotations;
-using System.Linq;
-using Markdig.Wpf;
-using System.Windows.Markup;
 using Markdig.Renderers.Wpf.Extensions;
+using Markdig.Renderers.Wpf.Inlines;
+using Markdig.Syntax;
+using Markdig.Wpf;
+using Block = System.Windows.Documents.Block;
 
 namespace Markdig.Renderers
 {
     /// <summary>
-    /// WPF renderer for a Markdown <see cref="Syntax.MarkdownDocument"/> object.
+    /// WPF renderer for a Markdown <see cref="MarkdownDocument"/> object.
     /// </summary>
-    /// <seealso cref="Renderers.RendererBase" />
+    /// <seealso cref="RendererBase" />
     public class WpfRenderer : RendererBase
     {
         private readonly Stack<IAddChild> stack = new Stack<IAddChild>();
@@ -30,7 +33,7 @@ namespace Markdig.Renderers
         {
             buffer = new char[1024];
             Document = document;
-            document.SetResourceReference(Paragraph.StyleProperty, Styles.DocumentStyleKey);
+            document.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.DocumentStyleKey);
             stack.Push(document);
 
             // Default block renderers
@@ -58,7 +61,7 @@ namespace Markdig.Renderers
         public FlowDocument Document { get; }
 
         /// <inheritdoc/>
-        public override object Render([NotNull] Syntax.MarkdownObject markdownObject)
+        public override object Render([NotNull] MarkdownObject markdownObject)
         {
             Write(markdownObject);
             return Document;
@@ -70,17 +73,14 @@ namespace Markdig.Renderers
         /// <param name="leafBlock">The leaf block.</param>
         /// <returns>This instance</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void WriteLeafInline([NotNull] Syntax.LeafBlock leafBlock)
+        public void WriteLeafInline([NotNull] LeafBlock leafBlock)
         {
             if (leafBlock == null) throw new ArgumentNullException(nameof(leafBlock));
             var inline = (Syntax.Inlines.Inline)leafBlock.Inline;
-            if (inline != null)
+            while (inline != null)
             {
-                while (inline != null)
-                {
-                    Write(inline);
-                    inline = inline.NextSibling;
-                }
+                Write(inline);
+                inline = inline.NextSibling;
             }
         }
 
@@ -88,18 +88,14 @@ namespace Markdig.Renderers
         /// Writes the lines of a <see cref="LeafBlock"/>
         /// </summary>
         /// <param name="leafBlock">The leaf block.</param>
-        /// <param name="writeEndOfLines">if set to <c>true</c> write end of lines.</param>
-        /// <param name="escape">if set to <c>true</c> escape the content for HTML</param>
-        /// <param name="softEscape">Only escape &lt; and &amp;</param>
-        /// <returns>This instance</returns>
-        public void WriteLeafRawLines([NotNull] Syntax.LeafBlock leafBlock)
+        public void WriteLeafRawLines([NotNull] LeafBlock leafBlock)
         {
             if (leafBlock == null) throw new ArgumentNullException(nameof(leafBlock));
             if (leafBlock.Lines.Lines != null)
             {
                 var lines = leafBlock.Lines;
                 var slices = lines.Lines;
-                for (int i = 0; i < lines.Count; i++)
+                for (var i = 0; i < lines.Count; i++)
                 {
                     WriteText(ref slices[i].Slice);
                     WriteInline(new LineBreak());
@@ -167,7 +163,7 @@ namespace Markdig.Renderers
             }
         }
 
-        private void AddInline([NotNull] IAddChild parent, [NotNull] Inline inline)
+        private static void AddInline([NotNull] IAddChild parent, [NotNull] Inline inline)
         {
             if (!EndsWithSpace(parent) && !StartsWithSpace(inline))
             {
@@ -177,34 +173,42 @@ namespace Markdig.Renderers
             parent.AddChild(inline);
         }
 
-        private bool StartsWithSpace([NotNull] Inline inline)
+        private static bool StartsWithSpace([NotNull] Inline inline)
         {
-            if (inline is Run run)
+            while (true)
             {
-                return run.Text.Length == 0 || run.Text.First().IsWhitespace();
-            }
-            else if (inline is Span span)
-            {
-                return StartsWithSpace(span.Inlines.FirstInline);
-            }
+                if (inline is Run run)
+                {
+                    return run.Text.Length == 0 || run.Text.First().IsWhitespace();
+                }
+                if (inline is Span span)
+                {
+                    inline = span.Inlines.FirstInline;
+                    continue;
+                }
 
-            return true;
+                return true;
+            }
         }
 
-        private bool EndsWithSpace([NotNull] IAddChild element)
+        private static bool EndsWithSpace([NotNull] IAddChild element)
         {
-            var inlines = (element as Span)?.Inlines ?? (element as Paragraph)?.Inlines;
-
-            if (inlines?.LastInline is Run run)
+            while (true)
             {
-                return run.Text.Length == 0 || run.Text.Last().IsWhitespace();
-            }
-            else if (inlines?.LastInline is Span span)
-            {
-                return EndsWithSpace(span);
-            }
+                var inlines = (element as Span)?.Inlines ?? (element as Paragraph)?.Inlines;
 
-            return true;
+                if (inlines?.LastInline is Run run)
+                {
+                    return run.Text.Length == 0 || run.Text.Last().IsWhitespace();
+                }
+                if (inlines?.LastInline is Span span)
+                {
+                    element = span;
+                    continue;
+                }
+
+                return true;
+            }
         }
     }
 }
