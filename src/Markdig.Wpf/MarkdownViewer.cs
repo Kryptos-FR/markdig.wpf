@@ -13,12 +13,10 @@ namespace Markdig.Wpf
     /// </summary>
     public class MarkdownViewer : Control
     {
+        private static readonly MarkdownPipeline DefaultPipeline = new MarkdownPipelineBuilder().UseSupportedExtensions().Build();
+
         private static readonly DependencyPropertyKey DocumentPropertyKey =
-            DependencyProperty.RegisterReadOnly(
-                nameof(Document),
-                typeof(FlowDocument),
-                typeof(MarkdownViewer),
-                new FrameworkPropertyMetadata());
+            DependencyProperty.RegisterReadOnly(nameof(Document), typeof(FlowDocument), typeof(MarkdownViewer), new FrameworkPropertyMetadata());
 
         /// <summary>
         /// Defines the <see cref="Document"/> property.
@@ -29,17 +27,17 @@ namespace Markdig.Wpf
         /// Defines the <see cref="Markdown"/> property.
         /// </summary>
         public static readonly DependencyProperty MarkdownProperty =
-            DependencyProperty.Register(
-                nameof(Markdown),
-                typeof(string),
-                typeof(MarkdownViewer),
-                new FrameworkPropertyMetadata(MarkdownChanged));
+            DependencyProperty.Register(nameof(Markdown), typeof(string), typeof(MarkdownViewer), new FrameworkPropertyMetadata(MarkdownChanged));
+
+        /// <summary>
+        /// Defines the <see cref="Markdown"/> property.
+        /// </summary>
+        public static readonly DependencyProperty PipelineProperty =
+            DependencyProperty.Register(nameof(Pipeline), typeof(MarkdownPipeline), typeof(MarkdownViewer), new FrameworkPropertyMetadata(PipelineChanged));
 
         static MarkdownViewer()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(
-                typeof(MarkdownViewer),
-                new FrameworkPropertyMetadata(typeof(MarkdownViewer)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(MarkdownViewer), new FrameworkPropertyMetadata(typeof(MarkdownViewer)));
         }
 
         /// <summary>
@@ -47,7 +45,7 @@ namespace Markdig.Wpf
         /// </summary>
         public FlowDocument Document
         {
-            get { return (FlowDocument)GetValue(DocumentProperty); }
+            get { return (FlowDocument) GetValue(DocumentProperty); }
             private set { SetValue(DocumentPropertyKey, value); }
         }
 
@@ -56,24 +54,34 @@ namespace Markdig.Wpf
         /// </summary>
         public string Markdown
         {
-            get { return (string)GetValue(MarkdownProperty); }
+            get { return (string) GetValue(MarkdownProperty); }
             set { SetValue(MarkdownProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the markdown pipeline to use.
+        /// </summary>
+        public MarkdownPipeline Pipeline
+        {
+            get { return (MarkdownPipeline) GetValue(PipelineProperty); }
+            set { SetValue(PipelineProperty, value); }
         }
 
         private static void MarkdownChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            var s = (string)e.NewValue;
             var control = (MarkdownViewer)sender;
+            control.RefreshDocument();
+        }
 
-            if (s != null)
-            {
-                var pipeline = new MarkdownPipelineBuilder().UseSupportedExtensions().Build();
-                control.Document = Wpf.Markdown.ToFlowDocument(s, pipeline);
-            }
-            else
-            {
-                control.Document = null;
-            }
+        private static void PipelineChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var control = (MarkdownViewer) sender;
+            control.RefreshDocument();
+        }
+
+        private void RefreshDocument()
+        {
+            Document = Markdown != null ? Wpf.Markdown.ToFlowDocument(Markdown, Pipeline ?? DefaultPipeline) : null;
         }
     }
 }

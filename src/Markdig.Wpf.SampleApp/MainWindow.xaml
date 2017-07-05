@@ -1,4 +1,4 @@
-﻿<Window x:Class="Markdig.Wpf.SampleApp.MainWindow"
+<Window x:Class="Markdig.Wpf.SampleApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -10,6 +10,6 @@
         <CommandBinding Command="{x:Static markdig:Commands.Hyperlink}" Executed="OpenHyperlink" />
     </FrameworkElement.CommandBindings>
     <Grid>
-        <markdig:MarkdownViewer Name="Viewer"/>
+        <markdig:MarkdownViewer x:Name="Viewer"/>
     </Grid>
 </Window>
