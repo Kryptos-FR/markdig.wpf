@@ -6,10 +6,12 @@
         xmlns:markdig="clr-namespace:Markdig.Wpf;assembly=Markdig.Wpf"
         mc:Ignorable="d"
         Title="MainWindow">
-    <FrameworkElement.CommandBindings>
-        <CommandBinding Command="{x:Static markdig:Commands.Hyperlink}" Executed="OpenHyperlink" />
-    </FrameworkElement.CommandBindings>
-    <Grid>
-        <markdig:MarkdownViewer x:Name="Viewer"/>
-    </Grid>
+  <FrameworkElement.CommandBindings>
+    <CommandBinding Command="{x:Static markdig:Commands.Hyperlink}" Executed="OpenHyperlink" />
+  </FrameworkElement.CommandBindings>
+  <DockPanel>
+    <Button x:Name="ToggleExtensionsButton" DockPanel.Dock="Top" HorizontalAlignment="Center"
+            Content="Toggle supported extensions" Click="ToggleExtensionsButton_OnClick" />
+    <markdig:MarkdownViewer x:Name="Viewer"/>
+  </DockPanel>
 </Window>
