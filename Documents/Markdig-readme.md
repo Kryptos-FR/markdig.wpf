@@ -20,53 +20,57 @@ You can **try Markdig online** and compare it to other implementations on [babel
 - **Abstract Syntax Tree** with precise source code location for syntax tree, useful when building a Markdown editor.
   - Checkout [MarkdownEditor for Visual Studio](https://visualstudiogallery.msdn.microsoft.com/eaab33c3-437b-4918-8354-872dfe5d1bfe) powered by Markdig!
 - Converter to **HTML**
-- Passing more than **600+ tests** from the latest [CommonMark specs](http://spec.commonmark.org/)
+- Passing more than **600+ tests** from the latest [CommonMark specs (0.28)](http://spec.commonmark.org/)
 - Includes all the core elements of CommonMark:
   - including **GFM fenced code blocks**.  
 - **Extensible** architecture
   - Even the core Markdown/CommonMark parsing is pluggable, so it allows to disable builtin Markdown/Commonmark parsing (e.g [Disable HTML parsing](https://github.com/lunet-io/markdig/blob/7964bd0160d4c18e4155127a4c863d61ebd8944a/src/Markdig/MarkdownExtensions.cs#L306)) or change behaviour (e.g change matching `#` of a headers with `@`)   
 - Built-in with **20+ extensions**, including:
   - 2 kind of tables:
-    - **Pipe tables** (inspired from Github tables and [PanDoc - Pipe Tables](http://pandoc.org/README.html#extension-pipe_tables))
-    - **Grid tables** (inspired from [Pandoc - Grid Tables](http://pandoc.org/README.html#extension-grid_tables)) 
-  - **Extra emphasis** (inspired from [Pandoc - Emphasis](http://pandoc.org/README.html#strikeout) and [Markdown-it](https://markdown-it.github.io/)) 
+    - [**Pipe tables**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/PipeTableSpecs.md) (inspired from Github tables and [PanDoc - Pipe Tables](http://pandoc.org/README.html#extension-pipe_tables))
+    - [**Grid tables**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/GridTableSpecs.md) (inspired from [Pandoc - Grid Tables](http://pandoc.org/README.html#extension-grid_tables)) 
+  - [**Extra emphasis**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/EmphasisExtraSpecs.md) (inspired from [Pandoc - Emphasis](http://pandoc.org/README.html#strikeout) and [Markdown-it](https://markdown-it.github.io/)) 
     - strike through `~~`,
     - Subscript `~`
     - Superscript `^` 
     - Inserted `++`
     - Marked `==`
-  - **Special attributes** or attached HTML attributes (inspired from [PHP Markdown Extra - Special Attributes](https://michelf.ca/projects/php-markdown/extra/#spe-attr))
-  - **Definition lists** (inspired from [PHP Markdown Extra - Definitions Lists](https://michelf.ca/projects/php-markdown/extra/#def-list))
-  - **Footnotes** (inspired from [PHP Markdown Extra - Footnotes](https://michelf.ca/projects/php-markdown/extra/#footnotes))
-  - **Auto-identifiers** for headings (similar to [Pandoc - Auto Identifiers](http://pandoc.org/README.html#extension-auto_identifiers))
-  - **Auto-links** generates links if a text starts with `http://` or `https://` or `ftp://` or `mailto:` or `www.xxx.yyy`
-  - **Task Lists** inspired from [Github Task lists](https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments).
-  - **Extra bullet lists**, supporting alpha bullet `a.` `b.` and roman bullet (`i`, `ii`...etc.)
-  - **Media support** for media url (youtube, vimeo, mp4...etc.) (inspired from this [CommonMark discussion](https://talk.commonmark.org/t/embedded-audio-and-video/441))
-  - **Abbreviations** (inspired from [PHP Markdown Extra - Abbreviations](https://michelf.ca/projects/php-markdown/extra/#abbr))
-  - **Citation** text by enclosing `""...""` (inspired by this [CommonMark discussion ](https://talk.commonmark.org/t/referencing-creative-works-with-cite/892))
-  - **Custom containers** similar to fenced code block `:::` for generating a proper `<div>...</div>` instead (inspired by this [CommonMark discussion ](https://talk.commonmark.org/t/custom-container-for-block-and-inline/2051))
-  - **Figures** (inspired from this [CommonMark discussion](https://talk.commonmark.org/t/image-tag-should-expand-to-figure-when-used-with-title/265/5))
-  - **Footers** (inspired from this [CommonMark discussion](https://talk.commonmark.org/t/syntax-for-footer/2070))
-  - **Mathematics**/Latex extension by enclosing `$$` for block and `$` for inline math (inspired from this [CommonMark discussion](https://talk.commonmark.org/t/mathematics-extension/457/31))
-  - **Soft lines as hard lines**
-  - **Emoji** support (inspired from [Markdown-it](https://markdown-it.github.io/))
-  - **SmartyPants** (inspired from [Daring Fireball - SmartyPants](https://daringfireball.net/projects/smartypants/))
-  - **Bootstrap** class (to output bootstrap class)
-  - **Diagrams** extension whenever a fenced code block contains a special keyword, it will be converted to a div block with the content as-is (currently, supports only for [`mermaid` diagrams](https://knsv.github.io/mermaid/))
-  - **YAML frontmatter** to parse without evaluating the frontmatter and to discard it from the HTML output (typically used for previewing without the frontmatter in MarkdownEditor)
+  - [**Special attributes**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/GenericAttributesSpecs.md) or attached HTML attributes (inspired from [PHP Markdown Extra - Special Attributes](https://michelf.ca/projects/php-markdown/extra/#spe-attr))
+  - [**Definition lists**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/DefinitionListSpecs.md) (inspired from [PHP Markdown Extra - Definitions Lists](https://michelf.ca/projects/php-markdown/extra/#def-list))
+  - [**Footnotes**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/FootnotesSpecs.md) (inspired from [PHP Markdown Extra - Footnotes](https://michelf.ca/projects/php-markdown/extra/#footnotes))
+  - [**Auto-identifiers**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/AutoIdentifierSpecs.md) for headings (similar to [Pandoc - Auto Identifiers](http://pandoc.org/README.html#extension-auto_identifiers))
+  - [**Auto-links**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/AutoLinks.md) generates links if a text starts with `http://` or `https://` or `ftp://` or `mailto:` or `www.xxx.yyy`
+  - [**Task Lists**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/TaskListSpecs.md)  inspired from [Github Task lists](https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments).
+  - [**Extra bullet lists**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/ListExtraSpecs.md), supporting alpha bullet `a.` `b.` and roman bullet (`i`, `ii`...etc.)
+  - [**Media support**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/MediaSpecs.md) for media url (youtube, vimeo, mp4...etc.) (inspired from this [CommonMark discussion](https://talk.commonmark.org/t/embedded-audio-and-video/441))
+  - [**Abbreviations**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/AbbreviationSpecs.md) (inspired from [PHP Markdown Extra - Abbreviations](https://michelf.ca/projects/php-markdown/extra/#abbr))
+  - [**Citation**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/FigureFooterAndCiteSpecs.md) text by enclosing `""...""` (inspired by this [CommonMark discussion ](https://talk.commonmark.org/t/referencing-creative-works-with-cite/892))
+  - [**Custom containers**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/CustomContainerSpecs.md) similar to fenced code block `:::` for generating a proper `<div>...</div>` instead (inspired by this [CommonMark discussion ](https://talk.commonmark.org/t/custom-container-for-block-and-inline/2051))
+  - [**Figures**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/FigureFooterAndCiteSpecs.md) (inspired from this [CommonMark discussion](https://talk.commonmark.org/t/image-tag-should-expand-to-figure-when-used-with-title/265/5))
+  - [**Footers**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/FigureFooterAndCiteSpecs.md) (inspired from this [CommonMark discussion](https://talk.commonmark.org/t/syntax-for-footer/2070))
+  - [**Mathematics**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/MathSpecs.md)/Latex extension by enclosing `$$` for block and `$` for inline math (inspired from this [CommonMark discussion](https://talk.commonmark.org/t/mathematics-extension/457/31))
+  - [**Soft lines as hard lines**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/HardlineBreakSpecs.md)
+  - [**Emoji**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/EmojiSpecs.md) support (inspired from [Markdown-it](https://markdown-it.github.io/))
+  - [**SmartyPants**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/SmartyPantsSpecs.md) (inspired from [Daring Fireball - SmartyPants](https://daringfireball.net/projects/smartypants/))
+  - [**Bootstrap**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/BootstrapSpecs.md) class (to output bootstrap class)
+  - [**Diagrams**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/DiagramsSpecs.md) extension whenever a fenced code block contains a special keyword, it will be converted to a div block with the content as-is (currently, supports only for [`mermaid` diagrams](https://knsv.github.io/mermaid/))
+  - [**YAML frontmatter**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/YamlSpecs.md) to parse without evaluating the frontmatter and to discard it from the HTML output (typically used for previewing without the frontmatter in MarkdownEditor)
+  - [**JIRA links**](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/JiraLinks.md) to automatically generate links for JIRA project references (Thanks to @clarkd: https://github.com/clarkd/MarkdigJiraLinker)
 - Compatible with .NET 3.5, 4.0+ and .NET Core (`netstandard1.1+`)
 	
 ## Documentation
 
 > The repository is under construction. There will be a dedicated website and proper documentation at some point!
 
-In the meantime, you can have a "behind the scene" article about Markdig in my blog post ["Implementing a Markdown Engine for .NET"](http://xoofx.com/blog/2016/06/13/implementing-a-markdown-processor-for-dotnet/)
+While there is not yet a dedicated documentation, you can find from the [specs documentation](https://github.com/lunet-io/markdig/blob/master/src/Markdig.Tests/Specs/readme.md) how to use these extensions.
 
+In the meantime, you can have a "behind the scene" article about Markdig in my blog post ["Implementing a Markdown Engine for .NET"](http://xoofx.com/blog/2016/06/13/implementing-a-markdown-processor-for-dotnet/)
 
 ## Download
 
 Markdig is available as a NuGet package: [![NuGet](https://img.shields.io/nuget/v/Markdig.svg)](https://www.nuget.org/packages/Markdig/)
+
+Also [Markdig.Signed](https://www.nuget.org/packages/Markdig.Signed/) NuGet package provides signed assemblies.
 
 ## Usage
 
@@ -79,7 +83,7 @@ var result = Markdown.ToHtml("This is a text with some *emphasis*");
 Console.WriteLine(result);   // prints: <p>This is a text with some <em>emphasis</em></p>
 ```
 
-In order to activate most of all advanced extensions (except Emoji, SoftLine as HarLine and SmartyPants)
+In order to activate most of all advanced extensions (except Emoji, SoftLine as HardLine, JiraLinks and SmartyPants)
 
 ```csharp
 // Configure the pipeline with all advanced extensions active
@@ -198,6 +202,7 @@ Thanks also to the project [BenchmarkDotNet](https://github.com/PerfDotNet/Bench
 
 Some decoding part (e.g HTML [EntityHelper.cs](https://github.com/lunet-io/markdig/blob/master/src/Markdig/Helpers/EntityHelper.cs)) have been re-used from [CommonMark.NET](https://github.com/Knagis/CommonMark.NET)
 
+Thanks to the work done by @clarkd on the JIRA Link extension (https://github.com/clarkd/MarkdigJiraLinker), now included with this project!
 ## Author
 
 Alexandre MUTEL aka [xoofx](http://xoofx.com)
