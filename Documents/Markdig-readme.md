@@ -133,7 +133,7 @@ This is an early preview of the benchmarking against various implementations:
 
 Because Marked.NET,  MarkdownSharp and DocAsCode.MarkdownLite are way too slow, they are not included in the following charts:
 
-![BenchMark CPU Time](https://raw.githubusercontent.com/lunet-io/markdig/master/img/BenchmarkCPU.png)
+![BenchMark CPU Time](img/BenchmarkCPU.png)
 
 ![BenchMark Memory](https://raw.githubusercontent.com/lunet-io/markdig/master/img/BenchmarkMemory.png)
 
