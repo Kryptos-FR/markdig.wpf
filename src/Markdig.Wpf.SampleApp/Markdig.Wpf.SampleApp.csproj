@@ -84,6 +84,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Content Include="..\..\Documents\img\BenchmarkCPU.png">
+      <Link>img\BenchmarkCPU.png</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\..\documents\Markdig-readme.md">
       <Link>Documents\Markdig-readme.md</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

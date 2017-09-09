@@ -24,6 +24,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{E93F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdig.Xaml.SampleApp", "Markdig.Xaml.SampleApp\Markdig.Xaml.SampleApp.csproj", "{BD4D1C9A-C34F-419B-8A67-66EE79FB9ADA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{76EFE234-7234-4ACE-B007-B88A0620F12B}"
+	ProjectSection(SolutionItems) = preProject
+		..\Documents\img\BenchmarkCPU.png = ..\Documents\img\BenchmarkCPU.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,5 +60,6 @@ Global
 		{559E768F-424B-4E2A-8CBE-756819DE49EC} = {E93FC46F-EBFB-4177-9D86-7534C4619827}
 		{8DA306DF-1D05-4E0D-85E8-C966154D6FCD} = {7D346229-503E-49BF-8608-F33F36BC67FA}
 		{BD4D1C9A-C34F-419B-8A67-66EE79FB9ADA} = {E93FC46F-EBFB-4177-9D86-7534C4619827}
+		{76EFE234-7234-4ACE-B007-B88A0620F12B} = {8DA306DF-1D05-4E0D-85E8-C966154D6FCD}
 	EndGlobalSection
 EndGlobal
