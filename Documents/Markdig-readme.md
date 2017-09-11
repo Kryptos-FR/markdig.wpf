@@ -72,6 +72,8 @@ Markdig is available as a NuGet package: [![NuGet](https://img.shields.io/nuget/
 
 Also [Markdig.Signed](https://www.nuget.org/packages/Markdig.Signed/) NuGet package provides signed assemblies.
 
+![Animated Gif](https://media.giphy.com/media/bKnEnd65zqxfq/giphy.gif)
+
 ## Usage
 
 The main entry point for the API is the `Markdig.Markdown` class:
@@ -133,7 +135,7 @@ This is an early preview of the benchmarking against various implementations:
 
 Because Marked.NET,  MarkdownSharp and DocAsCode.MarkdownLite are way too slow, they are not included in the following charts:
 
-![BenchMark CPU Time](https://raw.githubusercontent.com/lunet-io/markdig/master/img/BenchmarkCPU.png)
+![BenchMark CPU Time](img/BenchmarkCPU.png)
 
 ![BenchMark Memory](https://raw.githubusercontent.com/lunet-io/markdig/master/img/BenchmarkMemory.png)
 

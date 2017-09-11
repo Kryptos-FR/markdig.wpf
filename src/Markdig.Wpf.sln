@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26608.5
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdig.Wpf", "Markdig.Wpf\Markdig.Wpf.csproj", "{01E40FB5-B4E9-489D-98D5-4771DDC2D1D7}"
 EndProject
@@ -23,6 +23,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{E93FC46F-EBFB-4177-9D86-7534C4619827}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdig.Xaml.SampleApp", "Markdig.Xaml.SampleApp\Markdig.Xaml.SampleApp.csproj", "{BD4D1C9A-C34F-419B-8A67-66EE79FB9ADA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{76EFE234-7234-4ACE-B007-B88A0620F12B}"
+	ProjectSection(SolutionItems) = preProject
+		..\Documents\img\BenchmarkCPU.png = ..\Documents\img\BenchmarkCPU.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,5 +60,9 @@ Global
 		{559E768F-424B-4E2A-8CBE-756819DE49EC} = {E93FC46F-EBFB-4177-9D86-7534C4619827}
 		{8DA306DF-1D05-4E0D-85E8-C966154D6FCD} = {7D346229-503E-49BF-8608-F33F36BC67FA}
 		{BD4D1C9A-C34F-419B-8A67-66EE79FB9ADA} = {E93FC46F-EBFB-4177-9D86-7534C4619827}
+		{76EFE234-7234-4ACE-B007-B88A0620F12B} = {7D346229-503E-49BF-8608-F33F36BC67FA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ADD4C2FC-B939-42A4-9875-5C2E9EE60C3A}
 	EndGlobalSection
 EndGlobal

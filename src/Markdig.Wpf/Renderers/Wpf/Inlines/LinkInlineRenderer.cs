@@ -10,6 +10,7 @@ using System.Windows.Media.Imaging;
 using Markdig.Annotations;
 using Markdig.Syntax.Inlines;
 using Markdig.Wpf;
+using XamlAnimatedGif;
 
 namespace Markdig.Renderers.Wpf.Inlines
 {
@@ -31,10 +32,12 @@ namespace Markdig.Renderers.Wpf.Inlines
 
             if (link.IsImage)
             {
-                var image = new Image
-                {
-                    Source = new BitmapImage(new Uri(url))
-                };
+                var image = new Image();
+
+                if (link.Url.Contains(".gif"))
+                    AnimationBehavior.SetSourceUri(image, new Uri(url, UriKind.RelativeOrAbsolute));
+                else
+                    image.Source = new BitmapImage(new Uri(url, UriKind.RelativeOrAbsolute));
 
                 image.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.ImageStyleKey);
 
