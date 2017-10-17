@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Markdig.Wpf</id>
-    <version>0.2.1</version>
+    <version>0.2.2</version>
     <title>Markdig.Wpf</title>
     <authors>Nicolas Musset</authors>
     <owners>Nicolas Musset</owners>
@@ -11,6 +11,10 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A WPF library for lunet-io/markdig</description>
     <releaseNotes>
+      &gt; 0.2.2
+      - updated to latest Markdig 0.13.3
+      - fix relative URL for images (thanks David Holsgrove)
+
       &gt; 0.2.1
       - updated to latest Markdig 0.13.1
       - allow to change the MarkdownPipeline on a MarkdownViewer control
@@ -25,7 +29,7 @@
     <tags>Markdown CommonMark md xaml WPF</tags>    
     <dependencies>
         <group targetFramework=".NETFramework4.5">
-            <dependency id="Markdig" version="0.13.1" />
+            <dependency id="Markdig" version="0.13.3" />
         </group>
     </dependencies>
   </metadata>
