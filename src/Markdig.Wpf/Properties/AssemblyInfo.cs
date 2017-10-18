@@ -31,6 +31,9 @@ namespace Markdig.Wpf
 {
     public static partial class Markdown
     {
+        /// <summary>
+        /// Version of this library.
+        /// </summary>
         public const string Version = "0.2.2";
     }
 }

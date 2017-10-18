@@ -6,6 +6,9 @@ using System.Windows;
 
 namespace Markdig.Wpf
 {
+    /// <summary>
+    /// List of supported styles.
+    /// </summary>
     public static class Styles
     {
         /// <summary>
@@ -67,6 +70,7 @@ namespace Markdig.Wpf
         /// Resource Key for the TableStyle.
         /// </summary>
         public static ComponentResourceKey TableStyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(TableStyleKey));
+
         /// <summary>
         /// Resource Key for the TableCellStyle.
         /// </summary>
