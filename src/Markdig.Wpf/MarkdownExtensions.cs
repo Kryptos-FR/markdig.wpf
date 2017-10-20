@@ -25,7 +25,8 @@ namespace Markdig.Wpf
                 .UseAutoLinks()
                 .UseGridTables()
                 .UsePipeTables()
-                .UseTaskLists();
+                .UseTaskLists()
+                .UseEmphasisExtras();
         }
     }
 }

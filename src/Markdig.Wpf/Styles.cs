@@ -86,5 +86,30 @@ namespace Markdig.Wpf
         /// Resource Key for the ThematicBreakStyle.
         /// </summary>
         public static ComponentResourceKey ThematicBreakStyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(ThematicBreakStyleKey));
+
+        /// <summary>
+        /// Resource Key for the SubscriptStyle.
+        /// </summary>
+        public static ComponentResourceKey SubscriptStyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(SubscriptStyleKey));
+
+        /// <summary>
+        /// Resource Key for the SubscriptStyle.
+        /// </summary>
+        public static ComponentResourceKey SuperscriptStyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(SuperscriptStyleKey));
+
+        /// <summary>
+        /// Resource Key for the StrikeThroughStyle.
+        /// </summary>
+        public static ComponentResourceKey StrikeThroughStyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(StrikeThroughStyleKey));
+
+        /// <summary>
+        /// Resource Key for the InsertedStyleKeyStyle.
+        /// </summary>
+        public static ComponentResourceKey InsertedStyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(InsertedStyleKey));
+
+        /// <summary>
+        /// Resource Key for the MarkedStyleKeyStyle.
+        /// </summary>
+        public static ComponentResourceKey MarkedStyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(MarkedStyleKey));
     }
 }
