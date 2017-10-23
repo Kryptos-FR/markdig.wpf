@@ -22,11 +22,11 @@ namespace Markdig.Wpf
         {
             if (pipeline == null) throw new ArgumentNullException(nameof(pipeline));
             return pipeline
-                .UseAutoLinks()
+                .UseEmphasisExtras()
                 .UseGridTables()
                 .UsePipeTables()
                 .UseTaskLists()
-                .UseEmphasisExtras();
+                .UseAutoLinks();
         }
     }
 }

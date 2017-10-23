@@ -39,6 +39,9 @@ namespace Markdig.Renderers.Xaml.Inlines
             renderer.Write("<").Write(tag);
             switch (obj.DelimiterChar)
             {
+                case '*':
+                case '_':
+                    break;
                 case '~':
                     renderer.Write(obj.IsDouble
                         ? " Style=\"{StaticResource {x:Static markdig:Styles.StrikeThroughStyleKey}}\""
