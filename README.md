@@ -16,7 +16,8 @@ The XAML renderer outputs a string in a similar way as the HTML renderer. This s
 
 Supports all standard features from Markdig (i.e. fully CommonMark compliant).
 
-Additionally, the following extensions are supported (WPF renderer only):
+Additionally, the following extensions are supported:
 - **Auto-links**
-- **Task lists**
-- **Tables** (partial support of grid and pipe tables)
+- **Task lists** (WPF renderer only)
+- **Tables** (partial support of grid and pipe tables) (WPF renderer only)
+- **Extra emphasis**

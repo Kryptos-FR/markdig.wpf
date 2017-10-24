@@ -2,25 +2,46 @@
 // This file is licensed under the MIT license.
 // See the LICENSE.md file in the project root for more information.
 
+using System.Windows;
 using System.Windows.Documents;
 using Markdig.Annotations;
 using Markdig.Syntax.Inlines;
+using Markdig.Wpf;
 
 namespace Markdig.Renderers.Wpf.Inlines
 {
     /// <summary>
     /// A WPF renderer for an <see cref="EmphasisInline"/>.
     /// </summary>
-    /// <seealso cref="Markdig.Renderers.Wpf.WpfObjectRenderer{Markdig.Syntax.Inlines.EmphasisInline}" />
+    /// <seealso cref="EmphasisInline" />
     public class EmphasisInlineRenderer : WpfObjectRenderer<EmphasisInline>
     {
         protected override void Write([NotNull] WpfRenderer renderer, [NotNull] EmphasisInline obj)
         {
             Span span = null;
 
-            if (obj.DelimiterChar == '*' || obj.DelimiterChar == '_')
+            switch (obj.DelimiterChar)
             {
-                span = obj.IsDouble ? (Span)new Bold() : new Italic();
+                case '*':
+                case '_':
+                    span = obj.IsDouble ? (Span)new Bold() : new Italic();
+                    break;
+                case '~':
+                    span = new Span();
+                    span.SetResourceReference(FrameworkContentElement.StyleProperty, obj.IsDouble ? Styles.StrikeThroughStyleKey: Styles.SubscriptStyleKey);
+                    break;
+                case '^':
+                    span = new Span();
+                    span.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.SuperscriptStyleKey);
+                    break;
+                case '+':
+                    span = new Span();
+                    span.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.InsertedStyleKey);
+                    break;
+                case '=':
+                    span = new Span();
+                    span.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.MarkedStyleKey);
+                    break;
             }
 
             if (span != null)

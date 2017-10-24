@@ -36,7 +36,28 @@ namespace Markdig.Renderers.Xaml.Inlines
         protected override void Write([NotNull] XamlRenderer renderer, [NotNull] EmphasisInline obj)
         {
             var tag = GetTag(obj);
-            renderer.Write("<").Write(tag).Write(">");
+            renderer.Write("<").Write(tag);
+            switch (obj.DelimiterChar)
+            {
+                case '*':
+                case '_':
+                    break;
+                case '~':
+                    renderer.Write(obj.IsDouble
+                        ? " Style=\"{StaticResource {x:Static markdig:Styles.StrikeThroughStyleKey}}\""
+                        : " Style=\"{StaticResource {x:Static markdig:Styles.SubscriptStyleKey}}\"");
+                    break;
+                case '^':
+                    renderer.Write(" Style=\"{StaticResource {x:Static markdig:Styles.SuperscriptStyleKey}}\"");
+                    break;
+                case '+':
+                    renderer.Write(" Style=\"{StaticResource {x:Static markdig:Styles.InsertedStyleKey}}\"");
+                    break;
+                case '=':
+                    renderer.Write(" Style=\"{StaticResource {x:Static markdig:Styles.MarkedStyleKey}}\"");
+                    break;
+            }
+            renderer.Write(">");
             renderer.WriteChildren(obj);
             renderer.Write("</").Write(tag).Write(">");
         }
@@ -53,7 +74,7 @@ namespace Markdig.Renderers.Xaml.Inlines
             {
                 return obj.IsDouble ? "Bold" : "Italic";
             }
-            return null;
+            return "Span";
         }
     }
 }

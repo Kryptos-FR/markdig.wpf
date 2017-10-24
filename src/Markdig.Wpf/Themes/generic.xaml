@@ -74,8 +74,23 @@
     <Setter Property="Stretch" Value="Fill" />
     <Setter Property="Stroke" Value="Black" />
   </Style>
-    
-  <!-- MarkdownViewer Template-->  
+  <Style TargetType="{x:Type Span}" x:Key="{x:Static markdig:Styles.SubscriptStyleKey}">
+    <Setter Property="Typography.Variants" Value="Subscript" />
+  </Style>
+  <Style TargetType="{x:Type Span}" x:Key="{x:Static markdig:Styles.SuperscriptStyleKey}">
+    <Setter Property="Typography.Variants" Value="Superscript" />
+  </Style>
+  <Style TargetType="{x:Type Span}" x:Key="{x:Static markdig:Styles.StrikeThroughStyleKey}">
+    <Setter Property="TextBlock.TextDecorations" Value="Strikethrough" />
+  </Style>
+  <Style TargetType="{x:Type Span}" x:Key="{x:Static markdig:Styles.InsertedStyleKey}">
+    <Setter Property="TextBlock.TextDecorations" Value="Underline" />
+  </Style>
+  <Style TargetType="{x:Type Span}" x:Key="{x:Static markdig:Styles.MarkedStyleKey}">
+    <Setter Property="Background" Value="Yellow" />
+  </Style>
+
+  <!-- MarkdownViewer Template-->
   <Style TargetType="markdig:MarkdownViewer">
     <Setter Property="Template">
       <Setter.Value>
