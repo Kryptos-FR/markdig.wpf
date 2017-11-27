@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.2.3 - 2017/11/27
+ - updated to latest Markdig 0.14.7
+ - add support for emphasis extensions (thanks Thomas Freudenberg)
+
 ## 0.2.2 - 2017/10/18 
   - updated to latest Markdig 0.13.3 
   - fix relative URL for images (thanks David Holsgrove) 
