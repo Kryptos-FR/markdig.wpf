@@ -97,8 +97,10 @@ namespace Markdig.Renderers
                 var slices = lines.Lines;
                 for (var i = 0; i < lines.Count; i++)
                 {
+                    if (i != 0)
+                        WriteInline(new LineBreak());
+
                     WriteText(ref slices[i].Slice);
-                    WriteInline(new LineBreak());
                 }
             }
         }
