@@ -165,50 +165,7 @@ namespace Markdig.Renderers
 
         private static void AddInline([NotNull] IAddChild parent, [NotNull] Inline inline)
         {
-            if (!EndsWithSpace(parent) && !StartsWithSpace(inline))
-            {
-                parent.AddText(" ");
-            }
-
             parent.AddChild(inline);
-        }
-
-        private static bool StartsWithSpace([NotNull] Inline inline)
-        {
-            while (true)
-            {
-                if (inline is Run run)
-                {
-                    return run.Text.Length == 0 || run.Text.First().IsWhitespace();
-                }
-                if (inline is Span span)
-                {
-                    inline = span.Inlines.FirstInline;
-                    continue;
-                }
-
-                return true;
-            }
-        }
-
-        private static bool EndsWithSpace([NotNull] IAddChild element)
-        {
-            while (true)
-            {
-                var inlines = (element as Span)?.Inlines ?? (element as Paragraph)?.Inlines;
-
-                if (inlines?.LastInline is Run run)
-                {
-                    return run.Text.Length == 0 || run.Text.Last().IsWhitespace();
-                }
-                if (inlines?.LastInline is Span span)
-                {
-                    element = span;
-                    continue;
-                }
-
-                return true;
-            }
         }
     }
 }
