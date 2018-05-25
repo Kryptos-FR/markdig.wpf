@@ -21,6 +21,10 @@ namespace Markdig.Renderers.Wpf.Inlines
             {
                 renderer.WriteInline(new LineBreak());
             }
+            else {
+                // Soft line break.
+                renderer.WriteText(" ");
+            }
         }
     }
 }
