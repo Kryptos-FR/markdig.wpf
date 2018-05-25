@@ -10,15 +10,15 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Markdig.Wpf")]
-[assembly: AssemblyDescription("a WPF port to CommonMark compliant Markdig.")]
+[assembly: AssemblyDescription("A WPF library for lunet-io/markdig")]
 #if DEBUG
 [assembly: AssemblyConfiguration("Debug")]
 #else
 [assembly: AssemblyConfiguration("Release")]
 #endif
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Nicolas Musset")]
 [assembly: AssemblyProduct("Markdig.Wpf")]
-[assembly: AssemblyCopyright("Copyright © Nicolas Musset 2016-2017")]
+[assembly: AssemblyCopyright("Copyright © Nicolas Musset 2016-2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]

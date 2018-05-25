@@ -1,26 +1,28 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Markdig.Wpf</id>
-    <version>0.2.4</version>
-    <title>Markdig.Wpf</title>
-    <authors>Nicolas Musset</authors>
-    <owners>Nicolas Musset</owners>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$id$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
     <licenseUrl>https://github.com/Kryptos-FR/markdig-wpf/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/Kryptos-FR/markdig-wpf</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A WPF library for lunet-io/markdig</description>
+    <description>$description$</description>
     <releaseNotes>https://github.com/Kryptos-FR/markdig.wpf/blob/master/RELEASENOTES.md</releaseNotes>
-    <copyright>Copyright (c) 2016-2017 Nicolas Musset</copyright>
+    <copyright>$copyright$</copyright>
     <tags>Markdown CommonMark md xaml WPF</tags>    
     <dependencies>
-        <group targetFramework=".NETFramework4.5">
+        <group targetFramework="net452">
             <dependency id="Markdig" version="0.15.0" />
         </group>
     </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework="net452" />
+      <frameworkAssembly assemblyName="PresentationCore" targetFramework="net452" />
+      <frameworkAssembly assemblyName="PresentationFramework" targetFramework="net452" />
+      <frameworkAssembly assemblyName="WindowsBase" targetFramework="net452" />
+    </frameworkAssemblies>
   </metadata>
-  <files>
-    <file src="bin\Release\Markdig.Wpf.dll" target="lib\net45\Markdig.Wpf.dll" />
-    <file src="bin\Release\Markdig.Wpf.xml" target="lib\net45\Markdig.Wpf.xml" />
-</files>
 </package>
