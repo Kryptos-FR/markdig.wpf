@@ -1,8 +1,12 @@
 # Release Notes
 
+## 0.2.4 - 2018/05/25
+  - updated to latest Markdig 0.15.0
+  - fix space issue between inline elements (thanks Jack Griffiths)
+
 ## 0.2.3 - 2017/11/27
- - updated to latest Markdig 0.14.7
- - add support for emphasis extensions (thanks Thomas Freudenberg)
+  - updated to latest Markdig 0.14.7
+  - add support for emphasis extensions (thanks Thomas Freudenberg)
 
 ## 0.2.2 - 2017/10/18 
   - updated to latest Markdig 0.13.3 

@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Markdig.Wpf</id>
-    <version>0.2.3</version>
+    <version>0.2.4</version>
     <title>Markdig.Wpf</title>
     <authors>Nicolas Musset</authors>
     <owners>Nicolas Musset</owners>
@@ -15,7 +15,7 @@
     <tags>Markdown CommonMark md xaml WPF</tags>    
     <dependencies>
         <group targetFramework=".NETFramework4.5">
-            <dependency id="Markdig" version="0.14.7" />
+            <dependency id="Markdig" version="0.15.0" />
         </group>
     </dependencies>
   </metadata>
