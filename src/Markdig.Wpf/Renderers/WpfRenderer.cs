@@ -106,29 +106,29 @@ namespace Markdig.Renderers
             }
         }
 
-        internal void Push([NotNull] IAddChild o)
+        public void Push([NotNull] IAddChild o)
         {
             stack.Push(o);
         }
 
-        internal void Pop()
+        public void Pop()
         {
             var popped = stack.Pop();
             stack.Peek().AddChild(popped);
         }
 
-        internal void WriteBlock([NotNull] Block block)
+        public void WriteBlock([NotNull] Block block)
         {
             stack.Peek().AddChild(block);
         }
 
-        internal void WriteInline([NotNull] Inline inline)
+        public void WriteInline([NotNull] Inline inline)
         {
             AddInline(stack.Peek(), inline);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void WriteText(ref StringSlice slice)
+        public void WriteText(ref StringSlice slice)
         {
             if (slice.Start > slice.End)
                 return;
@@ -137,12 +137,12 @@ namespace Markdig.Renderers
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void WriteText([CanBeNull] string text)
+        public void WriteText([CanBeNull] string text)
         {
             WriteInline(new Run(text));
         }
 
-        internal void WriteText([CanBeNull] string text, int offset, int length)
+        public void WriteText([CanBeNull] string text, int offset, int length)
         {
             if (text == null)
                 return;
