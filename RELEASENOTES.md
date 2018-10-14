@@ -1,4 +1,9 @@
-# Release Notes
+﻿# Release Notes
+
+## 0.2.5 - 2018/10/14
+  - updated to latest Markdig 0.15.4
+  - add HtmlEntityInlineRenderer (thanks Skymirrh)
+  - make WpfRenderer methods public (thanks Łukasz Holetzke)
 
 ## 0.2.4 - 2018/05/25
   - updated to latest Markdig 0.15.0

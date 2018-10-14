@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		..\LICENSE.md = ..\LICENSE.md
 		..\README.md = ..\README.md
+		..\RELEASENOTES.md = ..\RELEASENOTES.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdig.Xaml.ConsoleApp", "Markdig.Xaml.ConsoleApp\Markdig.Xaml.ConsoleApp.csproj", "{559E768F-424B-4E2A-8CBE-756819DE49EC}"
@@ -61,5 +62,8 @@ Global
 		{8DA306DF-1D05-4E0D-85E8-C966154D6FCD} = {7D346229-503E-49BF-8608-F33F36BC67FA}
 		{BD4D1C9A-C34F-419B-8A67-66EE79FB9ADA} = {E93FC46F-EBFB-4177-9D86-7534C4619827}
 		{76EFE234-7234-4ACE-B007-B88A0620F12B} = {8DA306DF-1D05-4E0D-85E8-C966154D6FCD}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {17465081-057C-4230-8347-D812E99F4B12}
 	EndGlobalSection
 EndGlobal

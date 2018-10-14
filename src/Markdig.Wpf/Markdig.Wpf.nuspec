@@ -15,7 +15,7 @@
     <tags>Markdown CommonMark md xaml WPF</tags>    
     <dependencies>
         <group targetFramework="net452">
-            <dependency id="Markdig" version="0.15.0" />
+            <dependency id="Markdig" version="0.15.4" />
         </group>
     </dependencies>
     <frameworkAssemblies>
