@@ -16,6 +16,7 @@ namespace Markdig.Renderers.Xaml.Inlines
         protected override void Write([NotNull] XamlRenderer renderer, [NotNull] AutolinkInline obj)
         {
             renderer.Write("<Hyperlink");
+            renderer.Write(" Style=\"{StaticResource {x:Static markdig:Styles.HyperlinkStyleKey}}\"");
             renderer.Write(" Command=\"{x:Static markdig:Commands.Hyperlink}\"");
             renderer.Write(" CommandParameter=\"").WriteEscapeUrl(obj.Url).Write("\"");
             renderer.Write(">");

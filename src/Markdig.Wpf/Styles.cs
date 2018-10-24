@@ -57,6 +57,11 @@ namespace Markdig.Wpf
         public static ComponentResourceKey Heading6StyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(Heading6StyleKey));
 
         /// <summary>
+        /// Resource Key for the HyperlinkStyle.
+        /// </summary>
+        public static ComponentResourceKey HyperlinkStyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(HyperlinkStyleKey));
+
+        /// <summary>
         /// Resource Key for the ImageStyle.
         /// </summary>
         public static ComponentResourceKey ImageStyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(ImageStyleKey));
