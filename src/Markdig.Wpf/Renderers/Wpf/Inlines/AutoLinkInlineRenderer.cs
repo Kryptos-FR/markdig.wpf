@@ -21,6 +21,10 @@ namespace Markdig.Renderers.Wpf.Inlines
         protected override void Write([NotNull] WpfRenderer renderer, [NotNull] AutolinkInline link)
         {
             var url = link.Url;
+            if (link.IsEmail)
+            {
+                url = "mailto:" + url;
+            }
 
             if (!Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
             {
@@ -32,7 +36,7 @@ namespace Markdig.Renderers.Wpf.Inlines
                 Command = Commands.Hyperlink,
                 CommandParameter = url,
                 NavigateUri = new Uri(url, UriKind.RelativeOrAbsolute),
-                ToolTip = url,
+                ToolTip = link.Url,
             };
 
             hyperlink.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.HyperlinkStyleKey);
