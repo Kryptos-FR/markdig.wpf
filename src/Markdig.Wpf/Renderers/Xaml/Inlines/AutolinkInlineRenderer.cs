@@ -15,10 +15,16 @@ namespace Markdig.Renderers.Xaml.Inlines
     {
         protected override void Write([NotNull] XamlRenderer renderer, [NotNull] AutolinkInline obj)
         {
+            var url = obj.Url;
+            if (obj.IsEmail)
+            {
+                url = "mailto:" + url;
+            }
+
             renderer.Write("<Hyperlink");
             renderer.Write(" Style=\"{StaticResource {x:Static markdig:Styles.HyperlinkStyleKey}}\"");
             renderer.Write(" Command=\"{x:Static markdig:Commands.Hyperlink}\"");
-            renderer.Write(" CommandParameter=\"").WriteEscapeUrl(obj.Url).Write("\"");
+            renderer.Write(" CommandParameter=\"").WriteEscapeUrl(url).Write("\"");
             renderer.Write(">");
             renderer.WriteEscapeUrl(obj.Url);
             renderer.WriteLine("</Hyperlink>");
