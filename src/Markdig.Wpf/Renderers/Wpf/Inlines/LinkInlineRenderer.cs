@@ -50,6 +50,8 @@ namespace Markdig.Renderers.Wpf.Inlines
                     ToolTip = link.Title != string.Empty ? link.Title : null,
                 };
 
+                hyperlink.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.HyperlinkStyleKey);
+
                 renderer.Push(hyperlink);
                 renderer.WriteChildren(link);
                 renderer.Pop();

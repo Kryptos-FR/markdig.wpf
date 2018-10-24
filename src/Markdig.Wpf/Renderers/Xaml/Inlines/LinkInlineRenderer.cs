@@ -32,8 +32,8 @@ namespace Markdig.Renderers.Xaml.Inlines
             }
             else
             {
-                // TODO: add support for hyperlink styling (esp. command)
                 renderer.Write("<Hyperlink");
+                renderer.Write(" Style=\"{StaticResource {x:Static markdig:Styles.HyperlinkStyleKey}}\"");
                 renderer.Write(" Command=\"{x:Static markdig:Commands.Hyperlink}\"");
                 renderer.Write(" CommandParameter=\"").WriteEscapeUrl(url).Write("\"");
                 if (!string.IsNullOrEmpty(obj.Title))

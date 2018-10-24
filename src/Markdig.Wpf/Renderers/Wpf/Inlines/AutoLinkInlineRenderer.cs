@@ -3,6 +3,7 @@
 // See the LICENSE.md file in the project root for more information.
 
 using System;
+using System.Windows;
 using System.Windows.Documents;
 using Markdig.Annotations;
 using Markdig.Syntax.Inlines;
@@ -33,6 +34,8 @@ namespace Markdig.Renderers.Wpf.Inlines
                 NavigateUri = new Uri(url, UriKind.RelativeOrAbsolute),
                 ToolTip = url,
             };
+
+            hyperlink.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.HyperlinkStyleKey);
 
             renderer.Push(hyperlink);
             renderer.WriteText(link.Url);
