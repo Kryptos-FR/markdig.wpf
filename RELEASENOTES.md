@@ -1,5 +1,10 @@
 ﻿# Release Notes
 
+## 0.2.6 - 2018/12/24
+  - updated to latest Markdig 0.15.5
+  - now requires an exact dependency to Markdig (see issue #20)
+  - hyperlinks improvements (thanks Jack Griffiths)
+
 ## 0.2.5 - 2018/10/14
   - updated to latest Markdig 0.15.4
   - add HtmlEntityInlineRenderer (thanks Skymirrh)

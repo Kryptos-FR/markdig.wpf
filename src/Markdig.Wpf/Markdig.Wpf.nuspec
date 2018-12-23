@@ -6,7 +6,7 @@
     <title>$id$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <licenseUrl>https://github.com/Kryptos-FR/markdig-wpf/blob/master/LICENSE.md</licenseUrl>
+    <license type="expression">MIT</license>
     <projectUrl>https://github.com/Kryptos-FR/markdig-wpf</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
@@ -15,7 +15,7 @@
     <tags>Markdown CommonMark md xaml WPF</tags>    
     <dependencies>
         <group targetFramework="net452">
-            <dependency id="Markdig" version="0.15.4" />
+            <dependency id="Markdig" version="[0.15.5]" />
         </group>
     </dependencies>
     <frameworkAssemblies>

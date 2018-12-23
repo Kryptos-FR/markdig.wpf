@@ -34,6 +34,6 @@ namespace Markdig.Wpf
         /// <summary>
         /// Version of this library.
         /// </summary>
-        public const string Version = "0.2.5";
+        public const string Version = "0.2.6";
     }
 }
