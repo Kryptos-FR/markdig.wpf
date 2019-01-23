@@ -7,13 +7,16 @@
 
 using System;
 using System.IO;
-using System.Runtime.CompilerServices;
 using System.Text;
 using Markdig.Annotations;
 using Markdig.Helpers;
 using Markdig.Renderers.Xaml;
 using Markdig.Renderers.Xaml.Inlines;
 using Markdig.Syntax;
+
+#if !NET40
+using System.Runtime.CompilerServices;
+#endif
 
 namespace Markdig.Renderers
 {
@@ -83,7 +86,9 @@ namespace Markdig.Renderers
         /// <param name="content">The content.</param>
         /// <returns>This instance</returns>
         [NotNull]
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public XamlRenderer WriteEscape([CanBeNull] string content)
         {
             if (string.IsNullOrEmpty(content))
@@ -100,7 +105,9 @@ namespace Markdig.Renderers
         /// <param name="softEscape">Only escape &lt; and &amp;</param>
         /// <returns>This instance</returns>
         [NotNull]
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public XamlRenderer WriteEscape(ref StringSlice slice, bool softEscape = false)
         {
             if (slice.Start > slice.End)
@@ -117,7 +124,9 @@ namespace Markdig.Renderers
         /// <param name="softEscape">Only escape &lt; and &amp;</param>
         /// <returns>This instance</returns>
         [NotNull]
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public XamlRenderer WriteEscape(StringSlice slice, bool softEscape = false)
         {
             return WriteEscape(ref slice, softEscape);
@@ -137,8 +146,8 @@ namespace Markdig.Renderers
             if (string.IsNullOrEmpty(content) || length == 0)
                 return this;
 
-            var end = offset + length;
-            var previousOffset = offset;
+            int end = offset + length;
+            int previousOffset = offset;
             for (; offset < end; offset++)
             {
                 switch (content[offset])
@@ -202,16 +211,16 @@ namespace Markdig.Renderers
             if (content == null)
                 return this;
 
-            var previousPosition = 0;
-            var length = content.Length;
+            int previousPosition = 0;
+            int length = content.Length;
 
-            for (var i = 0; i < length; i++)
+            for (int i = 0; i < length; i++)
             {
-                var c = content[i];
+                char c = content[i];
 
                 if (c < 128)
                 {
-                    var escape = HtmlHelper.EscapeUrlCharacter(c);
+                    string escape = HtmlHelper.EscapeUrlCharacter(c);
                     if (escape != null)
                     {
                         Write(content, previousPosition, i - previousPosition);
@@ -237,7 +246,7 @@ namespace Markdig.Renderers
                         bytes = Encoding.UTF8.GetBytes(new[] { c });
                     }
 
-                    foreach (var t in bytes)
+                    foreach (byte t in bytes)
                     {
                         Write($"%{t:X2}");
                     }
@@ -264,7 +273,7 @@ namespace Markdig.Renderers
             {
                 var lines = leafBlock.Lines;
                 var slices = lines.Lines;
-                for (var i = 0; i < lines.Count; i++)
+                for (int i = 0; i < lines.Count; i++)
                 {
                     if (!writeEndOfLines && i > 0)
                     {
