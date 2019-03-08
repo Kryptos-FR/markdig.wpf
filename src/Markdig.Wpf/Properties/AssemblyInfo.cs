@@ -18,7 +18,7 @@ using System.Windows;
 #endif
 [assembly: AssemblyCompany("Nicolas Musset")]
 [assembly: AssemblyProduct("Markdig.Wpf")]
-[assembly: AssemblyCopyright("Copyright © Nicolas Musset 2016-2018")]
+[assembly: AssemblyCopyright("Copyright © Nicolas Musset 2016-2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
@@ -34,6 +34,6 @@ namespace Markdig.Wpf
         /// <summary>
         /// Version of this library.
         /// </summary>
-        public const string Version = "0.2.6";
+        public const string Version = "0.2.7";
     }
 }

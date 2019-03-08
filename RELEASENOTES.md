@@ -1,5 +1,9 @@
 ﻿# Release Notes
 
+## 0.2.7 - 2019/03/08
+  - updated to latest Markdig 0.16.0
+  - switch to new csproj format
+
 ## 0.2.6 - 2018/12/24
   - updated to latest Markdig 0.15.5
   - now requires an exact dependency to Markdig (see issue #20)
