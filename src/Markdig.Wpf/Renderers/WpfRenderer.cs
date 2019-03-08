@@ -1,11 +1,9 @@
-// Copyright (c) 2016-2017 Nicolas Musset. All rights reserved.
+// Copyright (c) 2016-2019 Nicolas Musset. All rights reserved.
 // This file is licensed under the MIT license.
 // See the LICENSE.md file in the project root for more information.
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Markup;
@@ -17,6 +15,10 @@ using Markdig.Renderers.Wpf.Inlines;
 using Markdig.Syntax;
 using Markdig.Wpf;
 using Block = System.Windows.Documents.Block;
+
+#if !NET40
+using System.Runtime.CompilerServices;
+#endif
 
 namespace Markdig.Renderers
 {
@@ -73,7 +75,9 @@ namespace Markdig.Renderers
         /// </summary>
         /// <param name="leafBlock">The leaf block.</param>
         /// <returns>This instance</returns>
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public void WriteLeafInline([NotNull] LeafBlock leafBlock)
         {
             if (leafBlock == null) throw new ArgumentNullException(nameof(leafBlock));
@@ -127,7 +131,9 @@ namespace Markdig.Renderers
             AddInline(stack.Peek(), inline);
         }
 
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public void WriteText(ref StringSlice slice)
         {
             if (slice.Start > slice.End)
@@ -136,7 +142,9 @@ namespace Markdig.Renderers
             WriteText(slice.Text, slice.Start, slice.Length);
         }
 
+#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public void WriteText([CanBeNull] string text)
         {
             WriteInline(new Run(text));

@@ -1,13 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net452</TargetFramework>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Authors>Nicolas Musset</Authors>
+    <Copyright>Copyright © Nicolas Musset 2016-2019</Copyright>
+    <Description>A WPF library for lunet-io/markdig</Description>
+    <AssemblyName>Markdig.Wpf</AssemblyName>
+    <AssemblyTitle>Markdig.Wpf</AssemblyTitle>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <VersionPrefix>0.2.7</VersionPrefix>
+    <TargetFrameworks>net40;net452</TargetFrameworks>
+    <PackageId>Markdig.Wpf</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Kryptos-FR/markdig-wpf</PackageProjectUrl>
+    <PackageReleaseNotes>https://github.com/Kryptos-FR/markdig.wpf/blob/master/RELEASENOTES.md</PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>Markdown CommonMark md xaml WPF</PackageTags>
+    <GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' ">true</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
     <Page Include="**\*.xaml" SubType="Designer" Generator="MSBuild:Compile" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Markdig" Version="0.16.0" />
+    <PackageReference Include="Markdig" Version="[0.16.0]" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
