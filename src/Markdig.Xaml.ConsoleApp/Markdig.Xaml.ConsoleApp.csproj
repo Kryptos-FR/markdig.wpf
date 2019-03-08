@@ -8,6 +8,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Documents\.gitkeep" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Markdig" Version="0.16.0" />
   </ItemGroup>
   <ItemGroup>
