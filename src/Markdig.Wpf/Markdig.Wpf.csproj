@@ -1,109 +1,18 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{01E40FB5-B4E9-489D-98D5-4771DDC2D1D7}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Markdig.Wpf</RootNamespace>
-    <AssemblyName>Markdig.Wpf</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Markdig.Wpf.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Markdig.Wpf.xml</DocumentationFile>
+    <TargetFramework>net452</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Markdig, Version=0.15.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Markdig.0.15.5\lib\net40\Markdig.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
+    <Page Include="**\*.xaml" SubType="Designer" Generator="MSBuild:Compile" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Markdig" Version="0.15.5" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Annotations\CanBeNullAttribute.cs" />
-    <Compile Include="Annotations\NotNullAttribute.cs" />
-    <Compile Include="Commands.cs" />
-    <Compile Include="Markdown.cs" />
-    <Compile Include="MarkdownExtensions.cs" />
-    <Compile Include="MarkdownViewer.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Renderers\Wpf\Extensions\TableRenderer.cs" />
-    <Compile Include="Renderers\Wpf\Extensions\TaskListRenderer.cs" />
-    <Compile Include="Renderers\Wpf\Inlines\HtmlEntityInlineRenderer.cs" />
-    <Compile Include="Renderers\Wpf\Inlines\AutolinkInlineRenderer.cs" />
-    <Compile Include="Renderers\Wpf\ThematicBreakRenderer.cs" />
-    <Compile Include="Renderers\Wpf\CodeBlockRenderer.cs" />
-    <Compile Include="Renderers\WpfRenderer.cs" />
-    <Compile Include="Renderers\Wpf\ListRenderer.cs" />
-    <Compile Include="Renderers\Wpf\HeadingRenderer.cs" />
-    <Compile Include="Renderers\Wpf\Inlines\CodeInlineRenderer.cs" />
-    <Compile Include="Renderers\Wpf\Inlines\DelimiterInlineRenderer.cs" />
-    <Compile Include="Renderers\Wpf\Inlines\EmphasisInlineRenderer.cs" />
-    <Compile Include="Renderers\Wpf\Inlines\LineBreakInlineRenderer.cs" />
-    <Compile Include="Renderers\Wpf\Inlines\LinkInlineRenderer.cs" />
-    <Compile Include="Renderers\Wpf\Inlines\LiteralInlineRenderer.cs" />
-    <Compile Include="Renderers\Wpf\QuoteBlockRenderer.cs" />
-    <Compile Include="Renderers\Wpf\ParagraphRenderer.cs" />
-    <Compile Include="Renderers\Wpf\WpfObjectRenderer.cs" />
-    <Compile Include="Renderers\XamlRenderer.cs" />
-    <Compile Include="Renderers\Xaml\CodeBlockRenderer.cs" />
-    <Compile Include="Renderers\Xaml\HeadingRenderer.cs" />
-    <Compile Include="Renderers\Xaml\HtmlBlockRenderer.cs" />
-    <Compile Include="Renderers\Xaml\Inlines\AutolinkInlineRenderer.cs" />
-    <Compile Include="Renderers\Xaml\Inlines\CodeInlineRenderer.cs" />
-    <Compile Include="Renderers\Xaml\Inlines\DelimiterInlineRenderer.cs" />
-    <Compile Include="Renderers\Xaml\Inlines\EmphasisInlineRenderer.cs" />
-    <Compile Include="Renderers\Xaml\Inlines\HtmlEntityInlineRenderer.cs" />
-    <Compile Include="Renderers\Xaml\Inlines\HtmlInlineRenderer.cs" />
-    <Compile Include="Renderers\Xaml\Inlines\LineBreakInlineRenderer.cs" />
-    <Compile Include="Renderers\Xaml\Inlines\LinkInlineRenderer.cs" />
-    <Compile Include="Renderers\Xaml\Inlines\LiteralInlineRenderer.cs" />
-    <Compile Include="Renderers\Xaml\ListRenderer.cs" />
-    <Compile Include="Renderers\Xaml\ParagraphRenderer.cs" />
-    <Compile Include="Renderers\Xaml\QuoteBlockRenderer.cs" />
-    <Compile Include="Renderers\Xaml\ThematicBreakRenderer.cs" />
-    <Compile Include="Renderers\Xaml\XamlObjectRenderer.cs" />
-    <Compile Include="Styles.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Themes\generic.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Markdig.Wpf.nuspec" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
