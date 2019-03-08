@@ -24,11 +24,11 @@ namespace Markdig.Renderers.Wpf.Inlines
             {
                 case '*':
                 case '_':
-                    span = obj.IsDouble ? (Span)new Bold() : new Italic();
+                    span = obj.DelimiterCount == 2 ? (Span)new Bold() : new Italic();
                     break;
                 case '~':
                     span = new Span();
-                    span.SetResourceReference(FrameworkContentElement.StyleProperty, obj.IsDouble ? Styles.StrikeThroughStyleKey: Styles.SubscriptStyleKey);
+                    span.SetResourceReference(FrameworkContentElement.StyleProperty, obj.DelimiterCount == 2 ? Styles.StrikeThroughStyleKey: Styles.SubscriptStyleKey);
                     break;
                 case '^':
                     span = new Span();

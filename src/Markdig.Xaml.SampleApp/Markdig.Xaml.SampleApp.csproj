@@ -20,7 +20,7 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Markdig" Version="0.15.5" />
+    <PackageReference Include="Markdig" Version="0.16.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Markdig.Wpf\Markdig.Wpf.csproj" />

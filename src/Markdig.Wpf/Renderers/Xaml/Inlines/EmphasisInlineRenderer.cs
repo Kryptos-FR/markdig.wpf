@@ -43,7 +43,7 @@ namespace Markdig.Renderers.Xaml.Inlines
                 case '_':
                     break;
                 case '~':
-                    renderer.Write(obj.IsDouble
+                    renderer.Write(obj.DelimiterCount == 2
                         ? " Style=\"{StaticResource {x:Static markdig:Styles.StrikeThroughStyleKey}}\""
                         : " Style=\"{StaticResource {x:Static markdig:Styles.SubscriptStyleKey}}\"");
                     break;
@@ -72,7 +72,7 @@ namespace Markdig.Renderers.Xaml.Inlines
         {
             if (obj.DelimiterChar == '*' || obj.DelimiterChar == '_')
             {
-                return obj.IsDouble ? "Bold" : "Italic";
+                return obj.DelimiterCount == 2 ? "Bold" : "Italic";
             }
             return "Span";
         }
