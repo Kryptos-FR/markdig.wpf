@@ -6,7 +6,7 @@
     <AssemblyName>Markdig.Wpf</AssemblyName>
     <AssemblyTitle>Markdig.Wpf</AssemblyTitle>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <VersionPrefix>0.2.7</VersionPrefix>
+    <VersionPrefix>0.2.8</VersionPrefix>
     <TargetFrameworks>net40;net452</TargetFrameworks>
     <PackageId>Markdig.Wpf</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

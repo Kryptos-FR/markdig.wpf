@@ -1,5 +1,8 @@
 ﻿# Release Notes
 
+## 0.2.8 - 2019/04/12
+  - now supports net40
+
 ## 0.2.7 - 2019/03/08
   - updated to latest Markdig 0.16.0
   - switch to new csproj format
