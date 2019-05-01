@@ -9,17 +9,23 @@
     <VersionPrefix>0.2.8</VersionPrefix>
     <TargetFrameworks>net40;net452</TargetFrameworks>
     <PackageId>Markdig.Wpf</PackageId>
+    <PackageId Condition="'$(SignAssembly)' == 'true'">Markdig.Wpf.Signed</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Kryptos-FR/markdig-wpf</PackageProjectUrl>
     <PackageReleaseNotes>https://github.com/Kryptos-FR/markdig.wpf/blob/master/RELEASENOTES.md</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>Markdown CommonMark md xaml WPF</PackageTags>
-    <GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' ">true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(SignAssembly)' == 'true' ">
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Page Include="**\*.xaml" SubType="Designer" Generator="MSBuild:Compile" />
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup Condition=" '$(SignAssembly)' == 'true' ">
+    <PackageReference Include="Markdig.Signed" Version="[0.16.0]" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(SignAssembly)' == 'false' ">
     <PackageReference Include="Markdig" Version="[0.16.0]" />
   </ItemGroup>
   <ItemGroup>
