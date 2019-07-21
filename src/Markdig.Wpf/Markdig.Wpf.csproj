@@ -23,10 +23,10 @@
     <Page Include="**\*.xaml" SubType="Designer" Generator="MSBuild:Compile" />
   </ItemGroup>
   <ItemGroup Condition=" '$(SignAssembly)' == 'true' ">
-    <PackageReference Include="Markdig.Signed" Version="[0.16.0]" />
+    <PackageReference Include="Markdig.Signed" Version="[0.17.1]" />
   </ItemGroup>
   <ItemGroup Condition=" '$(SignAssembly)' == 'false' ">
-    <PackageReference Include="Markdig" Version="[0.16.0]" />
+    <PackageReference Include="Markdig" Version="[0.17.1]" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
