@@ -65,7 +65,7 @@ namespace Markdig.Renderers.Wpf.Extensions
                     renderer.Write(cell);
                     renderer.Pop();
 
-                    if (table.ColumnDefinitions != null)
+                    if (table.ColumnDefinitions != null && table.ColumnDefinitions.Count > 0)
                     {
                         var columnIndex = cell.ColumnIndex < 0 || cell.ColumnIndex >= table.ColumnDefinitions.Count
                             ? i
