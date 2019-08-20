@@ -79,7 +79,7 @@ namespace Markdig.Wpf
             control.RefreshDocument();
         }
 
-        private void RefreshDocument()
+        protected void RefreshDocument()
         {
             Document = Markdown != null ? Wpf.Markdown.ToFlowDocument(Markdown, Pipeline ?? DefaultPipeline) : null;
         }

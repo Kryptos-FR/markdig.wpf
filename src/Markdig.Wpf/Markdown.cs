@@ -24,14 +24,19 @@ namespace Markdig.Wpf
         /// <returns>The result of the conversion</returns>
         /// <exception cref="System.ArgumentNullException">if markdown variable is null</exception>
         [NotNull]
-        public static FlowDocument ToFlowDocument([NotNull] string markdown, MarkdownPipeline pipeline = null)
+        public static FlowDocument ToFlowDocument([NotNull] string markdown, MarkdownPipeline pipeline = null, WpfRenderer renderer = null)
         {
             if (markdown == null) throw new ArgumentNullException(nameof(markdown));
             pipeline = pipeline ?? new MarkdownPipelineBuilder().Build();
 
             // We override the renderer with our own writer
             var result = new FlowDocument();
-            var renderer = new WpfRenderer(result);
+
+            if (renderer == null)
+                renderer = new WpfRenderer(result);
+            else
+                renderer.LoadDocument(result);
+
             pipeline.Setup(renderer);
 
             var document = Markdig.Markdown.Parse(markdown, pipeline);

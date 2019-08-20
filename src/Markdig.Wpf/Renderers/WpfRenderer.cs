@@ -31,37 +31,27 @@ namespace Markdig.Renderers
         private readonly Stack<IAddChild> stack = new Stack<IAddChild>();
         private char[] buffer;
 
+        public WpfRenderer()
+        {
+            buffer = new char[1024];
+            LoadRenderers();
+        }
+
         public WpfRenderer([NotNull] FlowDocument document)
         {
             buffer = new char[1024];
+            LoadDocument(document);
+            LoadRenderers();
+        }
+
+        public void LoadDocument([NotNull] FlowDocument document)
+        {
             Document = document;
             document.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.DocumentStyleKey);
             stack.Push(document);
-
-            // Default block renderers
-            ObjectRenderers.Add(new CodeBlockRenderer());
-            ObjectRenderers.Add(new ListRenderer());
-            ObjectRenderers.Add(new HeadingRenderer());
-            ObjectRenderers.Add(new ParagraphRenderer());
-            ObjectRenderers.Add(new QuoteBlockRenderer());
-            ObjectRenderers.Add(new ThematicBreakRenderer());
-
-            // Default inline renderers
-            ObjectRenderers.Add(new AutolinkInlineRenderer());
-            ObjectRenderers.Add(new CodeInlineRenderer());
-            ObjectRenderers.Add(new DelimiterInlineRenderer());
-            ObjectRenderers.Add(new EmphasisInlineRenderer());
-            ObjectRenderers.Add(new HtmlEntityInlineRenderer());
-            ObjectRenderers.Add(new LineBreakInlineRenderer());
-            ObjectRenderers.Add(new LinkInlineRenderer());
-            ObjectRenderers.Add(new LiteralInlineRenderer());
-
-            // Extension renderers
-            ObjectRenderers.Add(new TableRenderer());
-            ObjectRenderers.Add(new TaskListRenderer());
         }
 
-        public FlowDocument Document { get; }
+        public FlowDocument Document { get; private set; }
 
         /// <inheritdoc/>
         public override object Render([NotNull] MarkdownObject markdownObject)
@@ -172,6 +162,34 @@ namespace Markdig.Renderers
                     WriteText(new string(buffer, 0, length));
                 }
             }
+        }
+
+        /// <summary>
+        /// Loads the renderer used for render WPF
+        /// </summary>
+        protected void LoadRenderers()
+        {
+            // Default block renderers
+            ObjectRenderers.Add(new CodeBlockRenderer());
+            ObjectRenderers.Add(new ListRenderer());
+            ObjectRenderers.Add(new HeadingRenderer());
+            ObjectRenderers.Add(new ParagraphRenderer());
+            ObjectRenderers.Add(new QuoteBlockRenderer());
+            ObjectRenderers.Add(new ThematicBreakRenderer());
+
+            // Default inline renderers
+            ObjectRenderers.Add(new AutolinkInlineRenderer());
+            ObjectRenderers.Add(new CodeInlineRenderer());
+            ObjectRenderers.Add(new DelimiterInlineRenderer());
+            ObjectRenderers.Add(new EmphasisInlineRenderer());
+            ObjectRenderers.Add(new HtmlEntityInlineRenderer());
+            ObjectRenderers.Add(new LineBreakInlineRenderer());
+            ObjectRenderers.Add(new LinkInlineRenderer());
+            ObjectRenderers.Add(new LiteralInlineRenderer());
+
+            // Extension renderers
+            ObjectRenderers.Add(new TableRenderer());
+            ObjectRenderers.Add(new TaskListRenderer());
         }
 
         private static void AddInline([NotNull] IAddChild parent, [NotNull] Inline inline)
