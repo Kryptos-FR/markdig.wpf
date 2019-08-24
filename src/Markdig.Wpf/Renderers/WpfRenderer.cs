@@ -34,14 +34,12 @@ namespace Markdig.Renderers
         public WpfRenderer()
         {
             buffer = new char[1024];
-            LoadRenderers();
         }
 
         public WpfRenderer([NotNull] FlowDocument document)
         {
             buffer = new char[1024];
             LoadDocument(document);
-            LoadRenderers();
         }
 
         public void LoadDocument([NotNull] FlowDocument document)
@@ -49,6 +47,7 @@ namespace Markdig.Renderers
             Document = document;
             document.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.DocumentStyleKey);
             stack.Push(document);
+            LoadRenderers();
         }
 
         public FlowDocument Document { get; private set; }
@@ -167,7 +166,7 @@ namespace Markdig.Renderers
         /// <summary>
         /// Loads the renderer used for render WPF
         /// </summary>
-        protected void LoadRenderers()
+        protected virtual void LoadRenderers()
         {
             // Default block renderers
             ObjectRenderers.Add(new CodeBlockRenderer());
