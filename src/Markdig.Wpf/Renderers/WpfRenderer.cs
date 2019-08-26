@@ -42,7 +42,7 @@ namespace Markdig.Renderers
             LoadDocument(document);
         }
 
-        public void LoadDocument([NotNull] FlowDocument document)
+        public virtual void LoadDocument([NotNull] FlowDocument document)
         {
             Document = document;
             document.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.DocumentStyleKey);
@@ -50,7 +50,7 @@ namespace Markdig.Renderers
             LoadRenderers();
         }
 
-        public FlowDocument Document { get; private set; }
+        public FlowDocument Document { get; protected set; }
 
         /// <inheritdoc/>
         public override object Render([NotNull] MarkdownObject markdownObject)

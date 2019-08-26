@@ -33,7 +33,7 @@ namespace Markdig.Renderers.Wpf.Inlines
             {
                 var template = new ControlTemplate();
                 var image = new FrameworkElementFactory(typeof(Image));
-                image.SetValue(Image.SourceProperty, new System.Windows.Media.Imaging.BitmapImage(new Uri(url, UriKind.RelativeOrAbsolute)));
+                image.SetValue(Image.SourceProperty, new BitmapImage(new Uri(url, UriKind.RelativeOrAbsolute)));
                 image.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.ImageStyleKey);
                 template.VisualTree = image;
 
