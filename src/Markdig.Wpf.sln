@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26608.5
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdig.Wpf", "Markdig.Wpf\Markdig.Wpf.csproj", "{01E40FB5-B4E9-489D-98D5-4771DDC2D1D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Markdig.Wpf", "Markdig.Wpf\Markdig.Wpf.csproj", "{01E40FB5-B4E9-489D-98D5-4771DDC2D1D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdig.Wpf.SampleApp", "Markdig.Wpf.SampleApp\Markdig.Wpf.SampleApp.csproj", "{1523C4F0-A3E2-4440-9DD2-B3A3190FD2C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Markdig.Wpf.SampleApp", "Markdig.Wpf.SampleApp\Markdig.Wpf.SampleApp.csproj", "{1523C4F0-A3E2-4440-9DD2-B3A3190FD2C4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7D346229-503E-49BF-8608-F33F36BC67FA}"
 	ProjectSection(SolutionItems) = preProject
@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\RELEASENOTES.md = ..\RELEASENOTES.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdig.Xaml.ConsoleApp", "Markdig.Xaml.ConsoleApp\Markdig.Xaml.ConsoleApp.csproj", "{559E768F-424B-4E2A-8CBE-756819DE49EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Markdig.Xaml.ConsoleApp", "Markdig.Xaml.ConsoleApp\Markdig.Xaml.ConsoleApp.csproj", "{559E768F-424B-4E2A-8CBE-756819DE49EC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{8DA306DF-1D05-4E0D-85E8-C966154D6FCD}"
 	ProjectSection(SolutionItems) = preProject
@@ -23,12 +23,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{E93FC46F-EBFB-4177-9D86-7534C4619827}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdig.Xaml.SampleApp", "Markdig.Xaml.SampleApp\Markdig.Xaml.SampleApp.csproj", "{BD4D1C9A-C34F-419B-8A67-66EE79FB9ADA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Markdig.Xaml.SampleApp", "Markdig.Xaml.SampleApp\Markdig.Xaml.SampleApp.csproj", "{BD4D1C9A-C34F-419B-8A67-66EE79FB9ADA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{76EFE234-7234-4ACE-B007-B88A0620F12B}"
 	ProjectSection(SolutionItems) = preProject
 		..\Documents\img\BenchmarkCPU.png = ..\Documents\img\BenchmarkCPU.png
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Markdig.Wpf.SampleAppCustomized", "Markdig.Wpf.SampleAppCustomized\Markdig.Wpf.SampleAppCustomized.csproj", "{F98D1138-4D48-4D03-A6F1-2952A86EB846}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +54,10 @@ Global
 		{BD4D1C9A-C34F-419B-8A67-66EE79FB9ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD4D1C9A-C34F-419B-8A67-66EE79FB9ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD4D1C9A-C34F-419B-8A67-66EE79FB9ADA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F98D1138-4D48-4D03-A6F1-2952A86EB846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F98D1138-4D48-4D03-A6F1-2952A86EB846}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F98D1138-4D48-4D03-A6F1-2952A86EB846}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F98D1138-4D48-4D03-A6F1-2952A86EB846}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{8DA306DF-1D05-4E0D-85E8-C966154D6FCD} = {7D346229-503E-49BF-8608-F33F36BC67FA}
 		{BD4D1C9A-C34F-419B-8A67-66EE79FB9ADA} = {E93FC46F-EBFB-4177-9D86-7534C4619827}
 		{76EFE234-7234-4ACE-B007-B88A0620F12B} = {8DA306DF-1D05-4E0D-85E8-C966154D6FCD}
+		{F98D1138-4D48-4D03-A6F1-2952A86EB846} = {E93FC46F-EBFB-4177-9D86-7534C4619827}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {17465081-057C-4230-8347-D812E99F4B12}
