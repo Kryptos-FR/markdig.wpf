@@ -27,10 +27,17 @@ namespace Markdig.Wpf.SampleApp
             Process.Start(e.Parameter.ToString());
         }
 
+        private void ClickOnImage(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show($"URL: {e.Parameter}");
+        }
+
         private void ToggleExtensionsButton_OnClick(object sender, RoutedEventArgs e)
         {
             useExtensions = !useExtensions;
             Viewer.Pipeline = useExtensions ? new MarkdownPipelineBuilder().UseSupportedExtensions().Build() : new MarkdownPipelineBuilder().Build();
         }
+
+
     }
 }

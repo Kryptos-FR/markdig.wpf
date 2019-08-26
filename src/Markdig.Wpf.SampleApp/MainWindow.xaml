@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow">
   <FrameworkElement.CommandBindings>
-    <CommandBinding Command="{x:Static markdig:Commands.Hyperlink}" Executed="OpenHyperlink" />
-  </FrameworkElement.CommandBindings>
+        <CommandBinding Command="{x:Static markdig:Commands.Hyperlink}" Executed="OpenHyperlink" />
+        <CommandBinding Command="{x:Static markdig:Commands.Image}" Executed="ClickOnImage" />
+    </FrameworkElement.CommandBindings>
   <DockPanel>
     <Button x:Name="ToggleExtensionsButton" DockPanel.Dock="Top" HorizontalAlignment="Center"
             Content="Toggle supported extensions" Click="ToggleExtensionsButton_OnClick" />
