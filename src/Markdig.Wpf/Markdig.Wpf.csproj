@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <Authors>Nicolas Musset</Authors>
     <Copyright>Copyright © Nicolas Musset 2016-2019</Copyright>
@@ -7,7 +7,7 @@
     <AssemblyTitle>Markdig.Wpf</AssemblyTitle>
     <NeutralLanguage>en-US</NeutralLanguage>
     <VersionPrefix>0.2.8</VersionPrefix>
-    <TargetFrameworks>net40;net452</TargetFrameworks>
+    <TargetFrameworks>net40;net452;netcoreapp3.0</TargetFrameworks>
     <PackageId>Markdig.Wpf</PackageId>
     <PackageId Condition="'$(SignAssembly)' == 'true'">Markdig.Wpf.Signed</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -15,23 +15,15 @@
     <PackageReleaseNotes>https://github.com/Kryptos-FR/markdig.wpf/blob/master/RELEASENOTES.md</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>Markdown CommonMark md xaml WPF</PackageTags>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(SignAssembly)' == 'true' ">
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-  <ItemGroup>
-    <Page Include="**\*.xaml" SubType="Designer" Generator="MSBuild:Compile" />
-  </ItemGroup>
   <ItemGroup Condition=" '$(SignAssembly)' == 'true' ">
     <PackageReference Include="Markdig.Signed" Version="[0.16.0]" />
   </ItemGroup>
   <ItemGroup Condition=" '$(SignAssembly)' == 'false' ">
     <PackageReference Include="Markdig" Version="[0.16.0]" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
 </Project>
