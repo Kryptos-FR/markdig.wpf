@@ -31,14 +31,20 @@ namespace Markdig.Renderers.Wpf.Inlines
 
             if (link.IsImage)
             {
-                var image = new Image
+                var template = new ControlTemplate();
+                var image = new FrameworkElementFactory(typeof(Image));
+                image.SetValue(Image.SourceProperty, new BitmapImage(new Uri(url, UriKind.RelativeOrAbsolute)));
+                image.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.ImageStyleKey);
+                template.VisualTree = image;
+
+                var btn = new Button()
                 {
-                    Source = new BitmapImage(new Uri(url, UriKind.RelativeOrAbsolute))
+                    Template = template,
+                    Command = Commands.Image,
+                    CommandParameter = url
                 };
 
-                image.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.ImageStyleKey);
-
-                renderer.WriteInline(new InlineUIContainer(image));
+                renderer.WriteInline(new InlineUIContainer(btn));
             }
             else
             {

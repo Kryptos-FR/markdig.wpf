@@ -1,8 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace Markdig.Wpf.SampleApp
+namespace Markdig.Wpf.SampleAppCustomized
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -19,7 +32,9 @@ namespace Markdig.Wpf.SampleApp
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            Viewer.Markdown = File.ReadAllText("Documents/Markdig-readme.md");
+            var path = "../../../../Documents/Markdig-readme.md";
+            Viewer.UCRootPath = path;
+            Viewer.Markdown = File.ReadAllText(path);
         }
 
         private void OpenHyperlink(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
