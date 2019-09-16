@@ -1,5 +1,10 @@
 ﻿# Release Notes
 
+## 0.3.0 - 2019/06/16
+  - updated to latest Markdig 0.17.1
+  - checked and tested Emoji support (need to be enabled through extension `UseEmojiAndSmiley(bool)`)
+  - make some class customizables (thanks Finn Coordts, see PR #33)
+
 ## 0.2.8 - 2019/04/12
   - now supports net40
 
