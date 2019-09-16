@@ -15,7 +15,7 @@
     <None Remove="Documents\.gitkeep" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Markdig" Version="0.16.0" />
+    <PackageReference Include="Markdig" Version="0.17.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Markdig.Wpf\Markdig.Wpf.csproj" />

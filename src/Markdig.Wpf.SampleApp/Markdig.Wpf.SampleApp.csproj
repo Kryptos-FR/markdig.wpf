@@ -16,7 +16,7 @@
     <None Remove="img\.gitkeep" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Markdig" Version="0.16.0" />
+    <PackageReference Include="Markdig" Version="0.17.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Markdig.Wpf\Markdig.Wpf.csproj" />
@@ -26,7 +26,9 @@
     <Folder Include="img\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\Documents\img\BenchmarkCPU.png" Link="img\BenchmarkCPU.png" />
+    <Content Include="..\..\Documents\img\BenchmarkCPU.png" Link="img\BenchmarkCPU.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\..\Documents\Markdig-readme.md" Link="Documents\Markdig-readme.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

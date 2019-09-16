@@ -15,5 +15,10 @@ namespace Markdig.Wpf
         /// Routed command for Hyperlink.
         /// </summary>
         public static RoutedCommand Hyperlink { get; } = new RoutedCommand(nameof(Hyperlink), typeof(Commands));
+
+        /// <summary>
+        /// Routed command for Images.
+        /// </summary>
+        public static RoutedCommand Image { get; } = new RoutedCommand(nameof(Image), typeof(Commands));
     }
 }
