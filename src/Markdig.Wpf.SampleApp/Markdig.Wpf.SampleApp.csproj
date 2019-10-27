@@ -17,6 +17,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Markdig" Version="0.17.1" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Markdig.Wpf\Markdig.Wpf.csproj" />
