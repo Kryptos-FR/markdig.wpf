@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Markdig.Wpf.SampleAppCustomized.Customized
@@ -35,7 +31,7 @@ namespace Markdig.Wpf.SampleAppCustomized.Customized
             this.GetBindingExpression(UCRootPathProperty)?.UpdateTarget();
 
             var path = UCRootPath;
-            if (!string.IsNullOrEmpty(path) && !path.EndsWith("/"))
+            if (!string.IsNullOrEmpty(path) && !path.EndsWith("/", StringComparison.Ordinal))
                 path = path.Remove(path.LastIndexOf('/') + 1);
             Document = Markdown != null ? Markdig.Wpf.Markdown.ToFlowDocument(Markdown, Pipeline ?? DefaultPipeline, new Customized.WpfRenderer(path)) : null;
         }

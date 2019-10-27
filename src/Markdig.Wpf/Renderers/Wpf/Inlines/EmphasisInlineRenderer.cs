@@ -28,7 +28,7 @@ namespace Markdig.Renderers.Wpf.Inlines
                     break;
                 case '~':
                     span = new Span();
-                    span.SetResourceReference(FrameworkContentElement.StyleProperty, obj.DelimiterCount == 2 ? Styles.StrikeThroughStyleKey: Styles.SubscriptStyleKey);
+                    span.SetResourceReference(FrameworkContentElement.StyleProperty, obj.DelimiterCount == 2 ? Styles.StrikeThroughStyleKey : Styles.SubscriptStyleKey);
                     break;
                 case '^':
                     span = new Span();

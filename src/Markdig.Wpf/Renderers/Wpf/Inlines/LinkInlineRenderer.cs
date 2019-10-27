@@ -53,7 +53,7 @@ namespace Markdig.Renderers.Wpf.Inlines
                     Command = Commands.Hyperlink,
                     CommandParameter = url,
                     NavigateUri = new Uri(url, UriKind.RelativeOrAbsolute),
-                    ToolTip = link.Title != string.Empty ? link.Title : null,
+                    ToolTip = !string.IsNullOrEmpty(link.Title) ? link.Title : null,
                 };
 
                 hyperlink.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.HyperlinkStyleKey);

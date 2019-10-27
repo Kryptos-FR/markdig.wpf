@@ -65,14 +65,14 @@ namespace Markdig.Renderers.Xaml.Inlines
         /// <summary>
         /// Gets the default XAML tag for ** and __ emphasis.
         /// </summary>
-        /// <param name="obj">The object.</param>
+        /// <param name="emphasis">The emphasis inline object.</param>
         /// <returns></returns>
         [CanBeNull]
-        public string GetDefaultTag([NotNull] EmphasisInline obj)
+        public static string GetDefaultTag([NotNull] EmphasisInline emphasis)
         {
-            if (obj.DelimiterChar == '*' || obj.DelimiterChar == '_')
+            if (emphasis.DelimiterChar == '*' || emphasis.DelimiterChar == '_')
             {
-                return obj.DelimiterCount == 2 ? "Bold" : "Italic";
+                return emphasis.DelimiterCount == 2 ? "Bold" : "Italic";
             }
             return "Span";
         }

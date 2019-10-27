@@ -2,9 +2,9 @@
 // This file is licensed under the MIT license.
 // See the LICENSE.md file in the project root for more information.
 
-using Markdig.Syntax.Inlines;
 using System.Windows.Documents;
 using Markdig.Annotations;
+using Markdig.Syntax.Inlines;
 
 namespace Markdig.Renderers.Wpf.Inlines
 {
@@ -21,7 +21,8 @@ namespace Markdig.Renderers.Wpf.Inlines
             {
                 renderer.WriteInline(new LineBreak());
             }
-            else {
+            else
+            {
                 // Soft line break.
                 renderer.WriteText(" ");
             }

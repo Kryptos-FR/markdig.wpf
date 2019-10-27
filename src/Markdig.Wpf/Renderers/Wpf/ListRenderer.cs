@@ -2,6 +2,7 @@
 // This file is licensed under the MIT license. 
 // See the LICENSE.md file in the project root for more information.
 
+using System.Globalization;
 using System.Windows;
 using System.Windows.Documents;
 using Markdig.Annotations;
@@ -21,7 +22,7 @@ namespace Markdig.Renderers.Wpf
 
                 if (listBlock.OrderedStart != null && (listBlock.DefaultOrderedStart != listBlock.OrderedStart))
                 {
-                    list.StartIndex = int.Parse(listBlock.OrderedStart);
+                    list.StartIndex = int.Parse(listBlock.OrderedStart, NumberFormatInfo.InvariantInfo);
                 }
             }
             else

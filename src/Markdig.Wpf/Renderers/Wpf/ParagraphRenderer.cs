@@ -2,9 +2,9 @@
 // This file is licensed under the MIT license.
 // See the LICENSE.md file in the project root for more information.
 
-using Markdig.Syntax;
 using System.Windows.Documents;
 using Markdig.Annotations;
+using Markdig.Syntax;
 
 namespace Markdig.Renderers.Wpf
 {

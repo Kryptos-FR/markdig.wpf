@@ -2,6 +2,7 @@
 // This file is licensed under the MIT license. 
 // See the LICENSE.md file in the project root for more information.
 
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -38,11 +39,12 @@ namespace Markdig.Xaml.SampleApp
             var xaml = Wpf.Markdown.ToXaml(markdown, BuildPipeline());
             using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(xaml)))
             {
-                var reader = new XamlXmlReader(stream, new MyXamlSchemaContext());
-                var document = XamlReader.Load(reader) as FlowDocument;
-                if (document != null)
+                using (var reader = new XamlXmlReader(stream, new MyXamlSchemaContext()))
                 {
-                    Viewer.Document = document;
+                    if (XamlReader.Load(reader) is FlowDocument document)
+                    {
+                        Viewer.Document = document;
+                    }
                 }
             }
         }
@@ -56,7 +58,7 @@ namespace Markdig.Xaml.SampleApp
         {
             public override bool TryGetCompatibleXamlNamespace(string xamlNamespace, out string compatibleNamespace)
             {
-                if (xamlNamespace.Equals("clr-namespace:Markdig.Wpf"))
+                if (xamlNamespace.Equals("clr-namespace:Markdig.Wpf", StringComparison.Ordinal))
                 {
                     compatibleNamespace = $"clr-namespace:Markdig.Wpf;assembly={Assembly.GetAssembly(typeof(Markdig.Wpf.Styles)).FullName}";
                     return true;

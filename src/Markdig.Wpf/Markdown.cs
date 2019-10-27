@@ -56,9 +56,11 @@ namespace Markdig.Wpf
         public static string ToXaml([NotNull] string markdown, [CanBeNull] MarkdownPipeline pipeline = null)
         {
             if (markdown == null) throw new ArgumentNullException(nameof(markdown));
-            var writer = new StringWriter();
-            ToXaml(markdown, writer, pipeline);
-            return writer.ToString();
+            using (var writer = new StringWriter())
+            {
+                ToXaml(markdown, writer, pipeline);
+                return writer.ToString();
+            }
         }
 
         /// <summary>

@@ -10,7 +10,7 @@ namespace Markdig.Xaml.ConsoleApp
     internal static class Program
     {
         [STAThread]
-        private static void Main(string[] args)
+        private static void Main()
         {
             using (var stream = File.OpenRead("Documents/Markdig-readme.md"))
             {
