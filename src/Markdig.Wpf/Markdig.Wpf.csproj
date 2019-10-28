@@ -21,10 +21,10 @@
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup Condition=" '$(SignAssembly)' == 'true' ">
-    <PackageReference Include="Markdig.Signed" Version="[0.17.1]" />
+    <PackageReference Include="Markdig.Signed" Version="[0.18.0]" />
   </ItemGroup>
   <ItemGroup Condition=" '$(SignAssembly)' == 'false' ">
-    <PackageReference Include="Markdig" Version="[0.17.1]" />
+    <PackageReference Include="Markdig" Version="[0.18.0]" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6">
