@@ -1,5 +1,10 @@
 ﻿# Release Notes
 
+## 0.3.1 - 2019/11/04
+  - updated to [Markdig 0.18.0](https://github.com/lunet-io/markdig/blob/master/changelog.md#0180-24-oct-2019)
+  - added .NET Core support (thanks Victor Irzak, see PR #35)
+  - added .NET code analyzers
+
 ## 0.3.0 - 2019/06/16
   - updated to [Markdig 0.17.1](https://github.com/lunet-io/markdig/blob/master/changelog.md#0171-04-july-2019)
   - checked and tested Emoji support (need to be enabled through extension `UseEmojiAndSmiley(bool)`)

@@ -6,7 +6,7 @@
     <AssemblyName>Markdig.Wpf</AssemblyName>
     <AssemblyTitle>Markdig.Wpf</AssemblyTitle>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <VersionPrefix>0.3.0</VersionPrefix>
+    <VersionPrefix>0.3.1</VersionPrefix>
     <TargetFrameworks>net40;net452;netcoreapp3.0</TargetFrameworks>
     <PackageId>Markdig.Wpf</PackageId>
     <PackageId Condition="'$(SignAssembly)' == 'true'">Markdig.Wpf.Signed</PackageId>
@@ -15,6 +15,7 @@
     <PackageReleaseNotes>https://github.com/Kryptos-FR/markdig.wpf/blob/master/RELEASENOTES.md</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>Markdown CommonMark md xaml WPF</PackageTags>
+    <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(SignAssembly)' == 'true' ">
