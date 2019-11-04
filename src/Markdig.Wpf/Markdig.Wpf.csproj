@@ -8,6 +8,7 @@
     <NeutralLanguage>en-US</NeutralLanguage>
     <VersionPrefix>0.3.1</VersionPrefix>
     <TargetFrameworks>net40;net452;netcoreapp3.0</TargetFrameworks>
+    <SignAssembly Condition="'$(Configuration)' == 'Release_Signed'">true</SignAssembly>
     <PackageId>Markdig.Wpf</PackageId>
     <PackageId Condition="'$(SignAssembly)' == 'true'">Markdig.Wpf.Signed</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -16,7 +17,9 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>Markdown CommonMark md xaml WPF</PackageTags>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release_Signed'">true</GeneratePackageOnBuild>
     <UseWPF>true</UseWPF>
+    <Configurations>Debug;Release;Release_Signed</Configurations>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(SignAssembly)' == 'true' ">
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
