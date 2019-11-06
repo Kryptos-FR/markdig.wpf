@@ -1,4 +1,4 @@
-# Markdig-WPF [![NuGet](https://img.shields.io/nuget/v/Markdig.Wpf.svg)](https://www.nuget.org/packages/Markdig.wpf/) 
+# Markdig-WPF [![NuGet](https://img.shields.io/nuget/v/Markdig.Wpf.svg?logo=nuget)](https://www.nuget.org/packages/Markdig.wpf/) [![NuGet](https://img.shields.io/nuget/dt/Markdig.Wpf.svg)](https://www.nuget.org/stats/packages/Markdig.Wpf?groupby=Version)
 A WPF library for [lunet-io/markdig](https://github.com/lunet-io/markdig)
 
 The project is split into two parts:
