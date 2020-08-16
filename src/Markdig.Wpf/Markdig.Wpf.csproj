@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <Authors>Nicolas Musset</Authors>
-    <Copyright>Copyright © Nicolas Musset 2016-2019</Copyright>
+    <Copyright>Copyright © Nicolas Musset 2016-2020</Copyright>
     <Description>A WPF library for lunet-io/markdig</Description>
     <AssemblyName>Markdig.Wpf</AssemblyName>
     <AssemblyTitle>Markdig.Wpf</AssemblyTitle>
     <NeutralLanguage>en-US</NeutralLanguage>
     <VersionPrefix>0.3.1</VersionPrefix>
-    <TargetFrameworks>net40;net452;netcoreapp3.0</TargetFrameworks>
+    <TargetFrameworks>net40;net452;netcoreapp3.1</TargetFrameworks>
     <SignAssembly Condition="'$(Configuration)' == 'Release_Signed'">true</SignAssembly>
     <PackageId>Markdig.Wpf</PackageId>
     <PackageId Condition="'$(SignAssembly)' == 'true'">Markdig.Wpf.Signed</PackageId>

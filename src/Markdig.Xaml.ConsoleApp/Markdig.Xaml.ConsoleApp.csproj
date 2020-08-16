@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net40;net452;netcoreapp3.0</TargetFrameworks>
+    <TargetFrameworks>net40;net452;netcoreapp3.1</TargetFrameworks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <ApplicationIcon />
     <OutputType>Exe</OutputType>
