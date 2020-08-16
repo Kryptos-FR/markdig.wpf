@@ -77,6 +77,11 @@ namespace Markdig.Wpf
         public static ComponentResourceKey MarkedStyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(MarkedStyleKey));
 
         /// <summary>
+        /// Resource Key for the ParagraphStyleKey.
+        /// </summary>
+        public static ComponentResourceKey ParagraphStyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(ParagraphStyleKey));
+
+        /// <summary>
         /// Resource Key for the QuoteBlockStyle.
         /// </summary>
         public static ComponentResourceKey QuoteBlockStyleKey { get; } = new ComponentResourceKey(typeof(Styles), nameof(QuoteBlockStyleKey));
