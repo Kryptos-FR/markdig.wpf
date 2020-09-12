@@ -7,7 +7,7 @@
     <AssemblyTitle>Markdig.Wpf</AssemblyTitle>
     <NeutralLanguage>en-US</NeutralLanguage>
     <VersionPrefix>0.4.0</VersionPrefix>
-    <TargetFrameworks>net452;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net452;netcoreapp3.1;net5.0-windows</TargetFrameworks>
     <SignAssembly Condition="'$(Configuration)' == 'Release_Signed'">true</SignAssembly>
     <PackageId>Markdig.Wpf</PackageId>
     <PackageId Condition="'$(SignAssembly)' == 'true'">Markdig.Wpf.Signed</PackageId>
@@ -25,6 +25,9 @@
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release_Signed'">true</GeneratePackageOnBuild>
     <UseWPF>true</UseWPF>
     <Configurations>Debug;Release;Release_Signed</Configurations>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <LangVersion>9</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(SignAssembly)' == 'true' ">
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
@@ -36,7 +39,7 @@
     <PackageReference Include="Markdig" Version="0.18.0" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
