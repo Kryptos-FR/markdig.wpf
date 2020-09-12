@@ -7,16 +7,15 @@
 
 using System;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Text;
+
 using Markdig.Annotations;
 using Markdig.Helpers;
 using Markdig.Renderers.Xaml;
 using Markdig.Renderers.Xaml.Inlines;
 using Markdig.Syntax;
 
-#if !NET40
-using System.Runtime.CompilerServices;
-#endif
 
 namespace Markdig.Renderers
 {
@@ -86,9 +85,7 @@ namespace Markdig.Renderers
         /// <param name="content">The content.</param>
         /// <returns>This instance</returns>
         [NotNull]
-#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
         public XamlRenderer WriteEscape([CanBeNull] string content)
         {
             if (string.IsNullOrEmpty(content))
@@ -105,9 +102,7 @@ namespace Markdig.Renderers
         /// <param name="softEscape">Only escape &lt; and &amp;</param>
         /// <returns>This instance</returns>
         [NotNull]
-#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
         public XamlRenderer WriteEscape(ref StringSlice slice, bool softEscape = false)
         {
             if (slice.Start > slice.End)
@@ -124,9 +119,7 @@ namespace Markdig.Renderers
         /// <param name="softEscape">Only escape &lt; and &amp;</param>
         /// <returns>This instance</returns>
         [NotNull]
-#if !NET40
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-#endif
         public XamlRenderer WriteEscape(StringSlice slice, bool softEscape = false)
         {
             return WriteEscape(ref slice, softEscape);
