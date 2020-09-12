@@ -43,7 +43,7 @@ namespace Markdig.Wpf
         /// <summary>
         /// Gets the flow document to display.
         /// </summary>
-        public FlowDocument Document
+        public FlowDocument? Document
         {
             get { return (FlowDocument)GetValue(DocumentProperty); }
             protected set { SetValue(DocumentPropertyKey, value); }
@@ -52,7 +52,7 @@ namespace Markdig.Wpf
         /// <summary>
         /// Gets or sets the markdown to display.
         /// </summary>
-        public string Markdown
+        public string? Markdown
         {
             get { return (string)GetValue(MarkdownProperty); }
             set { SetValue(MarkdownProperty, value); }

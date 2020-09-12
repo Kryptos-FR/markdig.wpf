@@ -2,7 +2,8 @@
 // This file is licensed under the MIT license.
 // See the LICENSE.md file in the project root for more information.
 
-using Markdig.Annotations;
+using System;
+
 using Markdig.Syntax.Inlines;
 
 namespace Markdig.Renderers.Wpf.Inlines
@@ -13,8 +14,11 @@ namespace Markdig.Renderers.Wpf.Inlines
     /// <seealso cref="Markdig.Renderers.Wpf.WpfObjectRenderer{Markdig.Syntax.Inlines.HtmlEntityInline}" />
     public class HtmlEntityInlineRenderer : WpfObjectRenderer<HtmlEntityInline>
     {
-        protected override void Write([NotNull] WpfRenderer renderer, [NotNull] HtmlEntityInline obj)
+        protected override void Write(WpfRenderer renderer, HtmlEntityInline obj)
         {
+            if (renderer == null) throw new ArgumentNullException(nameof(renderer));
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+
             var transcoded = obj.Transcoded;
             renderer.WriteText(ref transcoded);
         }

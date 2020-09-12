@@ -3,7 +3,6 @@
 // See the LICENSE.md file in the project root for more information.
 
 using System;
-using Markdig.Annotations;
 
 // ReSharper disable once CheckNamespace
 namespace Markdig.Wpf
@@ -18,7 +17,7 @@ namespace Markdig.Wpf
         /// </summary>
         /// <param name="pipeline">The pipeline.</param>
         /// <returns>The modified pipeline</returns>
-        public static MarkdownPipelineBuilder UseSupportedExtensions([NotNull] this MarkdownPipelineBuilder pipeline)
+        public static MarkdownPipelineBuilder UseSupportedExtensions(this MarkdownPipelineBuilder pipeline)
         {
             if (pipeline == null) throw new ArgumentNullException(nameof(pipeline));
             return pipeline

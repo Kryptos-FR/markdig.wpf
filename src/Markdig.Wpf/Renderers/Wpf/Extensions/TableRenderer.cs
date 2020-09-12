@@ -2,8 +2,8 @@
 // This file is licensed under the MIT license. 
 // See the LICENSE.md file in the project root for more information.
 
+using System;
 using System.Windows;
-using Markdig.Annotations;
 using Markdig.Extensions.Tables;
 using Markdig.Wpf;
 using WpfTable = System.Windows.Documents.Table;
@@ -16,8 +16,11 @@ namespace Markdig.Renderers.Wpf.Extensions
 {
     public class TableRenderer : WpfObjectRenderer<Table>
     {
-        protected override void Write([NotNull] WpfRenderer renderer, [NotNull] Table table)
+        protected override void Write(WpfRenderer renderer, Table table)
         {
+            if (renderer == null) throw new ArgumentNullException(nameof(renderer));
+            if (table == null) throw new ArgumentNullException(nameof(table));
+
             var wpfTable = new WpfTable();
 
             wpfTable.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.TableStyleKey);
@@ -27,7 +30,7 @@ namespace Markdig.Renderers.Wpf.Extensions
                 wpfTable.Columns.Add(new WpfTableColumn
                 {
                     Width = (tableColumnDefinition?.Width ?? 0) != 0 ?
-                        new GridLength(tableColumnDefinition.Width, GridUnitType.Star) :
+                        new GridLength(tableColumnDefinition!.Width, GridUnitType.Star) :
                         GridLength.Auto,
                 });
             }

@@ -2,18 +2,22 @@
 // This file is licensed under the MIT license. 
 // See the LICENSE.md file in the project root for more information.
 
+using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Documents;
-using Markdig.Annotations;
+
 using Markdig.Syntax;
 
 namespace Markdig.Renderers.Wpf
 {
     public class ListRenderer : WpfObjectRenderer<ListBlock>
     {
-        protected override void Write([NotNull] WpfRenderer renderer, [NotNull] ListBlock listBlock)
+        protected override void Write(WpfRenderer renderer, ListBlock listBlock)
         {
+            if (renderer == null) throw new ArgumentNullException(nameof(renderer));
+            if (listBlock == null) throw new ArgumentNullException(nameof(listBlock));
+
             var list = new List();
 
             if (listBlock.IsOrdered)

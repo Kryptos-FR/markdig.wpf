@@ -2,7 +2,8 @@
 // This file is licensed under the MIT license.
 // See the LICENSE.md file in the project root for more information.
 
-using Markdig.Annotations;
+using System;
+
 using Markdig.Syntax;
 
 namespace Markdig.Renderers.Xaml
@@ -13,8 +14,11 @@ namespace Markdig.Renderers.Xaml
     /// <seealso cref="Xaml.XamlObjectRenderer{T}" />
     public class HeadingRenderer : XamlObjectRenderer<HeadingBlock>
     {
-        protected override void Write([NotNull] XamlRenderer renderer, [NotNull] HeadingBlock obj)
+        protected override void Write(XamlRenderer renderer, HeadingBlock obj)
         {
+            if (renderer == null) throw new ArgumentNullException(nameof(renderer));
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+
             renderer.Write("<Paragraph");
             if (obj.Level > 0 && obj.Level <= 6)
             {

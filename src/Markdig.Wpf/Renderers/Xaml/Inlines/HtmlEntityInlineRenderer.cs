@@ -2,7 +2,8 @@
 // This file is licensed under the MIT license.
 // See the LICENSE.md file in the project root for more information.
 
-using Markdig.Annotations;
+using System;
+
 using Markdig.Syntax.Inlines;
 
 namespace Markdig.Renderers.Xaml.Inlines
@@ -13,8 +14,11 @@ namespace Markdig.Renderers.Xaml.Inlines
     /// <seealso cref="Xaml.XamlObjectRenderer{T}" />
     public class HtmlEntityInlineRenderer : XamlObjectRenderer<HtmlEntityInline>
     {
-        protected override void Write([NotNull] XamlRenderer renderer, [NotNull] HtmlEntityInline obj)
+        protected override void Write(XamlRenderer renderer, HtmlEntityInline obj)
         {
+            if (renderer == null) throw new ArgumentNullException(nameof(renderer));
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+
             renderer.WriteEscape(obj.Transcoded);
         }
     }

@@ -2,7 +2,8 @@
 // This file is licensed under the MIT license.
 // See the LICENSE.md file in the project root for more information.
 
-using Markdig.Annotations;
+using System;
+
 using Markdig.Syntax.Inlines;
 
 namespace Markdig.Renderers.Xaml.Inlines
@@ -18,7 +19,7 @@ namespace Markdig.Renderers.Xaml.Inlines
         /// </summary>
         /// <param name="obj">The object.</param>
         /// <returns>The XAML tag associated to this <see cref="EmphasisInline"/> object</returns>
-        public delegate string GetTagDelegate([NotNull] EmphasisInline obj);
+        public delegate string GetTagDelegate(EmphasisInline obj);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EmphasisInlineRenderer"/> class.
@@ -33,8 +34,11 @@ namespace Markdig.Renderers.Xaml.Inlines
         /// </summary>
         public GetTagDelegate GetTag { get; set; }
 
-        protected override void Write([NotNull] XamlRenderer renderer, [NotNull] EmphasisInline obj)
+        protected override void Write(XamlRenderer renderer, EmphasisInline obj)
         {
+            if (renderer == null) throw new ArgumentNullException(nameof(renderer));
+            if (obj == null) throw new ArgumentNullException(nameof(obj));
+
             var tag = GetTag(obj);
             renderer.Write("<").Write(tag);
             switch (obj.DelimiterChar)
@@ -67,9 +71,10 @@ namespace Markdig.Renderers.Xaml.Inlines
         /// </summary>
         /// <param name="emphasis">The emphasis inline object.</param>
         /// <returns></returns>
-        [CanBeNull]
-        public static string GetDefaultTag([NotNull] EmphasisInline emphasis)
+        public static string GetDefaultTag(EmphasisInline emphasis)
         {
+            if (emphasis == null) throw new ArgumentNullException(nameof(emphasis));
+
             if (emphasis.DelimiterChar == '*' || emphasis.DelimiterChar == '_')
             {
                 return emphasis.DelimiterCount == 2 ? "Bold" : "Italic";

@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media.Imaging;
-using Markdig.Annotations;
+
 using Markdig.Syntax.Inlines;
 using Markdig.Wpf;
 
@@ -20,8 +20,11 @@ namespace Markdig.Renderers.Wpf.Inlines
     public class LinkInlineRenderer : WpfObjectRenderer<LinkInline>
     {
         /// <inheritdoc/>
-        protected override void Write([NotNull] WpfRenderer renderer, [NotNull] LinkInline link)
+        protected override void Write(WpfRenderer renderer, LinkInline link)
         {
+            if (renderer == null) throw new ArgumentNullException(nameof(renderer));
+            if (link == null) throw new ArgumentNullException(nameof(link));
+
             var url = link.GetDynamicUrl != null ? link.GetDynamicUrl() ?? link.Url : link.Url;
 
             if (!Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))

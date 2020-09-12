@@ -2,7 +2,8 @@
 // This file is licensed under the MIT license.
 // See the LICENSE.md file in the project root for more information.
 
-using Markdig.Annotations;
+using System;
+
 using Markdig.Syntax;
 
 namespace Markdig.Renderers.Xaml
@@ -13,8 +14,11 @@ namespace Markdig.Renderers.Xaml
     /// <seealso cref="Xaml.XamlObjectRenderer{T}" />
     public class ListRenderer : XamlObjectRenderer<ListBlock>
     {
-        protected override void Write([NotNull] XamlRenderer renderer, [NotNull] ListBlock listBlock)
+        protected override void Write(XamlRenderer renderer, ListBlock listBlock)
         {
+            if (renderer == null) throw new ArgumentNullException(nameof(renderer));
+            if (listBlock == null) throw new ArgumentNullException(nameof(listBlock));
+
             renderer.EnsureLine();
 
             renderer.Write("<List");

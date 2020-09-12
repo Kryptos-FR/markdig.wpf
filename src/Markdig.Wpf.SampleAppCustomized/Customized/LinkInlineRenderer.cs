@@ -1,4 +1,6 @@
-﻿using Markdig.Syntax.Inlines;
+﻿using System;
+
+using Markdig.Syntax.Inlines;
 
 namespace Markdig.Wpf.SampleAppCustomized.Customized
 {
@@ -13,7 +15,7 @@ namespace Markdig.Wpf.SampleAppCustomized.Customized
 
         protected override void Write(Renderers.WpfRenderer renderer, LinkInline link)
         {
-            if (link.IsImage)
+            if (link?.IsImage ?? throw new ArgumentNullException(nameof(link)))
                 link.Url = _linkpath + link.Url;
 
             base.Write(renderer, link);

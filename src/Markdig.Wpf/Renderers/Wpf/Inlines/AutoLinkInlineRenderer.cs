@@ -5,7 +5,6 @@
 using System;
 using System.Windows;
 using System.Windows.Documents;
-using Markdig.Annotations;
 using Markdig.Syntax.Inlines;
 using Markdig.Wpf;
 
@@ -18,8 +17,11 @@ namespace Markdig.Renderers.Wpf.Inlines
     public class AutolinkInlineRenderer : WpfObjectRenderer<AutolinkInline>
     {
         /// <inheritdoc/>
-        protected override void Write([NotNull] WpfRenderer renderer, [NotNull] AutolinkInline link)
+        protected override void Write(WpfRenderer renderer, AutolinkInline link)
         {
+            if (renderer == null) throw new ArgumentNullException(nameof(renderer));
+            if (link == null) throw new ArgumentNullException(nameof(link));
+
             var url = link.Url;
             if (link.IsEmail)
             {

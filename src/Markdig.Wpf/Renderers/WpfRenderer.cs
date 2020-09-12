@@ -9,7 +9,6 @@ using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Markup;
 
-using Markdig.Annotations;
 using Markdig.Helpers;
 using Markdig.Renderers.Wpf;
 using Markdig.Renderers.Wpf.Extensions;
@@ -34,24 +33,24 @@ namespace Markdig.Renderers
             buffer = new char[1024];
         }
 
-        public WpfRenderer([NotNull] FlowDocument document)
+        public WpfRenderer(FlowDocument document)
         {
             buffer = new char[1024];
             LoadDocument(document);
         }
 
-        public virtual void LoadDocument([NotNull] FlowDocument document)
+        public virtual void LoadDocument(FlowDocument document)
         {
-            Document = document;
+            Document = document ?? throw new ArgumentNullException(nameof(document));
             document.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.DocumentStyleKey);
             stack.Push(document);
             LoadRenderers();
         }
 
-        public FlowDocument Document { get; protected set; }
+        public FlowDocument? Document { get; protected set; }
 
         /// <inheritdoc/>
-        public override object Render([NotNull] MarkdownObject markdownObject)
+        public override object? Render(MarkdownObject markdownObject)
         {
             Write(markdownObject);
             return Document;
@@ -63,7 +62,7 @@ namespace Markdig.Renderers
         /// <param name="leafBlock">The leaf block.</param>
         /// <returns>This instance</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void WriteLeafInline([NotNull] LeafBlock leafBlock)
+        public void WriteLeafInline(LeafBlock leafBlock)
         {
             if (leafBlock == null) throw new ArgumentNullException(nameof(leafBlock));
             var inline = (Syntax.Inlines.Inline)leafBlock.Inline;
@@ -78,7 +77,7 @@ namespace Markdig.Renderers
         /// Writes the lines of a <see cref="LeafBlock"/>
         /// </summary>
         /// <param name="leafBlock">The leaf block.</param>
-        public void WriteLeafRawLines([NotNull] LeafBlock leafBlock)
+        public void WriteLeafRawLines(LeafBlock leafBlock)
         {
             if (leafBlock == null) throw new ArgumentNullException(nameof(leafBlock));
             if (leafBlock.Lines.Lines != null)
@@ -95,7 +94,7 @@ namespace Markdig.Renderers
             }
         }
 
-        public void Push([NotNull] IAddChild o)
+        public void Push(IAddChild o)
         {
             stack.Push(o);
         }
@@ -106,12 +105,12 @@ namespace Markdig.Renderers
             stack.Peek().AddChild(popped);
         }
 
-        public void WriteBlock([NotNull] Block block)
+        public void WriteBlock(Block block)
         {
             stack.Peek().AddChild(block);
         }
 
-        public void WriteInline([NotNull] Inline inline)
+        public void WriteInline(Inline inline)
         {
             AddInline(stack.Peek(), inline);
         }
@@ -126,12 +125,12 @@ namespace Markdig.Renderers
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void WriteText([CanBeNull] string text)
+        public void WriteText(string? text)
         {
             WriteInline(new Run(text));
         }
 
-        public void WriteText([CanBeNull] string text, int offset, int length)
+        public void WriteText(string? text, int offset, int length)
         {
             if (text == null)
                 return;
@@ -183,7 +182,7 @@ namespace Markdig.Renderers
             ObjectRenderers.Add(new TaskListRenderer());
         }
 
-        private static void AddInline([NotNull] IAddChild parent, [NotNull] Inline inline)
+        private static void AddInline(IAddChild parent, Inline inline)
         {
             parent.AddChild(inline);
         }

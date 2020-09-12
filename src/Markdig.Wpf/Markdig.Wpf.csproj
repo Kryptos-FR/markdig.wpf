@@ -28,6 +28,7 @@
     <AnalysisLevel>latest</AnalysisLevel>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <LangVersion>9</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(SignAssembly)' == 'true' ">
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>

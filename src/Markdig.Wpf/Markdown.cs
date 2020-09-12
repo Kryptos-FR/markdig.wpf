@@ -5,7 +5,6 @@
 using System;
 using System.IO;
 using System.Windows.Documents;
-using Markdig.Annotations;
 using Markdig.Renderers;
 using Markdig.Syntax;
 
@@ -23,8 +22,7 @@ namespace Markdig.Wpf
         /// <param name="pipeline">The pipeline used for the conversion.</param>
         /// <returns>The result of the conversion</returns>
         /// <exception cref="System.ArgumentNullException">if markdown variable is null</exception>
-        [NotNull]
-        public static FlowDocument ToFlowDocument([NotNull] string markdown, MarkdownPipeline pipeline = null, WpfRenderer renderer = null)
+        public static FlowDocument ToFlowDocument(string markdown, MarkdownPipeline? pipeline = null, WpfRenderer? renderer = null)
         {
             if (markdown == null) throw new ArgumentNullException(nameof(markdown));
             pipeline = pipeline ?? new MarkdownPipelineBuilder().Build();
@@ -52,8 +50,7 @@ namespace Markdig.Wpf
         /// <param name="pipeline">The pipeline used for the conversion.</param>
         /// <returns>The result of the conversion</returns>
         /// <exception cref="ArgumentNullException">if markdown variable is null</exception>
-        [NotNull]
-        public static string ToXaml([NotNull] string markdown, [CanBeNull] MarkdownPipeline pipeline = null)
+        public static string ToXaml(string markdown, MarkdownPipeline? pipeline = null)
         {
             if (markdown == null) throw new ArgumentNullException(nameof(markdown));
             using (var writer = new StringWriter())
@@ -71,8 +68,7 @@ namespace Markdig.Wpf
         /// <param name="pipeline">The pipeline used for the conversion.</param>
         /// <returns>The Markdown document that has been parsed</returns>
         /// <exception cref="ArgumentNullException">if reader or writer variable are null</exception>
-        public static MarkdownDocument ToXaml([NotNull] string markdown, [NotNull] TextWriter writer,
-            [CanBeNull] MarkdownPipeline pipeline = null)
+        public static MarkdownDocument ToXaml(string markdown, TextWriter writer, MarkdownPipeline? pipeline = null)
         {
             if (markdown == null) throw new ArgumentNullException(nameof(markdown));
             if (writer == null) throw new ArgumentNullException(nameof(writer));
