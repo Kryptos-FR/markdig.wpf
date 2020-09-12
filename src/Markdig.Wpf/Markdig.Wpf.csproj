@@ -6,7 +6,7 @@
     <AssemblyName>Markdig.Wpf</AssemblyName>
     <AssemblyTitle>Markdig.Wpf</AssemblyTitle>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <VersionPrefix>0.3.1</VersionPrefix>
+    <VersionPrefix>0.4.0</VersionPrefix>
     <TargetFrameworks>net452;netcoreapp3.1</TargetFrameworks>
     <SignAssembly Condition="'$(Configuration)' == 'Release_Signed'">true</SignAssembly>
     <PackageId>Markdig.Wpf</PackageId>
@@ -25,10 +25,10 @@
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup Condition=" '$(SignAssembly)' == 'true' ">
-    <PackageReference Include="Markdig.Signed" Version="[0.18.0]" />
+    <PackageReference Include="Markdig.Signed" Version="0.18.0" />
   </ItemGroup>
   <ItemGroup Condition=" '$(SignAssembly)' == 'false' ">
-    <PackageReference Include="Markdig" Version="[0.18.0]" />
+    <PackageReference Include="Markdig" Version="0.18.0" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
