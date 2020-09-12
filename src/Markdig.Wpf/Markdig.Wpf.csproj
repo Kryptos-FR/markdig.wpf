@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <Authors>Nicolas Musset</Authors>
-    <Copyright>Copyright © Nicolas Musset 2016-2020</Copyright>
+    <Copyright>Copyright © Nicolas Musset 2016-2021</Copyright>
     <Description>A WPF library for lunet-io/markdig</Description>
     <AssemblyName>Markdig.Wpf</AssemblyName>
     <AssemblyTitle>Markdig.Wpf</AssemblyTitle>

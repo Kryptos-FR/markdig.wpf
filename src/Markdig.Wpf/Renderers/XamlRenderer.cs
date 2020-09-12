@@ -1,9 +1,9 @@
-// Copyright (c) 2016-2019 Nicolas Musset. All rights reserved.
+// Copyright (c) Nicolas Musset. All rights reserved.
 // This file is licensed under the MIT license.
 // See the LICENSE.md file in the project root for more information.
 
 // Some parts taken from https://github.com/lunet-io/markdig
-// Copyright (c) 2016 Alexandre Mutel. All rights reserved.
+// Copyright (c) Alexandre Mutel. All rights reserved.
 
 using System;
 using System.IO;
