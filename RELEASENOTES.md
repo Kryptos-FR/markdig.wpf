@@ -1,5 +1,10 @@
 ﻿# Release Notes
 
+## 0.5.0 - 2021/01/12
+  - update to [Markdig 0.22.0](https://github.com/xoofx/markdig/blob/master/changelog.md#0220-05-oct-2020)
+  - add support for .NET 5 (Windows-only)
+  - add support for SourceLink
+
 ## 0.4.0 - 2020/09/12
   - drop support for net40 (#41, previously #25)
   - target netcore3.1
