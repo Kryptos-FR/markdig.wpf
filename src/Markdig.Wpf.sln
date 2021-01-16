@@ -32,39 +32,38 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{76EFE234-723
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Markdig.Wpf.SampleAppCustomized", "Markdig.Wpf.SampleAppCustomized\Markdig.Wpf.SampleAppCustomized.csproj", "{F98D1138-4D48-4D03-A6F1-2952A86EB846}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Markdig.Wpf.Signed", "Markdig.Wpf.Signed\Markdig.Wpf.Signed.csproj", "{46C12615-A75C-4860-9DCA-5B649B674B52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Release_Signed|Any CPU = Release_Signed|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{01E40FB5-B4E9-489D-98D5-4771DDC2D1D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{01E40FB5-B4E9-489D-98D5-4771DDC2D1D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01E40FB5-B4E9-489D-98D5-4771DDC2D1D7}.Release_Signed|Any CPU.ActiveCfg = Release_Signed|Any CPU
-		{01E40FB5-B4E9-489D-98D5-4771DDC2D1D7}.Release_Signed|Any CPU.Build.0 = Release_Signed|Any CPU
 		{01E40FB5-B4E9-489D-98D5-4771DDC2D1D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01E40FB5-B4E9-489D-98D5-4771DDC2D1D7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1523C4F0-A3E2-4440-9DD2-B3A3190FD2C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1523C4F0-A3E2-4440-9DD2-B3A3190FD2C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1523C4F0-A3E2-4440-9DD2-B3A3190FD2C4}.Release_Signed|Any CPU.ActiveCfg = Release|Any CPU
 		{1523C4F0-A3E2-4440-9DD2-B3A3190FD2C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1523C4F0-A3E2-4440-9DD2-B3A3190FD2C4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{559E768F-424B-4E2A-8CBE-756819DE49EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{559E768F-424B-4E2A-8CBE-756819DE49EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{559E768F-424B-4E2A-8CBE-756819DE49EC}.Release_Signed|Any CPU.ActiveCfg = Release|Any CPU
 		{559E768F-424B-4E2A-8CBE-756819DE49EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{559E768F-424B-4E2A-8CBE-756819DE49EC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BD4D1C9A-C34F-419B-8A67-66EE79FB9ADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BD4D1C9A-C34F-419B-8A67-66EE79FB9ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD4D1C9A-C34F-419B-8A67-66EE79FB9ADA}.Release_Signed|Any CPU.ActiveCfg = Release|Any CPU
 		{BD4D1C9A-C34F-419B-8A67-66EE79FB9ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD4D1C9A-C34F-419B-8A67-66EE79FB9ADA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F98D1138-4D48-4D03-A6F1-2952A86EB846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F98D1138-4D48-4D03-A6F1-2952A86EB846}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F98D1138-4D48-4D03-A6F1-2952A86EB846}.Release_Signed|Any CPU.ActiveCfg = Release|Any CPU
 		{F98D1138-4D48-4D03-A6F1-2952A86EB846}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F98D1138-4D48-4D03-A6F1-2952A86EB846}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46C12615-A75C-4860-9DCA-5B649B674B52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46C12615-A75C-4860-9DCA-5B649B674B52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46C12615-A75C-4860-9DCA-5B649B674B52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46C12615-A75C-4860-9DCA-5B649B674B52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

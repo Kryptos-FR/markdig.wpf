@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <Import Project="..\Markdig.Wpf\Markdig.Wpf.props" />
+  <PropertyGroup>
+    <PackageId>Markdig.Wpf.Signed</PackageId>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Markdig.Signed" Version="0.22.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Markdig.Wpf\**\*.cs" Exclude="..\Markdig.Wpf\obj\**;..\Markdig.Wpf\bin\**">
+      <Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
+    </Compile>
+  </ItemGroup>
+</Project>
