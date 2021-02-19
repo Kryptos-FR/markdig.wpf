@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Markup;
 
 using Markdig.Helpers;
@@ -28,22 +29,27 @@ namespace Markdig.Renderers
         private readonly Stack<IAddChild> stack = new Stack<IAddChild>();
         private char[] buffer;
 
+        private ICommand? imageCommand;
+        private ICommand? hyperlinkCommand;
+
         public WpfRenderer()
         {
             buffer = new char[1024];
         }
 
-        public WpfRenderer(FlowDocument document)
+        public WpfRenderer(FlowDocument document, ICommand? imageCommand = null, ICommand? hyperlinkCommand = null)
         {
             buffer = new char[1024];
-            LoadDocument(document);
+            LoadDocument(document, imageCommand, hyperlinkCommand);
         }
 
-        public virtual void LoadDocument(FlowDocument document)
+        public virtual void LoadDocument(FlowDocument document, ICommand? imageCommand = null, ICommand? hyperlinkCommand = null)
         {
             Document = document ?? throw new ArgumentNullException(nameof(document));
             document.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.DocumentStyleKey);
             stack.Push(document);
+            this.imageCommand = imageCommand;
+            this.hyperlinkCommand = hyperlinkCommand;
             LoadRenderers();
         }
 
@@ -174,7 +180,7 @@ namespace Markdig.Renderers
             ObjectRenderers.Add(new EmphasisInlineRenderer());
             ObjectRenderers.Add(new HtmlEntityInlineRenderer());
             ObjectRenderers.Add(new LineBreakInlineRenderer());
-            ObjectRenderers.Add(new LinkInlineRenderer());
+            ObjectRenderers.Add(new LinkInlineRenderer(imageCommand, hyperlinkCommand));
             ObjectRenderers.Add(new LiteralInlineRenderer());
 
             // Extension renderers

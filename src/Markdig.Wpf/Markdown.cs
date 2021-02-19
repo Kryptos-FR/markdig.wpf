@@ -5,6 +5,8 @@
 using System;
 using System.IO;
 using System.Windows.Documents;
+using System.Windows.Input;
+
 using Markdig.Renderers;
 using Markdig.Syntax;
 
@@ -22,7 +24,7 @@ namespace Markdig.Wpf
         /// <param name="pipeline">The pipeline used for the conversion.</param>
         /// <returns>The result of the conversion</returns>
         /// <exception cref="System.ArgumentNullException">if markdown variable is null</exception>
-        public static FlowDocument ToFlowDocument(string markdown, MarkdownPipeline? pipeline = null, WpfRenderer? renderer = null)
+        public static FlowDocument ToFlowDocument(string markdown, MarkdownPipeline? pipeline = null, WpfRenderer? renderer = null, ICommand? imageCommand = null, ICommand? hyperlinkCommand = null)
         {
             if (markdown == null) throw new ArgumentNullException(nameof(markdown));
             pipeline = pipeline ?? new MarkdownPipelineBuilder().Build();
@@ -31,9 +33,9 @@ namespace Markdig.Wpf
             var result = new FlowDocument();
 
             if (renderer == null)
-                renderer = new WpfRenderer(result);
+                renderer = new WpfRenderer(result, imageCommand, hyperlinkCommand);
             else
-                renderer.LoadDocument(result);
+                renderer.LoadDocument(result, imageCommand, hyperlinkCommand);
 
             pipeline.Setup(renderer);
 

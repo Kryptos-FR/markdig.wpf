@@ -6,6 +6,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
 using Markdig.Syntax.Inlines;
@@ -19,6 +20,15 @@ namespace Markdig.Renderers.Wpf.Inlines
     /// <seealso cref="Markdig.Renderers.Wpf.WpfObjectRenderer{Markdig.Syntax.Inlines.LinkInline}" />
     public class LinkInlineRenderer : WpfObjectRenderer<LinkInline>
     {
+        private readonly ICommand? imageCommand = null;
+        private readonly ICommand? hyperlinkCommand = null;
+
+        public LinkInlineRenderer(ICommand? imageCommand = null, ICommand? hyperlinkCommand = null)
+        {
+            this.imageCommand = imageCommand;
+            this.hyperlinkCommand = hyperlinkCommand;
+        }
+
         /// <inheritdoc/>
         protected override void Write(WpfRenderer renderer, LinkInline link)
         {
@@ -43,7 +53,7 @@ namespace Markdig.Renderers.Wpf.Inlines
                 var btn = new Button()
                 {
                     Template = template,
-                    Command = Commands.Image,
+                    Command = imageCommand != null ? imageCommand : Commands.Image,
                     CommandParameter = url
                 };
 
@@ -53,7 +63,7 @@ namespace Markdig.Renderers.Wpf.Inlines
             {
                 var hyperlink = new Hyperlink
                 {
-                    Command = Commands.Hyperlink,
+                    Command = hyperlinkCommand != null ? hyperlinkCommand : Commands.Hyperlink,
                     CommandParameter = url,
                     NavigateUri = new Uri(url, UriKind.RelativeOrAbsolute),
                     ToolTip = !string.IsNullOrEmpty(link.Title) ? link.Title : null,
