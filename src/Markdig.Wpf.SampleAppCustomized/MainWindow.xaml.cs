@@ -19,7 +19,7 @@ namespace Markdig.Wpf.SampleAppCustomized
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            var path = "../../../../Documents/Markdig-readme.md";
+            var path = "../../../../../Documents/Markdig-readme.md";
             Viewer.UCRootPath = path;
             Viewer.Markdown = File.ReadAllText(path);
         }
