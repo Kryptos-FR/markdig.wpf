@@ -20,5 +20,10 @@ namespace Markdig.Wpf
         /// Routed command for Images.
         /// </summary>
         public static RoutedCommand Image { get; } = new RoutedCommand(nameof(Image), typeof(Commands));
+
+        /// <summary>
+        /// Routed command for navigating to a heading in a document. Command parameter contains the heading id
+        /// </summary>
+        public static RoutedCommand Navigate { get; } = new RoutedCommand(nameof(Navigate), typeof(Commands));
     }
 }

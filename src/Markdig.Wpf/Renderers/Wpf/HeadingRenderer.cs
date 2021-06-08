@@ -5,7 +5,7 @@
 using System;
 using System.Windows;
 using System.Windows.Documents;
-
+using Markdig.Renderers.Html;
 using Markdig.Syntax;
 using Markdig.Wpf;
 
@@ -34,6 +34,12 @@ namespace Markdig.Renderers.Wpf
             if (styleKey != null)
             {
                 paragraph.SetResourceReference(FrameworkContentElement.StyleProperty, styleKey);
+            }
+
+            var attributes = obj.TryGetAttributes();
+            if (!String.IsNullOrEmpty(attributes?.Id))
+            {
+                MarkdownViewer.SetAnchorName(paragraph, attributes.Id);
             }
 
             renderer.Push(paragraph);

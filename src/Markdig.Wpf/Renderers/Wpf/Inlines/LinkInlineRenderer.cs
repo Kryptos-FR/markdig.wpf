@@ -27,7 +27,7 @@ namespace Markdig.Renderers.Wpf.Inlines
 
             var url = link.GetDynamicUrl != null ? link.GetDynamicUrl() ?? link.Url : link.Url;
 
-            if (!Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
+            if (!Uri.TryCreate(url, UriKind.RelativeOrAbsolute, out _))
             {
                 url = "#";
             }
@@ -53,12 +53,11 @@ namespace Markdig.Renderers.Wpf.Inlines
             {
                 var hyperlink = new Hyperlink
                 {
-                    Command = Commands.Hyperlink,
+                    Command = url.StartsWith("#") ? Commands.Navigate : Commands.Hyperlink,
                     CommandParameter = url,
                     NavigateUri = new Uri(url, UriKind.RelativeOrAbsolute),
                     ToolTip = !string.IsNullOrEmpty(link.Title) ? link.Title : null,
                 };
-
                 hyperlink.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.HyperlinkStyleKey);
 
                 renderer.Push(hyperlink);
