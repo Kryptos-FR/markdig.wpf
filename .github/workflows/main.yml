@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+
+jobs:
+  Setup:
+    if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event.pull_request.draft == false }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 0
+
+  Build-Core:
+    needs: Setup
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        dotnet-version: ['3.1', '5.0']
+        build-type: ['Debug', 'Release']
+        include:
+          - dotnet-version: '3.1'
+            framework: 'netcoreapp3.1'
+          - dotnet-version: '5.0'
+            framework: 'net5.0-windows'
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+          submodules: recursive
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Build Solution
+        run: |
+          dotnet build src/Markdig.Wpf.sln `
+            --configuration ${{ matrix.build-type }} `
+            --framework ${{ matrix.framework }}
+
+  Build-Framework:
+    needs: Setup
+    runs-on: windows-2019
+    strategy:
+      fail-fast: false
+      matrix:
+        build-type: ['Debug', 'Release']
+        include:
+          - framework: 'net452'
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+          submodules: recursive
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1
+      - name: Restore packages
+        run: |
+          nuget restore src/Markdig.Wpf.sln
+      - name: Build Solution
+        run: |
+          msbuild src/Markdig.Wpf.sln `
+            -target:Build `
+            -property:Configuration=${{ matrix.build-type }} `
+            -property:TargetFramework=${{ matrix.framework }}
