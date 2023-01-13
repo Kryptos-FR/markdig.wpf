@@ -5,7 +5,7 @@ namespace Markdig.Wpf.SampleAppCustomized.Customized
 {
     /// <summary>
     /// Usually the image paths in the Markdown must be relative to the application or absolute.
-    /// This classes make it possible to change the root path.
+    /// This class utilizes a custom renderer and facilitates changing the root path.
     /// </summary>
     public class MarkdownViewer : Markdig.Wpf.MarkdownViewer
     {
@@ -27,13 +27,30 @@ namespace Markdig.Wpf.SampleAppCustomized.Customized
 
         protected override void RefreshDocument()
         {
-            // In some cases the path is not updated fast enough, so we force it
+            Document = Markdown is null
+                     ? null 
+                     : Markdig.Wpf.Markdown.ToFlowDocument(Markdown, Pipeline ?? DefaultPipeline, _renderer);
+        }
+        
+        
+        private WpfRenderer? _renderer = null;
+        public void SetCustomRenderer(bool? state)
+        {
+            // For obvious contrast, we only provide a custom renderer in 1 of the 3 presentation states
+            if (state != true)
+            {
+                _renderer = null;
+                return;
+            }
+            
+            // In some cases the UCRootPath is not updated fast enough, so we force it
             this.GetBindingExpression(UCRootPathProperty)?.UpdateTarget();
-
+            
             var path = UCRootPath;
             if (!string.IsNullOrEmpty(path) && !path.EndsWith("/", StringComparison.Ordinal))
                 path = path.Remove(path.LastIndexOf('/') + 1);
-            Document = Markdown != null ? Markdig.Wpf.Markdown.ToFlowDocument(Markdown, Pipeline ?? DefaultPipeline, new Customized.WpfRenderer(path)) : null;
+            
+            _renderer = new WpfRenderer(new LinkInlineRenderer(path), new ColumnScalingTableRenderer());
         }
     }
 }

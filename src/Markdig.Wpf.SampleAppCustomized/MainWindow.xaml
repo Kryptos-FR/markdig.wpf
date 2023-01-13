@@ -6,15 +6,107 @@
         xmlns:local="clr-namespace:Markdig.Wpf.SampleAppCustomized.Customized"
         xmlns:markdig="clr-namespace:Markdig.Wpf;assembly=Markdig.Wpf"
         mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Title="MainWindow">
+    <Window.Resources>
+        <!-- Define some new styles based on the predefined style keys -->
+        <Style TargetType="Paragraph" x:Key="MyH1" BasedOn="{StaticResource {x:Static markdig:Styles.Heading1StyleKey}}">
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="FontWeight" Value="ExtraBold"/>
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+        <Style TargetType="Paragraph" x:Key="MyH2" BasedOn="{StaticResource {x:Static markdig:Styles.Heading2StyleKey}}">
+            <Setter Property="Foreground" Value="LimeGreen"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="26"/>
+        </Style>
+        <Style TargetType="Paragraph" x:Key="MyH3" BasedOn="{StaticResource {x:Static markdig:Styles.Heading3StyleKey}}">
+            <Setter Property="Foreground" Value="Blue"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="TextDecorations" Value="Underline"/>
+        </Style>
+        <Style TargetType="TableRow" x:Key="MyTableHeader" BasedOn="{StaticResource {x:Static markdig:Styles.TableHeaderStyleKey}}">
+            <Setter Property="Background" Value="Gray"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="TableCell" x:Key="MyTableCell" BasedOn="{StaticResource {x:Static markdig:Styles.TableCellStyleKey}}">
+            <Setter Property="Padding" Value="8,4"/>
+        </Style>
+        
+    </Window.Resources>
+    
     <FrameworkElement.CommandBindings>
         <CommandBinding Command="{x:Static markdig:Commands.Hyperlink}" Executed="OpenHyperlink" />
         <CommandBinding Command="{x:Static markdig:Commands.Image}" Executed="ClickOnImage" />
     </FrameworkElement.CommandBindings>
+    
     <DockPanel>
-        <Button x:Name="ToggleExtensionsButton" DockPanel.Dock="Top" HorizontalAlignment="Center"
-            Content="Toggle supported extensions" Click="ToggleExtensionsButton_OnClick" />
-        
-        <local:MarkdownViewer x:Name="Viewer"/>
+        <ToggleButton x:Name="ToggleExtensionsButton" 
+                      DockPanel.Dock="Top" HorizontalAlignment="Center" Padding="5,1"
+                      IsThreeState="True" IsChecked="{Binding PresentationState}">
+            <ToggleButton.Style>
+                <Style TargetType="{x:Type ToggleButton}">
+                    <Style.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Content" Value="Current State: all Pipeline extensions, custom Renderers &amp; Styles"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="{x:Null}">
+                            <Setter Property="Content" Value="Current State: no customization, no Pipeline extensions or Styles"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter Property="Content" Value="Current State: no customization, just all supported Pipeline extensions"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ToggleButton.Style>
+        </ToggleButton>
+            
+        <local:MarkdownViewer x:Name="Viewer">
+            <local:MarkdownViewer.Style>
+                <!-- Brought over the control style/template & hooked up custom style injection to toggle button -->
+                <Style TargetType="markdig:MarkdownViewer">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <!-- Default MarkdownViewer template -->
+                            <ControlTemplate TargetType="markdig:MarkdownViewer">
+                                <FlowDocumentScrollViewer Document="{TemplateBinding Document}"
+                                                          ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsChecked, ElementName=ToggleExtensionsButton}" Value="True">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <!-- Custom MarkdownViewer template that injects style key overrides -->
+                                    <ControlTemplate TargetType="markdig:MarkdownViewer">
+                                        <ControlTemplate.Resources>
+                                            <!-- Override some of the predefined style keys using our custom styles -->
+                                            <Style TargetType="Paragraph" x:Key="{x:Static markdig:Styles.Heading1StyleKey}" 
+                                                   BasedOn="{StaticResource MyH1}" />
+                                            <Style TargetType="Paragraph" x:Key="{x:Static markdig:Styles.Heading2StyleKey}" 
+                                                   BasedOn="{StaticResource MyH2}"/>
+                                            <Style TargetType="Paragraph" x:Key="{x:Static markdig:Styles.Heading3StyleKey}" 
+                                                   BasedOn="{StaticResource MyH3}" />
+                                            <Style TargetType="TableRow" x:Key="{x:Static markdig:Styles.TableHeaderStyleKey}" 
+                                                   BasedOn="{StaticResource MyTableHeader}" />
+                                            <Style TargetType="TableCell" x:Key="{x:Static markdig:Styles.TableCellStyleKey}" 
+                                                   BasedOn="{StaticResource MyTableCell}" />
+                                        </ControlTemplate.Resources>
+                                        <FlowDocumentScrollViewer Document="{TemplateBinding Document}"
+                                                                  ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </local:MarkdownViewer.Style>
+        </local:MarkdownViewer>
     </DockPanel>
 </Window>
