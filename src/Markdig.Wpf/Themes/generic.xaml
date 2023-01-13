@@ -99,6 +99,7 @@
       <Setter.Value>
         <ControlTemplate TargetType="markdig:MarkdownViewer">
           <FlowDocumentScrollViewer Document="{TemplateBinding Document}"
+                                    x:Name="PART_DocViewer"
                                     ScrollViewer.VerticalScrollBarVisibility="Auto"/>
         </ControlTemplate>
       </Setter.Value>
