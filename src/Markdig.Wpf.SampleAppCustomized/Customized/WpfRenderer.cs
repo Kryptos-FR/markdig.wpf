@@ -1,24 +1,33 @@
 ﻿namespace Markdig.Wpf.SampleAppCustomized.Customized
 {
+    /// <summary>
+    /// Create a custom Renderer instead of using the one in the Markdig.Wpf package 
+    /// </summary>
     public class WpfRenderer : Markdig.Renderers.WpfRenderer
     {
-        private string _linkpath;
+        private readonly Renderers.IMarkdownObjectRenderer[] _injections;
 
         /// <summary>
         /// Initializes the WPF renderer
         /// </summary>
-        /// <param name="linkpath">image path for the custom LinkInlineRenderer</param>
-        public WpfRenderer(string linkpath) : base()
+        /// <param name="injectRenderers">custom renderer injection list</param>
+        public WpfRenderer(params Renderers.IMarkdownObjectRenderer[] injectRenderers) : base()
         {
-            _linkpath = linkpath;
+            _injections = injectRenderers;
         }
 
         /// <summary>
-        /// Load first the custom renderer's
+        /// Load our custom renderer's before the base versions. By doing this, our renderers can
+        /// handle/continue on that specific Markdig type before ever reaching the default renderer
         /// </summary>
         protected override void LoadRenderers()
         {
-            ObjectRenderers.Add(new LinkInlineRenderer(_linkpath));
+            if (_injections.Length > 0)
+            {
+                foreach (var renderer in _injections)
+                    ObjectRenderers.Add(renderer); 
+            }
+
             base.LoadRenderers();
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 
 namespace Markdig.Wpf.SampleAppCustomized
 {
@@ -9,7 +10,16 @@ namespace Markdig.Wpf.SampleAppCustomized
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool useExtensions = true;
+        private bool? _presentationState = false;
+
+        /// <summary>
+        /// Represents the IsChecked 3-State ToggleButton that changes the presentation
+        /// </summary>
+        public bool? PresentationState
+        {
+            get => _presentationState; 
+            set => ToggleExtensions(value);
+        }
 
         public MainWindow()
         {
@@ -34,12 +44,22 @@ namespace Markdig.Wpf.SampleAppCustomized
             MessageBox.Show($"URL: {e.Parameter}");
         }
 
-        private void ToggleExtensionsButton_OnClick(object sender, RoutedEventArgs e)
+        private void ToggleExtensions(bool? newValue)
         {
-            useExtensions = !useExtensions;
-            Viewer.Pipeline = useExtensions ? new MarkdownPipelineBuilder().UseSupportedExtensions().Build() : new MarkdownPipelineBuilder().Build();
+            _presentationState = newValue;
+            
+            // Setting the custom renderer first since the pipeline property will trigger refresh
+            Viewer.SetCustomRenderer(newValue);
+            Viewer.Pipeline = newValue switch
+            {
+                // Even if we include a custom renderer, we still have to enable the applicable
+                // Pipeline extensions that handle that Markdig type.
+                // In this case, UsePipeTables() enables the use of ColumnScalingTableRenderer
+                true => new MarkdownPipelineBuilder().UsePipeTables().Build(),
+                false => new MarkdownPipelineBuilder().UseSupportedExtensions().Build(),
+                _ => new MarkdownPipelineBuilder().Build()
+            };
         }
-
 
     }
 }
