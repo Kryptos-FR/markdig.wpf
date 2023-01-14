@@ -5,6 +5,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Input;
 
 namespace Markdig.Wpf
 {
@@ -35,9 +36,25 @@ namespace Markdig.Wpf
         public static readonly DependencyProperty PipelineProperty =
             DependencyProperty.Register(nameof(Pipeline), typeof(MarkdownPipeline), typeof(MarkdownViewer), new FrameworkPropertyMetadata(PipelineChanged));
 
+        /// <summary>
+        /// Defines the <see cref="HandleVerticalScrollEvents"/> property.
+        /// </summary>
+        public static readonly DependencyProperty HandleVerticalScrollEventsProperty =
+            DependencyProperty.Register(nameof(HandleVerticalScrollEvents), typeof(bool), typeof(MarkdownViewer));
+
         static MarkdownViewer()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MarkdownViewer), new FrameworkPropertyMetadata(typeof(MarkdownViewer)));
+        }
+
+        public MarkdownViewer()
+        {
+            AddHandler(MouseWheelEvent, new MouseWheelEventHandler(OnVerticalScrollEventHandled), true);
+        }
+
+        private void OnVerticalScrollEventHandled(object sender, MouseWheelEventArgs e)
+        {
+            e.Handled = HandleVerticalScrollEvents;
         }
 
         /// <summary>
@@ -65,6 +82,15 @@ namespace Markdig.Wpf
         {
             get { return (MarkdownPipeline)GetValue(PipelineProperty); }
             set { SetValue(PipelineProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the handling of the vertical scroll events.
+        /// </summary>
+        public bool HandleVerticalScrollEvents
+        {
+            get { return (bool)GetValue(HandleVerticalScrollEventsProperty); }
+            set { SetValue(HandleVerticalScrollEventsProperty, value); }
         }
 
         private static void MarkdownChanged(object sender, DependencyPropertyChangedEventArgs e)
