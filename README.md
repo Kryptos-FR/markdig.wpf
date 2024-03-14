@@ -1,3 +1,8 @@
+> [!IMPORTANT]  
+> Because of a lack of time and interest, this repo is archived. If my situation changes, I might unarchive it.
+> For the time being, consider forking it or use an alternative.
+> Existing Nuget packages will still be available.
+
 # Markdig-WPF [![NuGet](https://img.shields.io/nuget/v/Markdig.Wpf.svg?logo=nuget)](https://www.nuget.org/packages/Markdig.wpf/) [![NuGet](https://img.shields.io/nuget/dt/Markdig.Wpf.svg)](https://www.nuget.org/stats/packages/Markdig.Wpf?groupby=Version)
 A WPF library for [lunet-io/markdig](https://github.com/lunet-io/markdig)
 
